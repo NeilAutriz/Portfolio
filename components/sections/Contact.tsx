@@ -26,7 +26,15 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
+    // Create a mailto link with the form data
+    const subject = encodeURIComponent(formData.subject);
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
+    const mailtoLink = `mailto:mngautriz@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Open the email client
+    window.location.href = mailtoLink;
+    
+    // Show success message after a short delay
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitStatus('success');
@@ -40,13 +48,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="lets-connect" className="py-20 md:py-32 relative">
+    <section id="lets-connect" className="py-12 md:py-16 lg:py-20 relative">
       {/* Background gradients */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-r from-primary/20 to-accent/10 rounded-full filter blur-[150px]"></div>
         <div className="absolute bottom-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-to-r from-secondary/15 to-rose-400/10 rounded-full filter blur-[120px]"></div>
       </div>
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-20 xl:px-24 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -167,8 +175,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-gray-400 mb-1">Email</p>
-                    <a href="mailto:sandemoses2019@gmail.com" className="text-white hover:text-primary transition-colors">
-                      sandemoses2019@gmail.com
+                    <a href="mailto:mngautriz@gmail.com" className="text-white hover:text-primary transition-colors">
+                      mngautriz@gmail.com
                     </a>
                   </div>
                 </div>
@@ -179,7 +187,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-gray-400 mb-1">Location</p>
-                    <p className="text-white">Kisumu, Kenya</p>
+                    <p className="text-white">Manila, Philippines</p>
                   </div>
                 </div>
                 
@@ -189,7 +197,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-gray-400 mb-1">Availability</p>
-                    <p className="text-white">Available for new projects</p>
+                    <p className="text-white">Open for new projects and collaborations</p>
                   </div>
                 </div>
               </div>
@@ -227,7 +235,7 @@ const Contact = () => {
                 </a>
                 
                 <a
-                  href="mailto:sandemoses2019@gmail.com"
+                  href="mailto:mngautriz@gmail.com"
                   className="bg-dark-200 p-4 rounded-full text-white hover:text-primary transition-colors"
                 >
                   <FiMail className="w-6 h-6" />
@@ -235,7 +243,11 @@ const Contact = () => {
               </div>
               
               <div className="mt-6 p-4 bg-dark-200 rounded-lg border border-dark-300">
-                <p className="text-gray-400 text-center italic">💬 Drag me around!<br />Find the secret spot</p>
+                <p className="text-gray-400 text-center">
+                  <span className="block text-lg text-white mb-1">© 2025 Mark Neil Autriz</span>
+                  <span className="block mb-2">Built with React, TypeScript, and lots of commitment.</span>
+                  <span className="italic text-sm">Crafted with passion for innovation and excellence</span>
+                </p>
               </div>
             </div>
           </motion.div>

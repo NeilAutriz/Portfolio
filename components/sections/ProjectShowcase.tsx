@@ -92,7 +92,7 @@ const ProjectShowcase = () => {
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <section id="project-showcase" className="py-24 md:py-36 relative">
+    <section id="projects" className="py-12 md:py-16 lg:py-20 relative">
       {/* Background gradients */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/3 w-[700px] h-[700px] bg-gradient-to-r from-primary/15 to-blue-400/10 rounded-full filter blur-[150px]"></div>

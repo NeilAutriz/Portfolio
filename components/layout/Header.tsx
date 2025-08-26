@@ -32,15 +32,18 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 xl:px-8 flex items-center justify-between max-w-7xl">
         <Link href="/">
-          <div className="text-3xl font-bold text-white flex items-center space-x-1">
-            <span className="text-primary">S</span>
-            <span className="text-white/80">|</span>
+          <div className="h-10 w-auto">
+            <img 
+              src="/mainlogo(white).png"
+              alt="Portfolio Logo" 
+              className="h-full w-auto"
+            />
           </div>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8 lg:space-x-10">
-          {['Featured Work', 'Project Showcase', 'Skills Mastery', 'Journey Timeline', 'By the Numbers', 'Client Testimonials', 'Let\'s Connect'].map((item) => (
+          {['Projects', 'Skills', 'Experience', 'Let\'s Connect'].map((item) => (
             <Link 
               key={item} 
               href={`/#${item.toLowerCase().replace(/\s+/g, '-')}`}
@@ -70,7 +73,13 @@ const Header = () => {
             className="fixed top-0 right-0 h-full w-full md:w-80 bg-dark-300/95 backdrop-blur-md z-50 shadow-2xl"
           >
             <div className="flex justify-between items-center p-6 border-b border-white/10">
-              <span className="text-2xl font-bold text-white">Menu</span>
+              <div className="h-8 w-auto">
+                <img 
+                  src="/mainlogo(white).png" 
+                  alt="Portfolio Logo" 
+                  className="h-full w-auto"
+                />
+              </div>
               <button 
                 className="text-white p-2 rounded-full hover:bg-white/10 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
@@ -81,7 +90,7 @@ const Header = () => {
             </div>
             
             <nav className="flex flex-col p-6">
-              {['Featured Work', 'Project Showcase', 'Skills Mastery', 'Journey Timeline', 'By the Numbers', 'Client Testimonials', 'Let\'s Connect'].map((item, index) => (
+              {['Projects', 'Skills', 'Experience', 'Let\'s Connect'].map((item, index) => (
                 <Link 
                   key={item} 
                   href={`/#${item.toLowerCase().replace(/\s+/g, '-')}`}

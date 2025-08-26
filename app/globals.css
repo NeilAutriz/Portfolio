@@ -55,8 +55,8 @@ h3 {
 }
 
 section {
-  padding-top: 5rem; /* py-20 */
-  padding-bottom: 5rem;
+  padding-top: 2rem; /* further reduced */
+  padding-bottom: 2rem; /* further reduced */
 }
 
 @media (min-width: 768px) {
@@ -73,8 +73,8 @@ section {
   }
   
   section {
-    padding-top: 7rem; /* py-28 */
-    padding-bottom: 7rem;
+    padding-top: 2.5rem; /* further reduced */
+    padding-bottom: 2.5rem; /* further reduced */
   }
 }
 
@@ -88,8 +88,8 @@ section {
   }
   
   section {
-    padding-top: 9rem; /* py-36 */
-    padding-bottom: 9rem;
+    padding-top: 3rem; /* further reduced */
+    padding-bottom: 3rem; /* further reduced */
   }
 }
 
@@ -321,6 +321,20 @@ body::before {
 
 .animation-delay-3000 {
   animation-delay: 3s;
+}
+
+/* Infinite scroll animation for tech logos */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 2));
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
 }
 
 /* 3D Transforms */

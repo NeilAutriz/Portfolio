@@ -46,7 +46,7 @@ const Hero = () => {
                   Explore Work
                 </motion.button>
               </Link>
-              <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <Link href="/Autriz_Resume.pdf" target="_blank" rel="noopener noreferrer" download>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

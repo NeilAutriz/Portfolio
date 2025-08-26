@@ -23,17 +23,11 @@ const stats = [
     subtext: 'Lines of dedication',
     progress: 92,
   },
-  {
-    value: 8,
-    label: 'Awards Won',
-    subtext: 'Industry recognition',
-    progress: 76,
-  },
 ];
 
 const achievements = [
   'Leet Code GURU',
-  'Featured in Internet of Thing Awards 2022',
+  'Professional Software Developer',
   'CCNA Certified',
 ];
 

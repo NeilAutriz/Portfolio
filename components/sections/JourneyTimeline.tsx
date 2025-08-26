@@ -607,12 +607,7 @@ const JourneyTimeline = () => {
   };
   
   return (
-    <section id="journey" className="py-20 md:py-32 relative">
-      {/* Background gradients */}
-      <div className="absolute inset-0 opacity-30 overflow-hidden">
-        <div className="absolute -top-[300px] -left-[300px] w-[600px] h-[600px] bg-gradient-to-br from-primary/20 to-transparent rounded-full filter blur-[80px]"></div>
-        <div className="absolute -bottom-[300px] -right-[300px] w-[600px] h-[600px] bg-gradient-to-br from-secondary/20 to-transparent rounded-full filter blur-[80px]"></div>
-      </div>
+    <section id="experience" className="py-12 md:py-16 lg:py-20 relative">
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
