@@ -2,6 +2,7 @@
 
 import Header from '@/components/layout/Header';
 import Hero from '@/components/sections/Hero';
+import AboutMe from '@/components/sections/AboutMe';
 import ProjectShowcase from '@/components/sections/ProjectShowcase';
 import SkillsMastery from '@/components/sections/SkillsMastery';
 import JourneyTimeline from '@/components/sections/JourneyTimeline';
@@ -17,6 +18,10 @@ export default function Home() {
         {/* Dark subtle particles background for the rest of the site */}
         <div className="fixed inset-0 z-0 pointer-events-none">
           <ParticlesBackground type="stars" />
+        </div>
+        {/* About Me section with no space before it to attach smoothly to hero */}
+        <div className="mt-0">
+          <AboutMe />
         </div>
         <div className="mb-[-2rem] md:mb-[-3rem] lg:mb-[-4rem]">
           <ProjectShowcase />

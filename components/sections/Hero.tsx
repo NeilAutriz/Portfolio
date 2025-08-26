@@ -17,9 +17,7 @@ const Hero = () => {
       
       {/* Background overlay to darken and add depth */}
       <div className="absolute top-0 left-0 w-full h-full z-10">
-        {/* Subtle gradient accents for depth - much more subtle than before */}
-        <div className="absolute top-1/3 left-1/3 w-[400px] h-[400px] bg-gradient-to-r from-primary/8 to-accent/3 rounded-full filter blur-[200px]"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-[400px] h-[400px] bg-gradient-to-r from-secondary/8 to-rose-400/3 rounded-full filter blur-[200px]"></div>
+        {/* Removed gradient accents as requested */}
         
         {/* Dark overlay to ensure text readability with the particles */}
         <div className="absolute inset-0 bg-background/70"></div>
@@ -116,27 +114,25 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="relative hidden lg:flex lg:justify-center lg:items-center z-30"
           >
-            <div className="relative w-[480px] h-[500px] xl:w-[520px] xl:h-[540px] rounded-lg overflow-hidden border-[2px] border-white/10 shadow-2xl z-40">
-              <Image
-                src="/hero-avatar.jpg"
-                alt="Avatar"
-                width={600}
-                height={650}
-                className="object-cover w-full h-full relative z-50"
-                priority
-                quality={100}
-              />
-              
-              {/* Subtle inner shadow */}
-              <div className="absolute inset-0 shadow-inner ring-1 ring-inset ring-white/5"></div>
+            {/* Enhanced image container with professional gradient border and enhanced shine effect */}
+            <div className="relative w-[480px] h-[500px] xl:w-[520px] xl:h-[540px] p-[3px] rounded-lg bg-gradient-to-br from-primary/30 via-accent/20 to-primary/30 shadow-lg shadow-primary/20 z-40">
+              <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-white/10 shadow-2xl shine-effect hero-shine">
+                <Image
+                  src="/hero-avatar.jpg"
+                  alt="Avatar"
+                  width={600}
+                  height={650}
+                  className="object-cover w-full h-full relative z-50"
+                  priority
+                  quality={100}
+                />
+                
+                {/* Subtle inner shadow */}
+                <div className="absolute inset-0 shadow-inner ring-1 ring-inset ring-white/5"></div>
+              </div>
             </div>
             
-            {/* Light effect behind the avatar */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/15 to-secondary/20 rounded-lg filter blur-[80px] opacity-50 z-10"></div>
-            
-            {/* Corner accents */}
-            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/30 to-accent/20 z-5 blur-xl"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-secondary/30 to-rose-400/20 z-5 blur-xl"></div>
+            {/* Removed light effect behind avatar and corner accents as requested */}
           </motion.div>
         </div>
       </div>
