@@ -1,0 +1,491 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 15, 23, 42;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: #0f172a;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  background-image: 
+    linear-gradient(to bottom right, rgba(14, 165, 233, 0.05), transparent 60%),
+    linear-gradient(to top left, rgba(244, 63, 94, 0.05), transparent 60%),
+    radial-gradient(circle at center, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 1) 100%);
+  background-attachment: fixed;
+}
+
+/* Timeline particle animations */
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(80%) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(20%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0%) scale(0.5);
+  }
+}
+
+.timeline-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background-color: rgba(14, 165, 233, 0.6);
+  border-radius: 50%;
+  top: 0;
+  left: calc(50% - 1.5px);
+  animation: float-up 5s ease-in-out infinite;
+  filter: blur(1px);
+  box-shadow: 0 0 4px rgba(14, 165, 233, 0.4);
+  z-index: 10;
+}
+
+/* Slow ping animation */
+.animate-ping-slow {
+  animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Global typography and spacing styles */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.025em; /* tracking-tight */
+}
+
+h1 {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700;
+}
+
+section {
+  padding-top: 5rem; /* py-20 */
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem; /* text-5xl */
+  }
+  
+  h2 {
+    font-size: 2.25rem; /* text-4xl */
+  }
+  
+  h3 {
+    font-size: 1.875rem; /* text-3xl */
+  }
+  
+  section {
+    padding-top: 7rem; /* py-28 */
+    padding-bottom: 7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3.75rem; /* text-6xl */
+  }
+  
+  h2 {
+    font-size: 3rem; /* text-5xl */
+  }
+  
+  section {
+    padding-top: 9rem; /* py-36 */
+    padding-bottom: 9rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  h1 {
+    font-size: 4.5rem; /* text-7xl */
+  }
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 15, 23, 42;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: rgb(var(--background-rgb));
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  background-image: 
+    linear-gradient(to bottom right, rgba(14, 165, 233, 0.07), transparent 50%),
+    linear-gradient(to top left, rgba(244, 63, 94, 0.07), transparent 50%),
+    radial-gradient(circle at center, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 1) 100%);
+  background-attachment: fixed;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Additional custom styles */
+.hero-gradient {
+  background: 
+    linear-gradient(130deg, rgba(14, 165, 233, 0.08) 0%, rgba(56, 189, 248, 0.03) 30%, transparent 70%),
+    linear-gradient(230deg, rgba(244, 63, 94, 0.08) 10%, rgba(251, 113, 133, 0.04) 30%, transparent 70%),
+    radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 1) 70%);
+}
+
+/* Section title styling with gradient */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(to right, rgba(14, 165, 233, 1), rgba(56, 189, 248, 0.9));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 3.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-title {
+    font-size: 3.75rem;
+  }
+}
+
+.skill-card {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2);
+}
+
+.project-card {
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+/* Add a subtle grain texture to the background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+}
+
+/* Custom animations */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(25deg);
+  }
+}
+
+@keyframes particle-move-1 {
+  0% {
+    top: -5%;
+    left: 10%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    top: 110%;
+    left: 70%;
+    opacity: 0;
+  }
+}
+
+@keyframes particle-move-2 {
+  0% {
+    top: -10%;
+    left: 80%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    top: 100%;
+    left: 20%;
+    opacity: 0;
+  }
+}
+
+@keyframes particle-move-3 {
+  0% {
+    top: 100%;
+    left: 30%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    top: 0%;
+    left: 80%;
+    opacity: 0;
+  }
+}
+
+@keyframes light-strip-move {
+  0% {
+    transform: translateX(-100%) skewX(-45deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-45deg);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+.animate-shine {
+  animation: shine 1.5s ease-in-out;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-3000 {
+  animation-delay: 3s;
+}
+
+/* 3D Transforms */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.rotate-x-1 {
+  transform: rotateX(1deg);
+}
+
+.rotate-y-5 {
+  transform: rotateY(5deg);
+}
+
+.hover\:rotate-y-5:hover {
+  transform: rotateY(5deg);
+}
+
+/* Grid pattern for background texture */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Particle effects */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  filter: blur(1px);
+}
+
+.particle-1 {
+  animation: particle-move-1 15s ease-in-out infinite;
+}
+
+.particle-2 {
+  width: 8px;
+  height: 8px;
+  animation: particle-move-2 18s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.particle-3 {
+  width: 5px;
+  height: 5px;
+  animation: particle-move-3 20s ease-in-out infinite;
+  animation-delay: 5s;
+}
+
+/* Light strip effect */
+.light-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: skewX(-45deg);
+  animation: light-strip-move 8s ease-in-out infinite;
+}
+
+/* Enhanced 3D perspective for testimonials */
+.perspective-card {
+  perspective: 1500px;
+  transform: translateZ(0);
+  transition: transform 0.3s ease;
+}
+
+.perspective-card:hover {
+  transform: translateY(-5px) rotateX(2deg);
+}
+
+.perspective-element {
+  transform: translateZ(0);
+  transition: transform 0.3s ease;
+}
+
+.perspective-element:hover {
+  transform: translateZ(10px) scale(1.02);
+}
+
+/* Glowing shadows */
+.shadow-glow-xs {
+  box-shadow: 0 0 8px rgba(14, 165, 233, 0.2);
+}
+
+.shadow-glow-sm {
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
+}
+
+.shadow-glow-md {
+  box-shadow: 0 0 25px rgba(14, 165, 233, 0.4);
+}
+
+/* Shimmer animation for testimonial cards */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+.shine-line {
+  animation: shimmer 4s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.shine-line-delay {
+  animation: shimmer 4s infinite;
+  animation-delay: 2s;
+  animation-timing-function: ease-in-out;
+}
+
+/* Enhanced animations for testimonials */
+.animation-delay-500 {
+  animation-delay: 0.5s;
+}
+
+.animation-delay-700 {
+  animation-delay: 0.7s;
+}
+
+.animation-delay-1500 {
+  animation-delay: 1.5s;
+}
