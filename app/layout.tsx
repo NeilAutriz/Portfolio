@@ -1,10 +1,15 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
+import Footer from '../components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'Sunday Moses - Web Developer Portfolio',
-  description: 'Personal portfolio website showcasing web development projects and skills',
+  title: 'Autriz Portfolio',
+  description: 'Personal portfolio website showcasing software engineering and development skills',
+  icons: {
+    icon: '/mainlogo(white).png',
+    apple: '/mainlogo(white).png',
+  },
 };
 
 export default function RootLayout({
@@ -24,12 +29,7 @@ export default function RootLayout({
           <main className="flex-grow">
             {children}
           </main>
-          <footer className="py-8 mt-auto">
-            <div className="container mx-auto px-4 text-center text-sm text-gray-400">
-              <p>© 2025 Sunday Moses. Built with React, TypeScript, and lots of commitment.</p>
-              <p className="mt-1">Crafted with passion for innovation and excellence</p>
-            </div>
-          </footer>
+          <Footer />
         </div>
       </body>
     </html>

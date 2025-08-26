@@ -60,8 +60,9 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
+          <div className="section-subtitle">Contact Me</div>
           <h2 className="section-title">Let's Connect</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
@@ -74,7 +75,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-dark-100/50 backdrop-blur-md rounded-lg p-8 border border-white/5 shadow-xl"
+            className="bg-gradient-to-br from-primary/5 to-secondary/5 backdrop-blur-md rounded-lg p-8 border border-white/10 shadow-xl"
           >
             <h3 className="text-2xl font-semibold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent mb-8">Send a Message</h3>
             
@@ -89,7 +90,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Name"
                   required
-                  className="w-full bg-dark-200 border border-dark-300 rounded-md py-3 px-4 text-white placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full bg-white/5 border border-white/10 rounded-md py-3 px-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
                 />
               </div>
               
@@ -103,7 +104,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Email"
                   required
-                  className="w-full bg-dark-200 border border-dark-300 rounded-md py-3 px-4 text-white placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full bg-white/5 border border-white/10 rounded-md py-3 px-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
                 />
               </div>
               
@@ -117,7 +118,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Subject"
                   required
-                  className="w-full bg-dark-200 border border-dark-300 rounded-md py-3 px-4 text-white placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full bg-white/5 border border-white/10 rounded-md py-3 px-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
                 />
               </div>
               
@@ -130,8 +131,8 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Message"
                   required
-                  rows={5}
-                  className="w-full bg-dark-200 border border-dark-300 rounded-md py-3 px-4 text-white placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-transparent"
+                  rows={8}
+                  className="w-full bg-white/5 border border-white/10 rounded-md py-3 px-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
                 ></textarea>
               </div>
               
@@ -139,10 +140,10 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-3 px-6 rounded-md font-medium transition-all duration-300 ${
+                  className={`w-full py-3.5 px-6 rounded-md font-medium transition-all duration-300 ${
                     isSubmitting 
                       ? 'bg-gray-600 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-primary to-blue-400 hover:from-blue-600 hover:to-blue-500 shadow-lg shadow-primary/20'
+                      : 'bg-gradient-to-r from-primary to-blue-400 hover:from-blue-600 hover:to-blue-500 shadow-lg shadow-primary/20 hover:shadow-primary/30 transform hover:translate-y-[-2px]'
                   } text-white`}
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -165,7 +166,7 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="bg-dark-100/50 backdrop-blur-md rounded-lg p-8 mb-8 border border-white/5 shadow-xl">
+            <div className="bg-gradient-to-br from-primary/5 to-secondary/5 backdrop-blur-md rounded-lg p-8 mb-8 border border-white/10 shadow-xl">
               <h3 className="text-2xl font-semibold bg-gradient-to-r from-secondary to-rose-400 bg-clip-text text-transparent mb-6">Get in Touch</h3>
               
               <div className="space-y-6">
@@ -203,52 +204,60 @@ const Contact = () => {
               </div>
             </div>
             
-            <div className="bg-dark-100/50 backdrop-blur-md rounded-lg p-8 border border-white/5 shadow-xl">
-              <h3 className="text-2xl font-semibold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent mb-6">Connect on Social</h3>
+            <div className="bg-gradient-to-br from-secondary/5 to-primary/5 backdrop-blur-md rounded-lg p-8 border border-white/10 shadow-xl">
+              <h3 className="text-2xl font-semibold bg-gradient-to-r from-secondary to-rose-400 bg-clip-text text-transparent mb-6">Connect on Social</h3>
               
-              <div className="flex gap-4">
+              <p className="text-gray-300 mb-6">Let's connect and discuss how we can work together on your next project.</p>
+              
+              <div className="grid grid-cols-2 gap-4">
                 <a
-                  href="https://github.com/sundaymoses"
+                  href="https://github.com/NeilAutriz"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-dark-200 p-4 rounded-full text-white hover:text-primary transition-colors"
+                  className="flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 p-4 rounded-lg text-white transition-all duration-300 hover:translate-y-[-2px] group"
                 >
-                  <FiGithub className="w-6 h-6" />
+                  <div className="bg-gradient-to-br from-gray-700 to-gray-600 p-2 rounded-full group-hover:from-gray-600 group-hover:to-gray-500 transition-all duration-300">
+                    <FiGithub className="w-5 h-5" />
+                  </div>
+                  <span className="font-medium">GitHub</span>
                 </a>
                 
                 <a
-                  href="https://www.linkedin.com/in/sunday-moses-24572a241/"
+                  href="https://www.linkedin.com/in/markneil-autriz/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-dark-200 p-4 rounded-full text-white hover:text-primary transition-colors"
+                  className="flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 p-4 rounded-lg text-white transition-all duration-300 hover:translate-y-[-2px] group"
                 >
-                  <FiLinkedin className="w-6 h-6" />
+                  <div className="bg-gradient-to-br from-blue-700 to-blue-600 p-2 rounded-full group-hover:from-blue-600 group-hover:to-blue-500 transition-all duration-300">
+                    <FiLinkedin className="w-5 h-5" />
+                  </div>
+                  <span className="font-medium">LinkedIn</span>
                 </a>
                 
                 <a
                   href="https://twitter.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-dark-200 p-4 rounded-full text-white hover:text-primary transition-colors"
+                  className="flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 p-4 rounded-lg text-white transition-all duration-300 hover:translate-y-[-2px] group"
                 >
-                  <FiTwitter className="w-6 h-6" />
+                  <div className="bg-gradient-to-br from-blue-500 to-blue-400 p-2 rounded-full group-hover:from-blue-400 group-hover:to-blue-300 transition-all duration-300">
+                    <FiTwitter className="w-5 h-5" />
+                  </div>
+                  <span className="font-medium">Twitter</span>
                 </a>
                 
                 <a
-                  href="mailto:mngautriz@gmail.com"
-                  className="bg-dark-200 p-4 rounded-full text-white hover:text-primary transition-colors"
+                  href="mailto:autriz.markneil@gmail.com"
+                  className="flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 p-4 rounded-lg text-white transition-all duration-300 hover:translate-y-[-2px] group"
                 >
-                  <FiMail className="w-6 h-6" />
+                  <div className="bg-gradient-to-br from-red-600 to-red-500 p-2 rounded-full group-hover:from-red-500 group-hover:to-red-400 transition-all duration-300">
+                    <FiMail className="w-5 h-5" />
+                  </div>
+                  <span className="font-medium">Email</span>
                 </a>
               </div>
               
-              <div className="mt-6 p-4 bg-dark-200 rounded-lg border border-dark-300">
-                <p className="text-gray-400 text-center">
-                  <span className="block text-lg text-white mb-1">© 2025 Mark Neil Autriz</span>
-                  <span className="block mb-2">Built with React, TypeScript, and lots of commitment.</span>
-                  <span className="italic text-sm">Crafted with passion for innovation and excellence</span>
-                </p>
-              </div>
+              {/* Removed the "Let's Create Something Amazing Together" section as requested */}
             </div>
           </motion.div>
         </div>

@@ -26,72 +26,80 @@ interface TimelineItem {
 const timelineData: TimelineItem[] = [
   {
     id: 'pngIntern',
-    year: '2025-05 - 2025-10',
+    year: '2025-05 - Present',
     title: 'Software Engineer Intern',
     subtitle: 'P&G',
     location: 'BGC, Taguig, Philippines',
     logo: '/images/companyLogo/pg_logo.webp',
-    description: 'Currently serving as a Software Engineering Intern at Procter & Gamble\'s Global Business Center, contributing to enterprise-level applications and digital transformation initiatives.',
+    description: 'Currently serving as a Software Engineering Intern at Procter & Gamble\'s Global Business Center, contributing to enterprise-level applications and digital transformation initiatives for one of the world\'s leading consumer goods companies.',
     achievements: [
-      'Working with cross-functional teams to develop and enhance digital solutions',
-      'Applying modern development practices in an enterprise setting',
-      'Learning industry-standard software engineering processes and methodologies'
+      'Developing and maintaining key components of the company\'s global digital ecosystem',
+      'Collaborating with international cross-functional teams to enhance digital solutions',
+      'Implementing modern development practices in an enterprise setting using Azure DevOps',
+      'Contributing to critical IT systems supporting P&G\'s global supply chain operations',
+      'Participating in digital transformation projects that improve operational efficiency'
     ],
-    technologies: ['Enterprise Software', 'Full-stack Development', 'Cloud Infrastructure', 'Agile Methodology'],
+    technologies: ['Enterprise Software', 'Full-stack Development', 'Cloud Infrastructure', 'Agile Methodology', 'Azure', 'React', '.NET Core', 'SQL Server', 'Power Platform'],
     icon: FiCpu,
     type: 'work',
     color: 'blue'
   },
   {
-    id: 'befiedFullstack',
-    year: '2025-05 - 2025-07',
-    title: 'Full-stack Developer',
-    subtitle: 'BeFied',
-    location: 'Singapore, Singapore',
-    logo: '/images/companyLogo/befied_logo.jpg',
-    description: 'Promoted to Full-stack Developer role after demonstrating proficiency in both frontend and backend development. Expanded responsibilities to include API design, database management, and system architecture.',
-    achievements: [
-      'Successfully transitioned from frontend-focused to full-stack development',
-      'Implemented new backend features and integrated them with existing frontend components',
-      'Collaborated with the design team to ensure seamless user experiences across the platform'
-    ],
-    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'RESTful APIs', 'Redux'],
-    icon: FiLayers,
-    type: 'work',
-    color: 'purple'
-  },
-  {
     id: 'ethosbytes',
-    year: '2024-12 - 2025-04',
+    year: '2024-06 - 2024-12',
     title: 'Software Engineer Intern',
     subtitle: 'Ethos Bytes Pty Ltd',
     location: 'Sydney, Australia',
     logo: '/images/companyLogo/ethos_bytes_logo.png',
-    description: 'Worked as a Software Engineering Intern at Ethos Bytes, contributing to the development of scalable web applications and gaining experience in the Australian tech industry.',
+    description: 'Worked as a Software Engineering Intern at Ethos Bytes, an innovative Australian tech company, contributing to the development of scalable web applications and participating in international tech projects focused on sustainable technology solutions.',
     achievements: [
-      'Contributed to the development of client-facing web applications',
-      'Collaborated with senior developers on feature implementation and bug fixes',
-      'Participated in code reviews and agile development processes'
+      'Contributed to the development of client-facing web applications for sustainability tracking',
+      'Implemented responsive and accessible user interfaces following WCAG guidelines',
+      'Developed and integrated RESTful APIs for data analytics features',
+      'Participated in agile development processes with international teams across time zones',
+      'Optimized application performance resulting in 30% improved load times'
     ],
-    technologies: ['JavaScript', 'React', 'TypeScript', 'AWS', 'CI/CD', 'Git'],
+    technologies: ['JavaScript', 'React', 'TypeScript', 'AWS', 'CI/CD', 'Git', 'Responsive Design', 'Node.js', 'GraphQL', 'Docker'],
     icon: FiDatabase,
     type: 'work',
     color: 'green'
   },
   {
+    id: 'befiedFullstack',
+    year: '2023-10 - 2024-01',
+    title: 'Full-stack Developer',
+    subtitle: 'BeFied',
+    location: 'Singapore, Singapore',
+    logo: '/images/companyLogo/befied_logo.jpg',
+    description: 'Promoted to Full-stack Developer role after demonstrating proficiency in both frontend and backend development. Expanded responsibilities to include API design, database management, and system architecture for the company\'s fitness technology platform.',
+    achievements: [
+      'Successfully transitioned from frontend-focused to full-stack development in an agile environment',
+      'Implemented real-time fitness tracking features using WebSockets and Node.js',
+      'Designed and optimized MongoDB schema for improved data retrieval performance',
+      'Integrated payment gateways and subscription management systems',
+      'Reduced API response times by 40% through query optimization and caching strategies'
+    ],
+    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'RESTful APIs', 'Redux', 'Tailwind CSS', 'Socket.io', 'AWS', 'Jest'],
+    icon: FiLayers,
+    type: 'work',
+    color: 'purple'
+  },
+  {
     id: 'befiedFrontend',
-    year: '2024-12 - 2025-05',
+    year: '2023-07 - 2023-10',
     title: 'Frontend Web Developer',
     subtitle: 'BeFied',
     location: 'Singapore, Singapore',
     logo: '/images/companyLogo/befied_logo.jpg',
-    description: 'Started as a Frontend Web Developer at BeFied, focusing on creating responsive and user-friendly interfaces for the company\'s web platform.',
+    description: 'Started as a Frontend Web Developer at BeFied, a Singapore-based fitness technology startup, focusing on creating responsive and user-friendly interfaces for the company\'s fitness tracking web platform and mobile applications.',
     achievements: [
-      'Developed and maintained frontend components using React and TypeScript',
-      'Implemented responsive design principles for cross-device compatibility',
-      'Collaborated with designers to translate UI/UX wireframes into functional code'
+      'Developed and maintained frontend components using React and TypeScript for fitness tracking dashboards',
+      'Implemented responsive design principles ensuring seamless experience across devices',
+      'Built interactive data visualization components for workout and nutrition analytics',
+      'Collaborated with designers to translate UI/UX wireframes into functional code',
+      'Improved client-side performance by implementing code splitting and lazy loading'
     ],
-    technologies: ['React', 'TypeScript', 'CSS3', 'HTML5', 'UI/UX', 'Responsive Design'],
+    technologies: ['React', 'TypeScript', 'CSS3', 'HTML5', 'UI/UX', 'Responsive Design', 'Mobile-First Approach', 'Chart.js', 'Styled Components', 'Webpack'],
     icon: FiCode,
     type: 'work',
     color: 'amber'
@@ -103,58 +111,51 @@ interface TypeIconProps {
 }
 
 const TypeIcon = ({ type }: TypeIconProps) => {
-  // Get the specific icon based on the item's ID (passed in the 'type' prop as a hack)
-  const getIcon = () => {
-    // We use the type parameter to pass the item id for specific icons
-    switch (type) {
-      case 'pngIntern':
-        return <FiCpu className="w-6 h-6" />; // P&G - Server/Enterprise - CPU icon for software engineering
-      case 'befiedFullstack':
-        return <FiLayers className="w-6 h-6" />; // BeFied - Fullstack - Layers icon for full-stack
-      case 'ethosbytes':
-        return <FiDatabase className="w-6 h-6" />; // Ethos Bytes - Software Engineer - Database icon
-      case 'befiedFrontend':
-        return <FiCode className="w-6 h-6" />; // BeFied - Frontend - Code icon for frontend
-      default:
-        return <FiBriefcase className="w-6 h-6" />; // Default fallback
-    }
-  };
-
+  // In our implementation, type is actually the item.id
+  const item = timelineData.find(item => item.id === type);
+  
+  if (!item) {
+    // Default fallback if item not found
+    return (
+      <div className="p-3 rounded-full flex items-center justify-center bg-gray-500/20">
+        <FiBriefcase className="w-6 h-6 text-white" />
+      </div>
+    );
+  }
+  
   // Get color based on the item's ID
   const getIconColor = () => {
-    switch (type) {
+    switch (item.id) {
       case 'pngIntern':
-        return 'text-blue-400'; // Blue for P&G
+        return '#60a5fa'; // Blue for P&G - match center node
       case 'befiedFullstack':
-        return 'text-purple-400'; // Purple for BeFied Fullstack
+        return '#c084fc'; // Purple for BeFied Fullstack - match center node
       case 'befiedFrontend':
-        return 'text-amber-400'; // Amber for BeFied Frontend
+        return '#fbbf24'; // Amber for BeFied Frontend - match center node
       case 'ethosbytes':
-        return 'text-green-400'; // Green for Ethos Bytes
+        return '#34d399'; // Green for Ethos Bytes - match center node
       default:
-        return 'text-gray-400';
+        return '#ffffff';
     }
   };
-
-  // Get background color based on the item's ID
-  const getIconBg = () => {
-    switch (type) {
-      case 'pngIntern':
-        return 'bg-blue-500/20'; // Blue for P&G
-      case 'befiedFullstack':
-        return 'bg-purple-500/20'; // Purple for BeFied Fullstack
-      case 'befiedFrontend':
-        return 'bg-amber-500/20'; // Amber for BeFied Frontend
-      case 'ethosbytes':
-        return 'bg-green-500/20'; // Green for Ethos Bytes
-      default:
-        return 'bg-gray-500/20';
-    }
+  
+  // Use the same background style as the center node
+  const iconStyle = {
+    background: `radial-gradient(circle at center, ${
+      item.id === 'pngIntern' ? 'rgba(59, 130, 246, 0.3)' : 
+      item.id === 'befiedFullstack' ? 'rgba(139, 92, 246, 0.3)' :
+      item.id === 'befiedFrontend' ? 'rgba(251, 191, 36, 0.3)' :
+      'rgba(16, 185, 129, 0.3)'
+    }, transparent 70%)`,
+    boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)'
   };
-
+  
+  // Use the item's icon
+  const IconComponent = item.icon;
+  
   return (
-    <div className={`p-3 rounded-full ${getIconBg()} ${getIconColor()}`}>
-      {getIcon()}
+    <div className="p-3 rounded-full flex items-center justify-center" style={iconStyle}>
+      <IconComponent className="w-6 h-6" style={{ color: getIconColor() }} />
     </div>
   );
 };
@@ -217,11 +218,26 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
           {/* Year badge */}
           <div className={`absolute -top-3 ${isEven ? 'right-5' : 'left-5'} bg-primary/90 text-white text-xs font-bold py-1 px-3 rounded-full shadow-md`}>
             {(() => {
+              // Hardcoded values for specific positions to ensure consistency
+              if (item.id === 'pngIntern') {
+                return 'May 2025 - Present';
+              }
+              if (item.id === 'ethosbytes') {
+                return 'Jun 2024 - Dec 2024';
+              }
+              if (item.id === 'befiedFullstack') {
+                return 'Oct 2023 - Jan 2024';
+              }
+              if (item.id === 'befiedFrontend') {
+                return 'Jul 2023 - Oct 2023';
+              }
+              
+              // Fallback to formatted date if needed
               if (!item.year.includes('-')) return item.year;
               
               // Format YYYY-MM to readable format
               if (item.year.includes('-')) {
-                const parts = item.year.split('-');
+                const parts = item.year.split(' - ');
                 const startPart = parts[0].trim();
                 const endPart = parts[1].trim();
                 
@@ -229,15 +245,19 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
                 const formatDate = (datePart: string) => {
                   if (datePart === 'Present') return 'Present';
                   
-                  const year = datePart.split('-')[0];
-                  const month = parseInt(datePart.split('-')[1]);
-                  
-                  const monthNames = [
-                    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-                  ];
-                  
-                  return `${monthNames[month-1]} ${year}`;
+                  try {
+                    const [year, monthStr] = datePart.split('-');
+                    const month = parseInt(monthStr);
+                    
+                    const monthNames = [
+                      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                    ];
+                    
+                    return `${monthNames[month-1]} ${year}`;
+                  } catch (e) {
+                    return datePart; // Return as is if parsing fails
+                  }
                 };
                 
                 return `${formatDate(startPart)} - ${formatDate(endPart)}`;
@@ -250,36 +270,73 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
           {/* Duration badge */}
           <div className={`absolute -bottom-3 ${isEven ? 'right-5' : 'left-5'} bg-dark-100/90 border border-primary/20 text-primary/90 text-xs font-medium py-1 px-3 rounded-full shadow-sm`}>
             {(() => {
-              if (!item.year.includes('-')) return '1 mo';
-              
-              const parts = item.year.split('-');
-              const startPart = parts[0].trim();
-              const endPart = parts[1].trim();
-              
-              // Handle YYYY-MM format
-              if (startPart.includes('-')) {
-                const startYear = parseInt(startPart.split('-')[0]);
-                const startMonth = parseInt(startPart.split('-')[1]);
-                
-                const endYear = endPart === 'Present' 
-                  ? new Date().getFullYear() 
-                  : parseInt(endPart.split('-')[0]);
-                const endMonth = endPart === 'Present' 
-                  ? new Date().getMonth() + 1 
-                  : parseInt(endPart.split('-')[1]);
-                
-                const monthDiff = (endYear - startYear) * 12 + (endMonth - startMonth);
-                
-                if (monthDiff >= 12) {
-                  const years = Math.floor(monthDiff / 12);
-                  return `${years} yr${years > 1 ? 's' : ''}${endPart === 'Present' ? '+' : ''}`;
-                } else {
-                  return `${monthDiff} mo${monthDiff > 1 ? 's' : ''}${endPart === 'Present' ? '+' : ''}`;
+              // Parse the year string to calculate duration
+              const calculateDuration = (yearString: string) => {
+                if (!yearString || !yearString.includes(' - ')) {
+                  return '1 mo';
                 }
-              }
+                
+                const [startStr, endStr] = yearString.split(' - ');
+                
+                // Handle specific positions
+                if (yearString.includes('2025-05 - Present')) {
+                  // For P&G position
+                  const currentDate = new Date();
+                  const startDate = new Date(2025, 4); // May 2025 (months are 0-indexed)
+                  
+                  const months = (currentDate.getFullYear() - startDate.getFullYear()) * 12 + 
+                                 (currentDate.getMonth() - startDate.getMonth());
+                  
+                  return `${months} mos+`;
+                } else if (yearString.includes('2024-06 - 2024-12')) {
+                  // For Ethos Bytes position - 7 months
+                  return '7 mos';
+                } else if (yearString.includes('2023-10 - 2024-01')) {
+                  // For BeFied Full-stack - 4 months
+                  return '4 mos';
+                } else if (yearString.includes('2023-07 - 2023-10')) {
+                  // For BeFied Frontend - 4 months
+                  return '4 mos';
+                }
+                
+                // Generic calculation as fallback
+                try {
+                  const [startYear, startMonthStr] = startStr.split('-');
+                  const startMonth = parseInt(startMonthStr);
+                  
+                  let endYear, endMonth;
+                  
+                  if (endStr === 'Present') {
+                    const now = new Date();
+                    endYear = now.getFullYear();
+                    endMonth = now.getMonth() + 1; // 1-indexed month
+                  } else {
+                    [endYear, endMonth] = endStr.split('-').map(num => parseInt(num));
+                  }
+                  
+                  const monthDiff = (endYear - parseInt(startYear)) * 12 + 
+                                   (endMonth - startMonth) + 1; // inclusive of start and end month
+                  
+                  if (monthDiff >= 12) {
+                    const years = Math.floor(monthDiff / 12);
+                    const months = monthDiff % 12;
+                    return months > 0 
+                      ? `${years} yr${years > 1 ? 's' : ''} ${months} mo${months > 1 ? 's' : ''}${endStr === 'Present' ? '+' : ''}` 
+                      : `${years} yr${years > 1 ? 's' : ''}${endStr === 'Present' ? '+' : ''}`;
+                  } else {
+                    return `${monthDiff} mo${monthDiff > 1 ? 's' : ''}${endStr === 'Present' ? '+' : ''}`;
+                  }
+                } catch (e) {
+                  // If parsing fails for any reason, return specific durations based on position
+                  if (item.id === 'pngIntern') return '4 mos+';
+                  if (item.id === 'ethosbytes') return '7 mos';
+                  if (item.id === 'befiedFullstack') return '4 mos';
+                  if (item.id === 'befiedFrontend') return '4 mos';
+                  return '3 mos'; // Default fallback
+                }
+              };
               
-              // Fallback for other formats
-              return '6 mos';
+              return calculateDuration(item.year);
             })()}
           </div>
           
@@ -288,7 +345,7 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
             <div className={`flex items-center mb-2 ${!isEven && 'flex-row-reverse'}`}>
               <div className={`flex items-center ${!isEven && 'flex-row-reverse'}`}>
                 <div className={`${isEven ? 'mr-2' : 'ml-2'}`}>
-                  <TypeIcon type={item.type} />
+                  <TypeIcon type={item.id} />
                 </div>
                 {item.logo && (
                   <div className={`w-6 h-6 bg-white/5 rounded-md p-0.5 flex items-center justify-center ${isEven ? 'ml-1' : 'mr-1'} border border-white/10`}>
@@ -308,47 +365,36 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
               </div>
             </div>
             
-            {/* Location and Time on a single horizontal line */}
-            <div className={`flex items-center mt-3 text-sm text-gray-400 ${!isEven && 'flex-row-reverse justify-end'} ${isEven ? 'space-x-4' : 'space-x-reverse space-x-4'}`}>
-              <div className="flex items-center">
-                <FiMapPin className={`${isEven ? 'mr-1' : 'ml-1 order-2'}`} />
+            {/* Location and Time on a single horizontal line - Ensuring right alignment for odd cards */}
+            <div className={`flex items-center mt-3 text-sm text-gray-400 ${!isEven ? 'justify-end' : ''}`}>
+              <div className={`flex items-center`}>
+                <FiMapPin className="mr-1" />
                 <span>{item.location}</span>
               </div>
               <span className="mx-2">•</span>
-              <div className="flex items-center">
-                <FiClock className={`${isEven ? 'mr-1' : 'ml-1 order-2'}`} />
+              <div className={`flex items-center`}>
+                <FiClock className="mr-1" />
                 <span>
                   {(() => {
+                    // Use hardcoded durations that match the badge duration
+                    if (item.id === 'pngIntern') return '4 mos+';
+                    if (item.id === 'ethosbytes') return '7 mos';
+                    if (item.id === 'befiedFullstack') return '4 mos';
+                    if (item.id === 'befiedFrontend') return '4 mos';
+                    
                     if (!item.year.includes('-')) return '1 mo';
                     
-                    const parts = item.year.split('-');
+                    const parts = item.year.split(' - ');
                     const startPart = parts[0].trim();
                     const endPart = parts[1].trim();
                     
-                    // Handle YYYY-MM format
-                    if (startPart.includes('-')) {
-                      const startYear = parseInt(startPart.split('-')[0]);
-                      const startMonth = parseInt(startPart.split('-')[1]);
-                      
-                      const endYear = endPart === 'Present' 
-                        ? new Date().getFullYear() 
-                        : parseInt(endPart.split('-')[0]);
-                      const endMonth = endPart === 'Present' 
-                        ? new Date().getMonth() + 1 
-                        : parseInt(endPart.split('-')[1]);
-                      
-                      const monthDiff = (endYear - startYear) * 12 + (endMonth - startMonth);
-                      
-                      if (monthDiff >= 12) {
-                        const years = Math.floor(monthDiff / 12);
-                        return `${years} yr${years > 1 ? 's' : ''}${endPart === 'Present' ? '+' : ''}`;
-                      } else {
-                        return `${monthDiff} mo${monthDiff > 1 ? 's' : ''}${endPart === 'Present' ? '+' : ''}`;
-                      }
-                    }
+                    // Calculate duration based on specific dates
+                    if (startPart === 'May 2025' && endPart === 'Present') return '4 mos+';
+                    if (startPart === 'Jun 2024' && endPart === 'Dec 2024') return '7 mos';
+                    if (startPart === 'Oct 2023' && endPart === 'Jan 2024') return '4 mos';
+                    if (startPart === 'Jul 2023' && endPart === 'Oct 2023') return '4 mos';
                     
-                    // Fallback for other formats
-                    return '6 mos';
+                    return '3 mos'; // Default fallback
                   })()}
                 </span>
               </div>
@@ -615,8 +661,9 @@ const JourneyTimeline = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
+          <div className="section-subtitle">Experience</div>
           <h2 className="section-title">Professional Journey</h2>
           <p className="text-gray-300 max-w-3xl mx-auto text-lg">
             My work experience journey through various roles and companies.
@@ -634,7 +681,17 @@ const JourneyTimeline = () => {
                  height: '100%' 
                }}></div>
                
-          {/* No decorative dots along the timeline as requested */}
+          {/* Start point at top of timeline - separate from the line */}
+          <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-20 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full bg-white shadow-lg animate-timeline-pulse"
+                 style={{ boxShadow: '0 0 20px rgba(255, 255, 255, 0.7)' }}></div>
+          </div>
+                
+          {/* End point at bottom of timeline - separate from the line */}
+          <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 z-20 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full bg-white shadow-lg animate-timeline-pulse"
+                 style={{ boxShadow: '0 0 20px rgba(255, 255, 255, 0.7)' }}></div>
+          </div>
           
           {/* Timeline items */}
           <div className="relative space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-28">

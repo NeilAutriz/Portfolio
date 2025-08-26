@@ -93,8 +93,9 @@ const ByTheNumbers = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
+          <div className="section-subtitle">Statistics</div>
           <h2 className="section-title">By the Numbers</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             A quantified look at my journey, achievements, and the impact I've made in the tech industry.

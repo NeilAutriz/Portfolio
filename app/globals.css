@@ -22,17 +22,18 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #0f172a;
+  background-color: #161A1D; /* Exact match to requested black palette */
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
-  background-image: 
-    linear-gradient(to bottom right, rgba(14, 165, 233, 0.05), transparent 60%),
-    linear-gradient(to top left, rgba(244, 63, 94, 0.05), transparent 60%),
-    radial-gradient(circle at center, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 1) 100%);
   background-attachment: fixed;
 }
 
 /* Global styles */
+
+/* Rich black background for all sections using exact color palette */
+section {
+  background-color: #161A1D !important;
+}
 
 /* Global typography and spacing styles */
 h1, h2, h3, h4, h5, h6 {
@@ -138,14 +139,37 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  display: inline-block;
-  margin-bottom: 1.5rem;
+  display: block; /* Changed to block for better centering */
+  width: 100%; /* Full width */
+  text-align: center; /* Center align the title */
+  margin-bottom: 1rem; /* Reduced from 1.5rem */
   letter-spacing: -0.025em;
+  position: relative;
+}
+
+/* Section subtitle circular box */
+.section-subtitle {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  background-color: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  padding: 0.35rem 1rem;
+  border-radius: 9999px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+  width: fit-content;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
   .section-title {
     font-size: 3.25rem;
+    margin-bottom: 1.25rem; /* Reduced from default value */
   }
 }
 

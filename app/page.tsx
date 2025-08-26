@@ -6,6 +6,7 @@ import ProjectShowcase from '@/components/sections/ProjectShowcase';
 import SkillsMastery from '@/components/sections/SkillsMastery';
 import JourneyTimeline from '@/components/sections/JourneyTimeline';
 import Contact from '@/components/sections/Contact';
+import ParticlesBackground from '@/components/ui/ParticlesBackground';
 
 export default function Home() {
   return (
@@ -13,6 +14,10 @@ export default function Home() {
       <Header />
       <Hero />
       <div className="relative z-10 overflow-x-hidden space-y-0">
+        {/* Dark subtle particles background for the rest of the site */}
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <ParticlesBackground type="stars" />
+        </div>
         <div className="mb-[-2rem] md:mb-[-3rem] lg:mb-[-4rem]">
           <ProjectShowcase />
         </div>

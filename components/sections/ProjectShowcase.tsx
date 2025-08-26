@@ -104,8 +104,9 @@ const ProjectShowcase = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
+          <div className="section-subtitle">My Works</div>
           <h2 className="section-title">Project Showcase</h2>
           <p className="text-gray-300 max-w-3xl mx-auto text-lg">
             Discover my latest and upcoming projects, showcasing innovative front-end solutions,

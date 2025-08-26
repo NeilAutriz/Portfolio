@@ -135,9 +135,10 @@ const SkillsMastery = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
           <div className="text-center">
+            <div className="section-subtitle">What I Know</div>
             <h2 className="section-title">Skills Mastery</h2>
             <p className="text-gray-300 max-w-3xl mx-auto text-lg">
               Crafting digital experiences with a versatile tech stack and a focus on innovation.
