@@ -119,34 +119,78 @@ const SkillsMastery = () => {
   const [activeSkill, setActiveSkill] = useState(skills[0].id);
   const logoTrackRef = useRef<HTMLDivElement>(null);
   const logoAnimation = useAnimation();
+  const [techLogosList, setTechLogosList] = useState(techLogos);
   
-  // Auto-scroll functionality for tech logos
+  // Auto-scroll functionality with pause on hover for true continuous flow
   useEffect(() => {
+    let isHovering = false;
+    
     const autoScroll = async () => {
-      if (logoTrackRef.current) {
-        // Calculate the full width of the content
-        const trackWidth = logoTrackRef.current.scrollWidth;
-        const viewportWidth = logoTrackRef.current.offsetWidth;
+      if (logoTrackRef.current && !isHovering) {
+        // Get the width of a single logo item
+        const logoItemWidth = logoTrackRef.current.children[0]?.clientWidth;
+        const gapWidth = 12; // Gap between logos (should match the gap-12 in the className)
+        const totalWidth = logoItemWidth + gapWidth;
         
-        // Animate the scroll
+        // Animate to move exactly one logo width to create seamless effect
         await logoAnimation.start({
-          x: -trackWidth / 2,
+          x: -totalWidth,
           transition: {
-            duration: 20,  // Faster animation since boxes are smaller
-            ease: "linear",
-            repeat: Infinity,
-            repeatType: "loop"
+            duration: 5,
+            ease: "linear"
           }
         });
+        
+        // Then immediately reset position and move the first logo to the end
+        const firstLogo = techLogosList[0];
+        const newLogos = [...techLogosList.slice(1), firstLogo];
+        setTechLogosList(newLogos);
+        
+        // Reset position without animation
+        await logoAnimation.set({ x: 0 });
+        
+        // Continue scrolling
+        if (!isHovering) {
+          requestAnimationFrame(autoScroll);
+        }
       }
     };
     
-    autoScroll();
-    
-    return () => {
+    // Pause on hover
+    const handleMouseEnter = () => {
+      isHovering = true;
       logoAnimation.stop();
     };
-  }, [logoAnimation]);
+    
+    const handleMouseLeave = () => {
+      isHovering = false;
+      autoScroll();
+    };
+    
+    // Add hover event listeners to all logo items
+    if (logoTrackRef.current) {
+      const logoItems = logoTrackRef.current.querySelectorAll('.tech-logo-item');
+      logoItems.forEach(item => {
+        item.addEventListener('mouseenter', handleMouseEnter);
+        item.addEventListener('mouseleave', handleMouseLeave);
+      });
+    }
+    
+    // Start scrolling
+    autoScroll();
+    
+    // Cleanup
+    return () => {
+      logoAnimation.stop();
+      if (logoTrackRef.current) {
+        const logoItems = logoTrackRef.current.querySelectorAll('.tech-logo-item');
+        logoItems.forEach(item => {
+          item.removeEventListener('mouseenter', handleMouseEnter);
+          item.removeEventListener('mouseleave', handleMouseLeave);
+        });
+      }
+    };
+  }, [logoAnimation, techLogosList]);
 
   return (
     <section id="skills-mastery" className="py-20 md:py-24 lg:py-28 relative">
@@ -176,11 +220,11 @@ const SkillsMastery = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-10"
         >
           {/* Removed "Technologies I Work With" heading as requested */}
           
-          <div className="relative w-full overflow-hidden py-10 mb-4 perspective-1000">
+          <div className="relative w-full overflow-visible py-6 mb-4 perspective-1000">
             {/* Enhanced Stylized background with 3D effect */}
             <div className="absolute inset-0 bg-gradient-to-b from-dark-100/0 via-dark-100/5 to-dark-100/0 rounded-2xl transform rotate-x-1"></div>
             <div className="absolute inset-0 w-full h-full bg-grid-pattern opacity-[0.03]"></div>
@@ -197,9 +241,9 @@ const SkillsMastery = () => {
               <div className="particle particle-3"></div>
             </div>
             
-            {/* Enhanced Edge gradients with sharper transition */}
-            <div className="absolute left-0 top-0 z-10 h-full w-40 bg-gradient-to-r from-background via-background/95 to-transparent"></div>
-            <div className="absolute right-0 top-0 z-10 h-full w-40 bg-gradient-to-l from-background via-background/95 to-transparent"></div>
+            {/* Subtle edge gradients with lower z-index to avoid interfering with hover effects */}
+            <div className="absolute left-0 top-0 -z-10 h-full w-28 bg-gradient-to-r from-background via-background/90 to-transparent pointer-events-none"></div>
+            <div className="absolute right-0 top-0 -z-10 h-full w-28 bg-gradient-to-l from-background via-background/90 to-transparent pointer-events-none"></div>
             
             {/* Moving light strip overlay */}
             <div className="absolute inset-0 z-5 overflow-hidden opacity-10">
@@ -207,11 +251,13 @@ const SkillsMastery = () => {
             </div>
             
             {/* Logos track with enhanced 3D depth and auto-scrolling */}
-            <div className="flex items-center py-4 justify-center overflow-hidden">
+            {/* More reasonable vertical space */}
+            <div className="flex items-center py-8 justify-center overflow-visible">
               <motion.div 
                 ref={logoTrackRef}
-                className="flex gap-10 px-6"
+                className="flex gap-12 px-6"
                 animate={logoAnimation}
+                style={{ paddingLeft: "5%", paddingRight: "5%" }}
               >
                 {/* First set of logos */}
                 {techLogos.map((logo, index) => (
@@ -219,15 +265,16 @@ const SkillsMastery = () => {
                     key={`first-${logo.name}-${index}`}
                     className="flex items-center w-24 h-24 transform preserve-3d flex-shrink-0"
                     whileHover={{ 
-                      y: -10, 
-                      scale: 1.2,
+                      y: -5, 
+                      scale: 1.08,
                       rotateY: 5,
-                      transition: { type: "spring", stiffness: 300, damping: 8 }
+                      zIndex: 20,
+                      transition: { type: "spring", stiffness: 400, damping: 12, duration: 0.2 }
                     }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <div 
-                      className="relative w-24 h-24 rounded-2xl backdrop-blur-xl flex items-center justify-center p-4 shadow-xl group transform hover:rotate-y-5 transition-all duration-500"
+                      className="relative w-24 h-24 rounded-2xl backdrop-blur-xl flex items-center justify-center p-4 shadow-xl group transform hover:rotate-y-5 transition-all duration-300"
                       style={{ 
                         background: logo.background || 'rgba(30, 41, 59, 0.7)',
                         borderColor: `${logo.color}30` || 'rgba(255, 255, 255, 0.05)',
@@ -261,7 +308,7 @@ const SkillsMastery = () => {
                         <img 
                           src={logo.image} 
                           alt={`${logo.name} logo`} 
-                          className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 group-hover:brightness-125 drop-shadow-xl"
+                          className="w-full h-full object-contain transform transition-all duration-300 ease-out group-hover:scale-110 group-hover:brightness-125 drop-shadow-xl"
                         />
                       </div>
                     </div>
@@ -274,15 +321,16 @@ const SkillsMastery = () => {
                     key={`second-${logo.name}-${index}`}
                     className="flex items-center w-24 h-24 transform preserve-3d flex-shrink-0"
                     whileHover={{ 
-                      y: -10, 
-                      scale: 1.2,
+                      y: -5, 
+                      scale: 1.08,
                       rotateY: 5,
-                      transition: { type: "spring", stiffness: 300, damping: 8 }
+                      zIndex: 20,
+                      transition: { type: "spring", stiffness: 400, damping: 12, duration: 0.2 }
                     }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <div 
-                      className="relative w-24 h-24 rounded-2xl backdrop-blur-xl flex items-center justify-center p-4 shadow-xl group transform hover:rotate-y-5 transition-all duration-500"
+                      className="relative w-24 h-24 rounded-2xl backdrop-blur-xl flex items-center justify-center p-4 shadow-xl group transform hover:rotate-y-5 transition-all duration-300"
                       style={{ 
                         background: logo.background || 'rgba(30, 41, 59, 0.7)',
                         borderColor: `${logo.color}30` || 'rgba(255, 255, 255, 0.05)',
@@ -316,7 +364,7 @@ const SkillsMastery = () => {
                         <img 
                           src={logo.image} 
                           alt={`${logo.name} logo`} 
-                          className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 group-hover:brightness-125 drop-shadow-xl"
+                          className="w-full h-full object-contain transform transition-all duration-300 ease-out group-hover:scale-110 group-hover:brightness-125 drop-shadow-xl"
                         />
                       </div>
                     </div>

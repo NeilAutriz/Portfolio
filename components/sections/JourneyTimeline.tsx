@@ -25,30 +25,12 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
-    id: 'about',
-    year: '2002 - Present',
-    title: 'Sunday Moses',
-    subtitle: 'About Me',
-    location: 'Philippines & Kenya',
-    description: 'Currently pursuing a BS in Computer Science at the University of the Philippines Los Baños, I have gained solid industry exposure through multiple roles in both startup and enterprise settings. My internship experiences and professional work as a software developer have enabled me to lead and contribute to various full-stack projects spanning system architecture, API design, UI development, and backend optimization. At companies like Ethos Bytes and BeFied, I\'ve built scalable web applications using modern technologies such as ReactJS, Node.js, Express, and Python, while also applying SQL and MongoDB for efficient data management. These roles have sharpened my technical judgment, improved my project management capabilities, and strengthened my ability to work within cross-functional teams using agile methodologies.',
-    achievements: [
-      'Beyond the code, I\'ve consistently taken initiative whether managing project timelines, mentoring peers, or driving frontend improvements for performance and accessibility',
-      'My ability to adapt quickly to new technologies and contribute across the stack reflects my commitment to continuous learning and innovation',
-      'Active involvement in tech organizations where I bring practical experience and a collaborative mindset',
-      'Mentored junior developers and contributed to open-source projects in web development communities'
-    ],
-    technologies: ['ReactJS', 'Node.js', 'Express', 'Python', 'MongoDB', 'SQL', 'TypeScript', 'REST APIs', 'Agile'],
-    icon: FiUser,
-    type: 'about',
-    color: 'primary'
-  },
-  {
     id: 'pngIntern',
-    year: 'May 2025 - October 2025',
+    year: '2025-05 - 2025-10',
     title: 'Software Engineer Intern',
     subtitle: 'P&G',
     location: 'BGC, Taguig, Philippines',
-    logo: '/images/logos/pg-logo.png',
+    logo: '/images/companyLogo/pg_logo.webp',
     description: 'Currently serving as a Software Engineering Intern at Procter & Gamble\'s Global Business Center, contributing to enterprise-level applications and digital transformation initiatives.',
     achievements: [
       'Working with cross-functional teams to develop and enhance digital solutions',
@@ -56,17 +38,17 @@ const timelineData: TimelineItem[] = [
       'Learning industry-standard software engineering processes and methodologies'
     ],
     technologies: ['Enterprise Software', 'Full-stack Development', 'Cloud Infrastructure', 'Agile Methodology'],
-    icon: FiBriefcase,
+    icon: FiCpu,
     type: 'work',
-    color: 'primary'
+    color: 'blue'
   },
   {
     id: 'befiedFullstack',
-    year: 'May 2025 - July 2025',
+    year: '2025-05 - 2025-07',
     title: 'Full-stack Developer',
     subtitle: 'BeFied',
-    location: 'Remote',
-    logo: '/images/logos/befied-logo.png',
+    location: 'Singapore, Singapore',
+    logo: '/images/companyLogo/befied_logo.jpg',
     description: 'Promoted to Full-stack Developer role after demonstrating proficiency in both frontend and backend development. Expanded responsibilities to include API design, database management, and system architecture.',
     achievements: [
       'Successfully transitioned from frontend-focused to full-stack development',
@@ -74,17 +56,17 @@ const timelineData: TimelineItem[] = [
       'Collaborated with the design team to ensure seamless user experiences across the platform'
     ],
     technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'RESTful APIs', 'Redux'],
-    icon: FiBriefcase,
+    icon: FiLayers,
     type: 'work',
-    color: 'secondary'
+    color: 'purple'
   },
   {
     id: 'ethosbytes',
-    year: 'December 2024 - April 2025',
+    year: '2024-12 - 2025-04',
     title: 'Software Engineer Intern',
     subtitle: 'Ethos Bytes Pty Ltd',
     location: 'Sydney, Australia',
-    logo: '/images/logos/ethos-bytes-logo.png',
+    logo: '/images/companyLogo/ethos_bytes_logo.png',
     description: 'Worked as a Software Engineering Intern at Ethos Bytes, contributing to the development of scalable web applications and gaining experience in the Australian tech industry.',
     achievements: [
       'Contributed to the development of client-facing web applications',
@@ -92,17 +74,17 @@ const timelineData: TimelineItem[] = [
       'Participated in code reviews and agile development processes'
     ],
     technologies: ['JavaScript', 'React', 'TypeScript', 'AWS', 'CI/CD', 'Git'],
-    icon: FiBriefcase,
+    icon: FiDatabase,
     type: 'work',
-    color: 'accent'
+    color: 'green'
   },
   {
     id: 'befiedFrontend',
-    year: 'December 2024 - May 2025',
+    year: '2024-12 - 2025-05',
     title: 'Frontend Web Developer',
     subtitle: 'BeFied',
-    location: 'Remote',
-    logo: '/images/logos/befied-logo.png',
+    location: 'Singapore, Singapore',
+    logo: '/images/companyLogo/befied_logo.jpg',
     description: 'Started as a Frontend Web Developer at BeFied, focusing on creating responsive and user-friendly interfaces for the company\'s web platform.',
     achievements: [
       'Developed and maintained frontend components using React and TypeScript',
@@ -110,100 +92,9 @@ const timelineData: TimelineItem[] = [
       'Collaborated with designers to translate UI/UX wireframes into functional code'
     ],
     technologies: ['React', 'TypeScript', 'CSS3', 'HTML5', 'UI/UX', 'Responsive Design'],
-    icon: FiBriefcase,
-    type: 'work',
-    color: 'blue'
-  },
-  {
-    id: 'yses',
-    year: 'Sep 2024 - Present',
-    title: 'Finance Committee Member',
-    subtitle: 'Young Software Engineers\' Society',
-    location: 'University of the Philippines Los Baños',
-    logo: '/images/logos/yses-logo.png',
-    description: 'As part of YSES, an academic organization committed to advancing Software Engineering within Computer Science, I\'ve had the privilege to contribute to initiatives that bridge academic theory with real-world tech practice.',
-    achievements: [
-      'Actively involved in financial planning and budget management to support events, training sessions, and community-led programs focused on software development and career readiness',
-      'Collaborated with fellow committee members to ensure responsible fund allocation for organizational initiatives that promote technical upskilling, innovation, and peer mentorship',
-      'Engaged in leadership and development opportunities that expanded my understanding of the software engineering landscape while building strong professional connections with peers and industry mentors'
-    ],
-    technologies: ['Financial Planning', 'Event Management', 'Leadership', 'Community Building'],
-    icon: FiStar,
-    type: 'achievement',
-    color: 'green'
-  },
-  {
-    id: 'fwdp',
-    year: 'Oct 2024 - Present',
-    title: 'Web Development Mentor',
-    subtitle: 'Filipino Web Development Peers',
-    location: 'Philippines',
-    logo: '/images/logos/fwdp-logo.png',
-    description: 'Being part of FWDP has played a vital role in advancing my career as a full-stack developer. The community\'s inclusive and collaborative environment has helped me grow both technically and professionally.',
-    achievements: [
-      'Enhanced technical expertise through peer mentoring, filWebDev Talks, and active community engagement particularly in modern stacks like React.js, Node.js, MongoDB, and RESTful APIs',
-      'Strengthened soft skills such as public speaking, collaboration, and knowledge-sharing by participating in Monthly Community Days and contributing to open dialogue',
-      'Grew within a supportive, values-driven ecosystem that champions innovation, diversity, and Filipino excellence in global tech'
-    ],
-    technologies: ['Mentorship', 'Community Engagement', 'Knowledge Sharing', 'React.js', 'Node.js'],
     icon: FiCode,
-    type: 'achievement',
-    color: 'blue'
-  },
-  {
-    id: 'certifications',
-    year: '2023 - 2025',
-    title: 'Professional Certifications',
-    subtitle: 'Meta, IBM, Harvard',
-    location: 'Online',
-    logo: '/images/logos/certification-logos.png',
-    description: 'Completed several professional certifications from leading technology companies and educational institutions to enhance my skills and knowledge in software development.',
-    achievements: [
-      'Meta Frontend Developer Professional Certificate',
-      'Meta Backend Developer Professional Certificate',
-      'IBM Full Stack Developer Professional Certificate',
-      'Harvard CS50: Introduction to Computer Science'
-    ],
-    technologies: ['Frontend Development', 'Backend Development', 'Full Stack Development', 'Computer Science Fundamentals'],
-    icon: FiAward,
-    type: 'education',
-    color: 'purple'
-  },
-  {
-    id: 'degree',
-    year: '2022 - Present',
-    title: 'BS Computer Science',
-    subtitle: 'University of the Philippines Los Baños',
-    location: 'Los Baños, Philippines',
-    logo: '/images/logos/uplb-logo.png',
-    description: 'Currently pursuing a Bachelor of Science in Computer Science at the University of the Philippines Los Baños, focusing on software engineering, data structures, and algorithm design.',
-    achievements: [
-      'Active member of computing organizations on campus',
-      'Participating in programming competitions and hackathons',
-      'Maintaining academic excellence while gaining practical industry experience'
-    ],
-    technologies: ['Data Structures', 'Algorithms', 'Software Engineering', 'Database Systems', 'Computer Networks'],
-    icon: FiBookOpen,
-    type: 'education',
-    color: 'primary'
-  },
-  {
-    id: 'iot',
-    year: '2024',
-    title: 'The Internet of Things Training',
-    subtitle: 'Strathmore University',
-    location: 'Nairobi, Kenya',
-    logo: '/images/logos/strathmore-logo.png',
-    description: 'Completed an intensive IoT training program at Strathmore University in partnership with Motorola Solutions. I gained hands-on experience in building IoT solutions and had the opportunity to participate in a hackathon.',
-    achievements: [
-      'Developed prototype IoT solutions for real-world problems',
-      'Participated in a team-based hackathon focused on IoT innovations',
-      'Gained practical knowledge of IoT hardware and software integration'
-    ],
-    technologies: ['IoT', 'C++', 'JavaScript', 'Embedded Systems', 'Sensor Technologies'],
-    icon: FiAward,
-    type: 'education',
-    color: 'secondary'
+    type: 'work',
+    color: 'amber'
   }
 ];
 
@@ -212,62 +103,57 @@ interface TypeIconProps {
 }
 
 const TypeIcon = ({ type }: TypeIconProps) => {
-  const getIconBackground = () => {
+  // Get the specific icon based on the item's ID (passed in the 'type' prop as a hack)
+  const getIcon = () => {
+    // We use the type parameter to pass the item id for specific icons
     switch (type) {
-      case 'work':
-        return 'bg-blue-500/20';
-      case 'education':
-        return 'bg-green-500/20';
-      case 'achievement':
-        return 'bg-purple-500/20';
-      case 'about':
-        return 'bg-primary/20';
+      case 'pngIntern':
+        return <FiCpu className="w-6 h-6" />; // P&G - Server/Enterprise - CPU icon for software engineering
+      case 'befiedFullstack':
+        return <FiLayers className="w-6 h-6" />; // BeFied - Fullstack - Layers icon for full-stack
+      case 'ethosbytes':
+        return <FiDatabase className="w-6 h-6" />; // Ethos Bytes - Software Engineer - Database icon
+      case 'befiedFrontend':
+        return <FiCode className="w-6 h-6" />; // BeFied - Frontend - Code icon for frontend
+      default:
+        return <FiBriefcase className="w-6 h-6" />; // Default fallback
+    }
+  };
+
+  // Get color based on the item's ID
+  const getIconColor = () => {
+    switch (type) {
+      case 'pngIntern':
+        return 'text-blue-400'; // Blue for P&G
+      case 'befiedFullstack':
+        return 'text-purple-400'; // Purple for BeFied Fullstack
+      case 'befiedFrontend':
+        return 'text-amber-400'; // Amber for BeFied Frontend
+      case 'ethosbytes':
+        return 'text-green-400'; // Green for Ethos Bytes
+      default:
+        return 'text-gray-400';
+    }
+  };
+
+  // Get background color based on the item's ID
+  const getIconBg = () => {
+    switch (type) {
+      case 'pngIntern':
+        return 'bg-blue-500/20'; // Blue for P&G
+      case 'befiedFullstack':
+        return 'bg-purple-500/20'; // Purple for BeFied Fullstack
+      case 'befiedFrontend':
+        return 'bg-amber-500/20'; // Amber for BeFied Frontend
+      case 'ethosbytes':
+        return 'bg-green-500/20'; // Green for Ethos Bytes
       default:
         return 'bg-gray-500/20';
     }
   };
 
-  const getIconColor = () => {
-    switch (type) {
-      case 'work':
-        return 'text-blue-500';
-      case 'education':
-        return 'text-green-500';
-      case 'achievement':
-        return 'text-purple-500';
-      case 'about':
-        return 'text-primary';
-      default:
-        return 'text-gray-500';
-    }
-  };
-
-  const getIcon = () => {
-    switch (type) {
-      case 'work':
-        // Different icons for work based on the job role/title
-        if (type === 'work' && (Math.random() > 0.5)) {
-          return <FiMonitor className="w-6 h-6" />; // For frontend
-        } else if (type === 'work' && (Math.random() > 0.5)) {
-          return <FiDatabase className="w-6 h-6" />; // For backend
-        } else if (type === 'work' && (Math.random() > 0.5)) {
-          return <FiCpu className="w-6 h-6" />; // For IT management
-        } else {
-          return <FiLayers className="w-6 h-6" />; // For fullstack
-        }
-      case 'education':
-        return <FiAward className="w-6 h-6" />;
-      case 'achievement':
-        return <FiChevronRight className="w-6 h-6" />;
-      case 'about':
-        return <FiUser className="w-6 h-6" />;
-      default:
-        return <FiCalendar className="w-6 h-6" />;
-    }
-  };
-
   return (
-    <div className={`p-3 rounded-full ${getIconBackground()} ${getIconColor()}`}>
+    <div className={`p-3 rounded-full ${getIconBg()} ${getIconColor()}`}>
       {getIcon()}
     </div>
   );
@@ -295,15 +181,15 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
       <div className={`w-5/12`}>
         <motion.div
           whileHover={{ 
-            y: -5, 
-            scale: 1.02, 
-            boxShadow: '0 10px 30px rgba(15, 23, 42, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
+            y: -3, 
+            scale: 1.01, 
+            boxShadow: '0 8px 20px rgba(15, 23, 42, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
             borderColor: 'rgba(56, 189, 248, 0.3)'
           }}
           initial={{ opacity: 0, x: isEven ? -20 : 20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: index * 0.1 }}
-          className={`relative cursor-pointer p-6 rounded-xl transition-all duration-300
+          transition={{ duration: 0.4, delay: index * 0.1 }}
+          className={`relative cursor-pointer p-6 rounded-xl transition-all duration-200
             backdrop-blur-sm border hover:border-primary/50
             hover:shadow-lg hover:shadow-primary/10
             ${isEven ? 'mr-auto text-left' : 'ml-auto text-right'}`}
@@ -330,17 +216,71 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
           
           {/* Year badge */}
           <div className={`absolute -top-3 ${isEven ? 'right-5' : 'left-5'} bg-primary/90 text-white text-xs font-bold py-1 px-3 rounded-full shadow-md`}>
-            {item.year}
+            {(() => {
+              if (!item.year.includes('-')) return item.year;
+              
+              // Format YYYY-MM to readable format
+              if (item.year.includes('-')) {
+                const parts = item.year.split('-');
+                const startPart = parts[0].trim();
+                const endPart = parts[1].trim();
+                
+                // Convert YYYY-MM to Month YYYY format
+                const formatDate = (datePart: string) => {
+                  if (datePart === 'Present') return 'Present';
+                  
+                  const year = datePart.split('-')[0];
+                  const month = parseInt(datePart.split('-')[1]);
+                  
+                  const monthNames = [
+                    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                  ];
+                  
+                  return `${monthNames[month-1]} ${year}`;
+                };
+                
+                return `${formatDate(startPart)} - ${formatDate(endPart)}`;
+              }
+              
+              return item.year;
+            })()}
           </div>
           
           {/* Duration badge */}
           <div className={`absolute -bottom-3 ${isEven ? 'right-5' : 'left-5'} bg-dark-100/90 border border-primary/20 text-primary/90 text-xs font-medium py-1 px-3 rounded-full shadow-sm`}>
-            {item.year.includes('-') 
-              ? `${Math.abs(parseInt(item.year.split('-')[1].trim() === 'Present' 
-                ? new Date().getFullYear().toString() 
-                : item.year.split('-')[1].trim()) - 
-                parseInt(item.year.split('-')[0].trim()))} year${item.year.includes('Present') ? '+' : ''}`
-              : '1 year'}
+            {(() => {
+              if (!item.year.includes('-')) return '1 mo';
+              
+              const parts = item.year.split('-');
+              const startPart = parts[0].trim();
+              const endPart = parts[1].trim();
+              
+              // Handle YYYY-MM format
+              if (startPart.includes('-')) {
+                const startYear = parseInt(startPart.split('-')[0]);
+                const startMonth = parseInt(startPart.split('-')[1]);
+                
+                const endYear = endPart === 'Present' 
+                  ? new Date().getFullYear() 
+                  : parseInt(endPart.split('-')[0]);
+                const endMonth = endPart === 'Present' 
+                  ? new Date().getMonth() + 1 
+                  : parseInt(endPart.split('-')[1]);
+                
+                const monthDiff = (endYear - startYear) * 12 + (endMonth - startMonth);
+                
+                if (monthDiff >= 12) {
+                  const years = Math.floor(monthDiff / 12);
+                  return `${years} yr${years > 1 ? 's' : ''}${endPart === 'Present' ? '+' : ''}`;
+                } else {
+                  return `${monthDiff} mo${monthDiff > 1 ? 's' : ''}${endPart === 'Present' ? '+' : ''}`;
+                }
+              }
+              
+              // Fallback for other formats
+              return '6 mos';
+            })()}
           </div>
           
           <div className="mt-6">
@@ -378,12 +318,38 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
               <div className="flex items-center">
                 <FiClock className={`${isEven ? 'mr-1' : 'ml-1 order-2'}`} />
                 <span>
-                  {item.year.includes('-') ? `${Math.abs(
-                    parseInt(item.year.split('-')[1].trim() === 'Present' 
-                      ? new Date().getFullYear().toString() 
-                      : item.year.split('-')[1].trim()) - 
-                    parseInt(item.year.split('-')[0].trim())
-                  )} yr${item.year.includes('Present') ? '+' : ''}` : '1 yr'}
+                  {(() => {
+                    if (!item.year.includes('-')) return '1 mo';
+                    
+                    const parts = item.year.split('-');
+                    const startPart = parts[0].trim();
+                    const endPart = parts[1].trim();
+                    
+                    // Handle YYYY-MM format
+                    if (startPart.includes('-')) {
+                      const startYear = parseInt(startPart.split('-')[0]);
+                      const startMonth = parseInt(startPart.split('-')[1]);
+                      
+                      const endYear = endPart === 'Present' 
+                        ? new Date().getFullYear() 
+                        : parseInt(endPart.split('-')[0]);
+                      const endMonth = endPart === 'Present' 
+                        ? new Date().getMonth() + 1 
+                        : parseInt(endPart.split('-')[1]);
+                      
+                      const monthDiff = (endYear - startYear) * 12 + (endMonth - startMonth);
+                      
+                      if (monthDiff >= 12) {
+                        const years = Math.floor(monthDiff / 12);
+                        return `${years} yr${years > 1 ? 's' : ''}${endPart === 'Present' ? '+' : ''}`;
+                      } else {
+                        return `${monthDiff} mo${monthDiff > 1 ? 's' : ''}${endPart === 'Present' ? '+' : ''}`;
+                      }
+                    }
+                    
+                    // Fallback for other formats
+                    return '6 mos';
+                  })()}
                 </span>
               </div>
             </div>
@@ -416,9 +382,9 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
               {/* View More button */}
               <div className={`flex ${!isEven && 'justify-end'}`}>
                 <motion.button
-                  whileHover={{ x: isEven ? 5 : -5 }}
+                  whileHover={{ x: isEven ? 3 : -3 }}
                   whileTap={{ scale: 0.97 }}
-                  className="text-sm md:text-xs flex items-center font-medium text-gray-400 hover:text-white hover:bg-primary/20 py-1 px-2 md:py-0.5 md:px-1.5 rounded-md transition-all duration-300"
+                  className="text-sm md:text-xs flex items-center font-medium text-gray-400 hover:text-white hover:bg-primary/20 py-1 px-2 md:py-0.5 md:px-1.5 rounded-md transition-all duration-200"
                 >
                   {!isEven && <FiArrowUpRight className="mr-1 rotate-180" />}
                   View More
@@ -432,51 +398,57 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
       
       {/* Center timeline dot */}
       <div className="w-2/12 flex justify-center relative">
-        {/* Subtle animated particles along the line */}
-        <div className="absolute h-full w-6 overflow-hidden">
-          <div className="timeline-particle" style={{ animationDelay: `${index * 0.2}s` }}></div>
-          <div className="timeline-particle" style={{ animationDelay: `${index * 0.2 + 1.5}s` }}></div>
-        </div>
-        
-        {/* Node with consistent styling and pulsing animation */}
+        {/* Node with white glowing border and floating particle */}
         <motion.div
           whileHover={{ 
-            scale: 1.2, 
-            rotate: [0, 5, -5, 0],
+            scale: 1.1,
             transition: { 
               type: "spring", 
-              stiffness: 300, 
-              damping: 10 
+              stiffness: 400, 
+              damping: 15,
+              duration: 0.2
             }
           }}
-          className="w-12 h-12 rounded-full bg-dark-200 border-2 border-white/50 shadow-md z-20 flex items-center justify-center relative"
-          style={{ boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)' }}
+          className="w-12 h-12 rounded-full bg-dark-200 border-2 border-white/90 shadow-md z-20 flex items-center justify-center relative overflow-hidden"
+          style={{ 
+            boxShadow: '0 0 10px rgba(255, 255, 255, 0.6)'
+          }}
         >
-          {/* Pulsing effect around node */}
-          <motion.div
-            className="absolute w-full h-full rounded-full bg-white/10"
-            initial={{ opacity: 0.5, scale: 1 }}
-            animate={{ 
-              opacity: [0.2, 0.5, 0.2],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          
-          {/* Icon with more variety based on the type */}
+          {/* Floating particle inside the node */}
+          <div className="absolute w-2 h-2 bg-white/70 rounded-full animate-float" 
+               style={{ 
+                 left: '30%', 
+                 top: '30%',
+                 boxShadow: '0 0 4px rgba(255, 255, 255, 0.8)',
+                 animationDuration: '3s'
+               }}></div>
+          <div className="absolute w-1 h-1 bg-white/60 rounded-full animate-float" 
+               style={{ 
+                 left: '70%', 
+                 top: '60%',
+                 boxShadow: '0 0 3px rgba(255, 255, 255, 0.6)',
+                 animationDuration: '2.5s',
+                 animationDelay: '0.5s'
+               }}></div>
+
+          {/* Icon with job-specific styling - Using the actual icon from the item */}
           <div className={`w-9 h-9 rounded-full flex items-center justify-center z-10`} style={{
             background: `radial-gradient(circle at center, ${
-              item.type === 'work' ? '#3b82f630' : 
-              item.type === 'education' ? '#10b98130' :
-              item.type === 'achievement' ? '#8b5cf630' : 
-              '#0ea5e930'
+              item.id === 'pngIntern' ? 'rgba(59, 130, 246, 0.3)' : 
+              item.id === 'befiedFullstack' ? 'rgba(139, 92, 246, 0.3)' :
+              item.id === 'befiedFrontend' ? 'rgba(251, 191, 36, 0.3)' :
+              'rgba(16, 185, 129, 0.3)'
             }, transparent 70%)`
           }}>
-            <TypeIcon type={item.type} />
+            {(() => {
+              const IconComponent = item.icon;
+              return <IconComponent className="w-6 h-6" style={{
+                color: item.id === 'pngIntern' ? '#60a5fa' : 
+                      item.id === 'befiedFullstack' ? '#c084fc' :
+                      item.id === 'befiedFrontend' ? '#fbbf24' :
+                      '#34d399'
+              }} />;
+            })()}
           </div>
         </motion.div>
       </div>
@@ -534,11 +506,15 @@ const TimelineModal = ({ item, isOpen, onClose }: TimelineModalProps) => {
             <div className="flex items-center mb-6">
               <div className="flex items-center">
                 <div className={`p-3 rounded-full ${
-                  item.type === 'work' ? 'bg-blue-500/20 text-blue-500' : 
-                  item.type === 'education' ? 'bg-green-500/20 text-green-500' : 
-                  'bg-purple-500/20 text-purple-500'
+                  item.id === 'pngIntern' ? 'bg-blue-500/20 text-blue-400' : 
+                  item.id === 'befiedFullstack' ? 'bg-purple-500/20 text-purple-400' :
+                  item.id === 'befiedFrontend' ? 'bg-amber-500/20 text-amber-400' : 
+                  'bg-green-500/20 text-green-400'
                 }`}>
-                  <TypeIcon type={item.type} />
+                  {(() => {
+                    const IconComponent = item.icon;
+                    return <IconComponent className="w-6 h-6" />;
+                  })()}
                 </div>
                 {item.logo && (
                   <div className="ml-3 w-10 h-10 bg-white/5 rounded-lg p-1 flex items-center justify-center">
@@ -646,20 +622,24 @@ const JourneyTimeline = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="section-title">Journey Timeline</h2>
+          <h2 className="section-title">Professional Journey</h2>
           <p className="text-gray-300 max-w-3xl mx-auto text-lg">
-            My professional journey through education, work experience, and achievements.
+            My work experience journey through various roles and companies.
             Click on any milestone to explore detailed information.
           </p>
         </motion.div>
         
         {/* Vertical timeline with alternating items */}
         <div className="relative max-w-5xl mx-auto">
-          {/* Main continuous timeline line that connects all nodes - keeping the white effect */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-[3px] md:w-[2px] lg:w-[1px] xl:w-[1px] bg-white/40 transform -translate-x-1/2 z-10" 
-               style={{ boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)', height: 'calc(100% + 80px)' }}></div>
-          <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/80 transform -translate-x-1/2 z-10" 
-               style={{ boxShadow: '0 0 5px rgba(255, 255, 255, 0.5)', height: 'calc(100% + 80px)' }}></div>
+          {/* Timeline line with subtle glow extending to the very bottom */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] transform -translate-x-1/2 z-10" 
+               style={{ 
+                 background: 'rgba(255, 255, 255, 0.7)',
+                 boxShadow: '0 0 8px rgba(255, 255, 255, 0.4)', 
+                 height: '100%' 
+               }}></div>
+               
+          {/* No decorative dots along the timeline as requested */}
           
           {/* Timeline items */}
           <div className="relative space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-28">
@@ -672,29 +652,7 @@ const JourneyTimeline = () => {
               />
             ))}
             
-            {/* Final timeline dot at the bottom with consistent styling */}
-            <div className="flex justify-center mt-12 relative">
-              {/* Final node with white effect and pulsing animation */}
-              <motion.div 
-                className="w-10 h-10 rounded-full bg-dark-200 border-2 border-white/50 flex items-center justify-center relative z-20"
-                style={{ boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)' }}
-                whileHover={{ scale: 1.2 }}
-              >
-                <motion.div
-                  className="absolute w-full h-full rounded-full bg-white/5"
-                  animate={{ 
-                    opacity: [0.1, 0.3, 0.1],
-                    scale: [1, 1.3, 1],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                <div className="w-3 h-3 rounded-full bg-white/80 z-10" />
-              </motion.div>
-            </div>
+            {/* No final dot at the bottom */}
           </div>
         </div>
       </div>

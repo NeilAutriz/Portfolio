@@ -111,7 +111,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.5 }}
-        className="absolute bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center text-center z-20"
+        className="absolute bottom-8 md:bottom-10 left-0 right-0 mx-auto flex justify-center items-center z-20"
       >
         <div className="flex flex-col items-center">
           <span className="text-gray-400 mb-2 text-sm font-medium tracking-wider">Scroll to explore</span>
