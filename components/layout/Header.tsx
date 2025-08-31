@@ -31,12 +31,13 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-6 xl:px-8 flex items-center justify-between max-w-7xl">
-        <Link href="/" className="flex items-center space-x-3">
-          <div className="h-10 w-auto">
+        <Link href="/" className="flex items-center space-x-3" style={{ transition: 'opacity 0.3s ease' }}>
+          <div className="h-10 w-auto" style={{ transform: 'none' }}>
             <img 
               src="/mainlogo(white).png"
               alt="Portfolio" 
               className="h-full w-auto"
+              style={{ transition: 'opacity 0.3s ease', transform: 'none' }}
             />
           </div>
           {/* Removed the Autriz name as requested */}
@@ -75,11 +76,12 @@ const Header = () => {
           >
             <div className="flex justify-between items-center p-6 border-b border-white/10">
               <div className="flex items-center space-x-3">
-                <div className="h-8 w-auto">
+                <div className="h-8 w-auto" style={{ transform: 'none' }}>
                   <img 
                     src="/mainlogo(white).png" 
                     alt="Autriz Portfolio" 
                     className="h-full w-auto"
+                    style={{ transition: 'opacity 0.3s ease', transform: 'none' }}
                   />
                 </div>
                 <span className="text-white font-semibold">Autriz</span>

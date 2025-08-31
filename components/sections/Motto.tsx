@@ -13,9 +13,9 @@ const Motto = () => {
   const [isErasing, setIsErasing] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [charIndex, setCharIndex] = useState(5); // Start with full "MOTTO"
-  const typingSpeed = 150; // ms per character
-  const erasingSpeed = 100; // ms per character
-  const wordPauseTime = 1000; // time to pause on complete word
+  const typingSpeed = 120; // ms per character - slightly faster
+  const erasingSpeed = 80; // ms per character - slightly faster
+  const wordPauseTime = 1500; // time to pause on complete word - longer pause
   const typewriterTimeout = useRef<NodeJS.Timeout | null>(null);
 
   // Typewriter effect
@@ -74,7 +74,7 @@ const Motto = () => {
     };
   }, [wordIndex, charIndex, isErasing, isTyping, words]);
   return (
-    <section className="w-full py-28 md:py-36 lg:py-44 bg-background relative overflow-hidden">
+    <section className="w-full py-28 md:py-36 lg:py-44 bg-background relative overflow-hidden min-h-[35vh] md:min-h-[40vh] lg:min-h-[50vh]">
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-dark-300/90 z-10"></div>
@@ -113,14 +113,15 @@ const Motto = () => {
       {/* Main content container - maximized full width */}
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-20 w-full max-w-[2000px]">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           transition={{ 
             duration: 0.8,
             ease: [0.25, 0.1, 0.25, 1] // Enhanced easing curve for smoother animation
           }}
           viewport={{ once: true, margin: "-100px" }}
           className="w-full mx-auto relative"
+          style={{ transform: 'none' }}
         >
           {/* Clean design without rectangular container - maximized */}
           <div className="relative px-4 py-16 md:py-24 overflow-hidden w-full">
@@ -136,8 +137,8 @@ const Motto = () => {
             >
               <div className="inline-flex items-center justify-center px-6 py-2.5 md:px-8 md:py-3 rounded-full border border-primary/30 bg-primary/5 relative overflow-hidden group shine-effect shadow-lg shadow-primary/20">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-blue-400/10 opacity-50"></div>
-                <span className="relative text-base md:text-lg font-medium text-white tracking-wider z-10 flex items-center">
-                  <span className="min-w-[5rem] md:min-w-[5.5rem] text-center">
+                <span className="relative text-base md:text-lg font-medium text-white tracking-wider z-10 flex items-center h-[1.5rem] md:h-[1.75rem]">
+                  <span className="min-w-[5rem] md:min-w-[5.5rem] text-center inline-block typewriter-text">
                     {displayText}
                   </span>
                   <span className="w-1.5 h-5 bg-primary ml-1.5 animate-blink"></span>
@@ -149,8 +150,8 @@ const Motto = () => {
               {/* First line of the motto with "into" moved to first line - smoother animations */}
               <div className="flex flex-wrap justify-center items-baseline gap-x-2 md:gap-x-3 lg:gap-x-4 mb-4 md:mb-5">
                 <motion.span 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   transition={{ 
                     duration: 0.7, 
                     delay: 0.1,
@@ -158,12 +159,13 @@ const Motto = () => {
                   }}
                   viewport={{ once: false, margin: "-50px" }}
                   className="inline-block text-foreground stagger-item"
+                  style={{ transform: 'none' }}
                 >
                   I help turn
                 </motion.span>
                 <motion.span 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   transition={{ 
                     duration: 0.7, 
                     delay: 0.2,
@@ -171,12 +173,13 @@ const Motto = () => {
                   }}
                   viewport={{ once: false, margin: "-50px" }}
                   className="inline-block bg-gradient-to-r from-blue-400 to-primary bg-clip-text text-transparent stagger-item"
+                  style={{ transform: 'none' }}
                 >
                   ideas
                 </motion.span>
                 <motion.span 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   transition={{ 
                     duration: 0.7, 
                     delay: 0.3,
@@ -184,6 +187,7 @@ const Motto = () => {
                   }}
                   viewport={{ once: false, margin: "-50px" }}
                   className="inline-block text-foreground stagger-item"
+                  style={{ transform: 'none' }}
                 >
                   into
                 </motion.span>
@@ -192,8 +196,8 @@ const Motto = () => {
               {/* Second line of the motto - seamless digital experiences - enhanced animations */}
               <div className="flex flex-wrap justify-center items-baseline gap-x-2 md:gap-x-3 lg:gap-x-4">
                 <motion.span 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   transition={{ 
                     duration: 0.7, 
                     delay: 0.4,
@@ -201,12 +205,13 @@ const Motto = () => {
                   }}
                   viewport={{ once: false, margin: "-50px" }}
                   className="inline-block text-white stagger-item" 
+                  style={{ transform: 'none' }}
                 >
                   seamless
                 </motion.span>
                 <motion.span 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   transition={{ 
                     duration: 0.7, 
                     delay: 0.5,
@@ -214,8 +219,8 @@ const Motto = () => {
                   }}
                   viewport={{ once: false, margin: "-50px" }}
                   className="inline-block font-alegreya text-[1.3em] font-bold italic bg-gradient-to-br from-blue-300 via-white to-primary bg-clip-text text-transparent px-1 relative stagger-item"
-                  style={{ fontFamily: 'Alegreya, serif', letterSpacing: '0.02em' }}
-                  whileHover={{ scale: 1.05 }}
+                  style={{ fontFamily: 'Alegreya, serif', letterSpacing: '0.02em', transform: 'none' }}
+                  whileHover={{ scale: 1.05, transition: { duration: 0.8 } }}
                 >
                   digital experiences
                   {/* Animated underline effect that appears on scroll - enhanced */}
@@ -236,8 +241,8 @@ const Motto = () => {
             
             {/* Enhanced Let's connect section with email - better aligned and with effects */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               transition={{ 
                 duration: 0.8, 
                 delay: 1,
@@ -245,6 +250,7 @@ const Motto = () => {
               }}
               viewport={{ once: false, margin: "-50px" }}
               className="mt-12 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10"
+              style={{ transform: 'none' }}
             >
               <Link href="/contact" className="group transition-smooth">
                 <div className="flex items-center justify-center py-3.5 px-8 bg-gradient-to-r from-primary/40 via-primary/30 to-primary/20 backdrop-blur-sm rounded-full border border-primary/50 hover:border-primary/90 transition-all duration-500 hover:shadow-lg hover:shadow-primary/30 relative overflow-hidden">

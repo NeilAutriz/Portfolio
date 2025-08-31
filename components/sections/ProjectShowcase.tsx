@@ -1,14 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiGithub, FiExternalLink } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiX, FiChevronRight, FiLayers, FiCode, FiDatabase, FiServer, FiTarget, FiPackage } from 'react-icons/fi';
+import ProjectModal from './ProjectModal';
 
-const categories = ['All', 'AI/ML', 'FinTech', '3D/AR', 'SaaS', 'Mobile', 'Web'];
+const categories = ['All', 'AI/ML', 'FinTech', '3D/AR', 'SaaS', 'Mobile', 'Web', 'Agriculture'];
 
-const projects = [
+export const projects = [
   {
     id: 1,
     title: 'AI-Powered Analytics Dashboard',
@@ -24,7 +25,8 @@ const projects = [
         'Advanced state management',
         'Real-time data synchronization',
         'Optimized performance metrics'
-      ]
+      ],
+      objective: 'Create an intuitive analytics platform that leverages machine learning to provide actionable insights from complex datasets, enabling businesses to make data-driven decisions more effectively.'
     }
   },
   {
@@ -42,7 +44,8 @@ const projects = [
         'Advanced state management',
         'Real-time data synchronization',
         'Optimized performance metrics'
-      ]
+      ],
+      objective: 'Develop a secure and scalable cryptocurrency trading platform that provides real-time market data, advanced charting capabilities, and intuitive trading interfaces to both novice and experienced traders.'
     }
   },
   {
@@ -60,7 +63,8 @@ const projects = [
         'Advanced state management',
         'Real-time data synchronization',
         'Optimized performance metrics'
-      ]
+      ],
+      objective: 'Build an immersive 3D product configuration experience that allows customers to customize and visualize products in real-time with augmented reality capabilities for enhanced shopping experiences.'
     }
   },
   {
@@ -78,18 +82,91 @@ const projects = [
         'Advanced state management',
         'Real-time data synchronization',
         'Optimized performance metrics'
-      ]
+      ],
+      objective: 'Develop a comprehensive social media management platform that streamlines content creation, scheduling, and analytics while leveraging AI to generate engaging content and provide actionable insights.'
+    }
+  },
+  {
+    id: 5,
+    title: 'AgriConnect Platform',
+    description: 'A web-based platform connecting farmers to markets, resources, and agricultural experts with real-time data integration.',
+    image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=500&h=300&fit=crop',
+    category: 'Web',
+    status: 'Completed',
+    technologies: ['MongoDB', 'Express.js', 'React', 'Node.js', 'WebSockets'],
+    details: {
+      implementation: 'Developed using the MERN stack (MongoDB, Express.js, React, Node.js) with RESTful API architecture. Implemented real-time notifications and weather alerts using WebSockets. Integrated with agricultural APIs for crop pricing and weather forecasting.',
+      features: [
+        'Marketplace for farmers to sell produce directly',
+        'Real-time weather alerts and forecasting',
+        'Expert consultation scheduling system',
+        'Resource library with farming techniques',
+        'Mobile-responsive design for field use'
+      ],
+      objective: 'Create a comprehensive web platform that connects farmers with markets, resources, and agricultural experts, while providing real-time data and tools to enhance productivity and profitability in farming operations.'
+    }
+  },
+  {
+    id: 6,
+    title: 'Donation System',
+    description: 'A cross-platform mobile application facilitating secure charitable donations with transparent fund allocation tracking.',
+    image: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=500&h=300&fit=crop',
+    category: 'Mobile',
+    status: 'Completed',
+    technologies: ['Flutter', 'Dart', 'Firebase', 'Stripe API', 'Google Maps'],
+    details: {
+      implementation: 'Built with Flutter and Dart for cross-platform compatibility (iOS/Android). Used Firebase for authentication, real-time database, and cloud functions. Integrated Stripe API for secure payment processing and Google Maps for location-based features.',
+      features: [
+        'Biometric authentication for secure access',
+        'Real-time donation tracking dashboard',
+        'Transparent fund allocation visualization',
+        'Digital receipts for tax purposes',
+        'Location-based charity discovery'
+      ],
+      objective: 'Develop a secure, transparent mobile application that simplifies charitable donations and provides donors with real-time tracking of how their contributions are being used, enhancing trust in the donation process.'
     }
   }
 ];
 
 const ProjectShowcase = () => {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [modalProject, setModalProject] = useState<typeof projects[0] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const filteredProjects = activeCategory === 'All'
     ? projects
     : projects.filter(project => project.category === activeCategory);
+    
+  const handleOpenModal = (project: typeof projects[0]) => {
+    setModalProject(project);
+    setIsModalOpen(true);
+  };
+  
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+  
+  // Close modal when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        handleCloseModal();
+      }
+    };
+    
+    if (isModalOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      // Prevent scrolling on body when modal is open
+      document.body.style.overflow = 'hidden';
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      // Re-enable scrolling when modal is closed
+      document.body.style.overflow = 'auto';
+    };
+  }, [isModalOpen]);
 
   return (
     <section id="projects" className="py-12 md:py-16 lg:py-20 relative">
@@ -110,7 +187,10 @@ const ProjectShowcase = () => {
           <h2 className="section-title">Project Showcase</h2>
           <p className="text-gray-300 max-w-3xl mx-auto text-lg">
             Discover my latest and upcoming projects, showcasing innovative front-end solutions,
-            seamless user interfaces, and transformative digital experiences built with modern technologies.
+            seamless user interfaces, and <span className="relative inline-block">
+              transformative digital experiences
+              <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-primary to-blue-400"></span>
+            </span> built with modern technologies.
           </p>
         </motion.div>
         
@@ -146,33 +226,55 @@ const ProjectShowcase = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-dark-100/70 backdrop-blur-sm rounded-lg overflow-hidden project-card border border-white/5 shadow-lg hover:shadow-xl hover:border-primary/10 transition-all duration-300"
+              className="bg-dark-100/70 backdrop-blur-sm rounded-lg overflow-hidden project-card border border-white/5 shadow-lg hover:shadow-xl hover:border-primary/10 transition-all duration-300 scale-95 group relative"
+              whileHover={{ 
+                y: -8, 
+                scale: 0.96, 
+                transition: { duration: 0.3 } 
+              }}
             >
               <div className="relative">
                 <div className="absolute top-4 left-4 bg-gradient-to-r from-primary/80 to-blue-400/80 text-xs text-white px-3 py-1.5 rounded-md z-10 backdrop-blur-sm shadow-md font-medium">
                   {project.category}
                 </div>
-                <div className="h-[300px] relative">
+                <div className="h-[285px] relative overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
                   />
+                  
+                  {/* Dark overlay with improved hover effect */}
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+                    <motion.button
+                      onClick={() => handleOpenModal(project)}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-5 py-2.5 bg-primary text-white rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 font-medium"
+                    >
+                      View Full Details
+                    </motion.button>
+                  </div>
                 </div>
               </div>
               
               <div className="p-6">
-                <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent mb-2">
-                  {project.title} <span className="bg-gradient-to-r from-secondary to-rose-400 bg-clip-text text-transparent">{project.status}</span>
-                </h3>
-                <p className="text-gray-400 mb-4">{project.description}</p>
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent group-hover:from-blue-500 group-hover:to-blue-300 transition-all duration-300">
+                    {project.title}
+                  </h3>
+                  <span className="bg-gradient-to-r from-secondary to-rose-400 bg-clip-text text-transparent ml-2 text-sm font-medium">
+                    {project.status}
+                  </span>
+                </div>
+                <p className="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors duration-300">{project.description}</p>
                 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs bg-dark-200/70 text-gray-300 px-3 py-1.5 rounded-full border border-white/5 hover:border-primary/20 hover:text-primary transition-colors duration-300"
+                      className="text-xs bg-dark-200/70 text-gray-300 px-3 py-1.5 rounded-full border border-white/5 hover:border-primary/20 hover:text-primary transition-colors duration-300 hover:bg-dark-300/70"
                     >
                       {tech}
                     </span>
@@ -180,43 +282,24 @@ const ProjectShowcase = () => {
                 </div>
                 
                 <div className="flex items-center gap-4">
-                  <Link href="#" className="text-gray-400 hover:text-primary transition-colors">
+                  <Link href="#" className="text-gray-400 hover:text-primary transition-colors duration-300 transform hover:scale-110">
                     <FiGithub className="w-5 h-5" />
                   </Link>
-                  <Link href="#" className="text-gray-400 hover:text-primary transition-colors">
+                  <Link href="#" className="text-gray-400 hover:text-primary transition-colors duration-300 transform hover:scale-110">
                     <FiExternalLink className="w-5 h-5" />
                   </Link>
                   <button
-                    onClick={() => setSelectedProject(selectedProject === project.id ? null : project.id)}
+                    onClick={() => handleOpenModal(project)}
                     className="ml-auto bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent hover:from-blue-500 hover:to-blue-400 font-medium flex items-center"
                   >
                     Project Details
-                    <svg className={`ml-1 w-4 h-4 transition-transform ${selectedProject === project.id ? 'rotate-180' : ''}`} 
+                    <svg className="ml-1 w-4 h-4" 
                       fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
-                        d={selectedProject === project.id ? "M19 9l-7 7-7-7" : "M9 5l7 7-7 7"}></path>
+                        d="M9 5l7 7-7 7"></path>
                     </svg>
                   </button>
                 </div>
-                
-                {selectedProject === project.id && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="mt-6 pt-6 border-t border-gray-700"
-                  >
-                    <h4 className="text-lg font-semibold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent mb-3">Technical Implementation</h4>
-                    <p className="text-gray-400 mb-4">{project.details.implementation}</p>
-                    
-                    <h5 className="text-md font-semibold bg-gradient-to-r from-secondary to-rose-400 bg-clip-text text-transparent mb-3">Key Features:</h5>
-                    <ul className="list-disc list-inside text-gray-400">
-                      {project.details.features.map((feature, idx) => (
-                        <li key={idx}>{feature}</li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                )}
               </div>
             </motion.div>
           ))}
@@ -232,6 +315,15 @@ const ProjectShowcase = () => {
           </motion.button>
         </div>
       </div>
+      
+      {/* Project Modal */}
+      {modalProject && (
+        <ProjectModal
+          project={modalProject}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+        />
+      )}
     </section>
   );
 };

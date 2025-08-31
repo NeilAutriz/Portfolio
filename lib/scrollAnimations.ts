@@ -3,6 +3,7 @@
 /**
  * Utility functions for smooth scrolling and scroll-based animations
  * This helps create coordinated animations across the entire website
+ * With performance optimizations to prevent lagging
  */
 
 /**
@@ -11,6 +12,7 @@
 export function initScrollReveal() {
   if (typeof window === 'undefined') return;
 
+  // Use requestAnimationFrame to ensure smooth performance
   const observerOptions = {
     root: null,
     rootMargin: '0px',
@@ -20,7 +22,10 @@ export function initScrollReveal() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('active');
+        // Use requestAnimationFrame for smoother animation triggering
+        requestAnimationFrame(() => {
+          entry.target.classList.add('active');
+        });
       }
     });
   }, observerOptions);
@@ -34,23 +39,40 @@ export function initScrollReveal() {
 
 /**
  * Initialize parallax scrolling effect for elements with the 'parallax' class
+ * With performance optimizations to reduce lag
  */
 export function initParallaxEffect() {
   if (typeof window === 'undefined') return;
 
   const parallaxElements = document.querySelectorAll<HTMLElement>('.parallax');
+  let ticking = false;
+  let lastScrollY = window.scrollY;
   
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
-    
+  const updateParallaxElements = (scrollY: number) => {
     parallaxElements.forEach(element => {
       const speed = element.getAttribute('data-speed') || '0.1';
       const offset = scrollY * parseFloat(speed);
       element.style.setProperty('--parallax-offset', `${offset}px`);
     });
   };
+  
+  const handleScroll = () => {
+    lastScrollY = window.scrollY;
+    
+    // Use requestAnimationFrame to throttle scroll handling
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateParallaxElements(lastScrollY);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
 
   window.addEventListener('scroll', handleScroll);
+  
+  // Initial update
+  updateParallaxElements(lastScrollY);
   
   // Clean up
   return () => {
@@ -59,15 +81,18 @@ export function initParallaxEffect() {
 }
 
 /**
- * Enhanced smooth scrolling to element
+ * Enhanced smooth scrolling to element with reduced jank
  */
 export function scrollToElement(elementId: string) {
   const element = document.getElementById(elementId);
   if (!element) return;
   
-  window.scrollTo({
-    top: element.offsetTop,
-    behavior: 'smooth'
+  // Use requestAnimationFrame for smoother scrolling
+  requestAnimationFrame(() => {
+    window.scrollTo({
+      top: element.offsetTop,
+      behavior: 'smooth'
+    });
   });
 }
 
@@ -75,6 +100,9 @@ export function scrollToElement(elementId: string) {
  * Initialize all scroll animations
  */
 export function initAllScrollAnimations() {
-  initScrollReveal();
-  initParallaxEffect();
+  // Wrap in requestAnimationFrame for better performance
+  requestAnimationFrame(() => {
+    initScrollReveal();
+    initParallaxEffect();
+  });
 }
