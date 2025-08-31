@@ -1,0 +1,8 @@
+/* Note: This is a placeholder file with instructions.
+   Please create and add an actual video file named 'website-launch-animation.mp4' to your public folder. 
+   
+   Alternatives if you don't have a video:
+   1. Find a suitable website launch/development animation on a stock video site
+   2. Create a simple animation with blue hues showing a website build process
+   3. Use a GIF instead and modify the component to use an image instead of video
+*/

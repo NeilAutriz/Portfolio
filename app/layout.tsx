@@ -4,7 +4,6 @@ import './globals.css';
 import { ReactNode, useEffect, useState } from 'react';
 import Footer from '../components/layout/Footer';
 import { initAllScrollAnimations } from '../lib/scrollAnimations';
-import { initLocomotiveScroll } from '../lib/locomotiveScroll';
 
 export default function RootLayout({
   children,
@@ -40,10 +39,13 @@ export default function RootLayout({
     // Ultra-smooth initialization with triple requestAnimationFrame for consistent timing
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
+        requestAnimationFrame(async () => {
           try {
+            // Dynamically import locomotive scroll to avoid SSR issues
+            const { initLocomotiveScroll } = await import('../lib/locomotiveScroll');
             // Initialize locomotive scroll
             const scrollInstance = initLocomotiveScroll();
+            setLocomotiveScrollInstance(scrollInstance);
             setLocomotiveScrollInstance(scrollInstance);
             
             // Add scroll event listener for custom effects

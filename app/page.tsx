@@ -9,6 +9,7 @@ import SkillsMastery from '@/components/sections/SkillsMastery';
 import JourneyTimeline from '@/components/sections/JourneyTimeline';
 import ClientTestimonials from '@/components/sections/ClientTestimonials';
 import Contact from '@/components/sections/Contact';
+import LaunchWebsite from '@/components/sections/LaunchWebsite';
 import ParticlesBackground from '@/components/ui/ParticlesBackground';
 
 export default function Home() {
@@ -36,6 +37,9 @@ export default function Home() {
         </div>
         <div className="mt-24 md:mt-28 lg:mt-32 mb-[-2rem] md:mb-[-3rem] lg:mb-[-4rem]">
           <SkillsMastery />
+        </div>
+        <div className="mt-20 md:mt-24 lg:mt-28 mb-[-2rem] md:mb-[-3rem] lg:mb-[-4rem]">
+          <LaunchWebsite />
         </div>
         <div className="mt-20 md:mt-24 lg:mt-28 mb-[-2rem] md:mb-[-3rem] lg:mb-[-4rem]">
           <JourneyTimeline />

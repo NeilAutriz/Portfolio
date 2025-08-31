@@ -105,6 +105,23 @@
     will-change: transform, opacity, color, background-color;
   }
   
+  /* Animation delay classes */
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+  }
+  
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+  }
+  
+  .animation-delay-700 {
+    animation-delay: 0.7s;
+  }
+  
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+  
   @keyframes marquee {
     0% {
       transform: translateX(0);
