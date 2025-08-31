@@ -58,7 +58,7 @@ const ParticlesBackground = ({ type = 'network' }: ParticlesBackgroundProps) => 
       links: {
         enable: true, // Connect particles with lines
         distance: 150, // Medium connection distance
-        color: "#0ea5e9", // Primary blue color
+        color: "#ffffff", // Changed to white
         opacity: 0.2, // Subtle connections
         width: 1
       },
@@ -93,7 +93,7 @@ const ParticlesBackground = ({ type = 'network' }: ParticlesBackgroundProps) => 
           distance: 200, // Large grab distance
           links: {
             opacity: 0.7, // More visible connections on hover
-            color: "#0ea5e9" // Primary blue color
+            color: "#ffffff" // Changed to white
           }
         },
         bubble: {

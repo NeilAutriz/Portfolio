@@ -2,6 +2,7 @@
 
 import Header from '@/components/layout/Header';
 import Hero from '@/components/sections/Hero';
+import Motto from '@/components/sections/Motto';
 import AboutMe from '@/components/sections/AboutMe';
 import ProjectShowcase from '@/components/sections/ProjectShowcase';
 import SkillsMastery from '@/components/sections/SkillsMastery';
@@ -19,7 +20,13 @@ export default function Home() {
         <div className="fixed inset-0 z-0 pointer-events-none">
           <ParticlesBackground type="stars" />
         </div>
-        {/* About Me section with no space before it to attach smoothly to hero */}
+        
+        {/* Motto section */}
+        <div className="mt-0">
+          <Motto />
+        </div>
+        
+        {/* About Me section with no space before it to attach smoothly to motto */}
         <div className="mt-0">
           <AboutMe />
         </div>

@@ -1,22 +1,20 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { ReactNode } from 'react';
-import Footer from '../components/layout/Footer';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Autriz Portfolio',
-  description: 'Personal portfolio website showcasing software engineering and development skills',
-  icons: {
-    icon: '/mainlogo(white).png',
-    apple: '/mainlogo(white).png',
-  },
-};
+import './globals.css';
+import { ReactNode, useEffect } from 'react';
+import Footer from '../components/layout/Footer';
+import { initAllScrollAnimations } from '../lib/scrollAnimations';
 
 export default function RootLayout({
   children,
 }: {
   children: ReactNode;
 }) {
+  // Initialize smooth scrolling and animations when the component mounts
+  useEffect(() => {
+    initAllScrollAnimations();
+  }, []);
+
   return (
     <html lang="en" className="scroll-smooth">
       <head>

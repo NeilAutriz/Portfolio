@@ -35,11 +35,11 @@ const Header = () => {
           <div className="h-10 w-auto">
             <img 
               src="/mainlogo(white).png"
-              alt="Autriz Portfolio" 
+              alt="Portfolio" 
               className="h-full w-auto"
             />
           </div>
-          <span className="text-white font-semibold hidden sm:block">Autriz</span>
+          {/* Removed the Autriz name as requested */}
         </Link>
 
         {/* Desktop Navigation */}
