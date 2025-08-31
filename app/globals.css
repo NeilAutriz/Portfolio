@@ -7,17 +7,65 @@
 /* Enhanced smooth scrolling behavior for the entire site */
 @layer base {
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth !important;
     overflow-x: hidden;
+    height: 100%;
+    will-change: scroll-position;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   body {
     overflow-x: hidden;
+    height: 100%;
+    will-change: contents;
+    transform: translateZ(0);
+    perspective: 1000px; /* Adds depth to scrolling */
   }
   
-  /* Better animation defaults site-wide */
+  /* Optimize rendering performance */
+  section, div, header, footer, main {
+    transition: transform 0.01s linear;
+    backface-visibility: hidden;
+  }
+  
+  /* Ultra-smooth animation defaults */
   * {
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  
+  /* Custom Scrollbar Styling - Inspired by asharkamran.netlify.app */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(22, 26, 29, 0.8); /* Matches your dark background */
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #60a5fa, #3b82f6); /* Brighter blue gradient */
+    border-radius: 4px;
+    border: 1px solid rgba(22, 26, 29, 0.8);
+    transition: all 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #93c5fd, #60a5fa); /* Even lighter blue on hover */
+    border-width: 0px;
+  }
+  
+  ::-webkit-scrollbar-corner {
+    background: rgba(22, 26, 29, 0.8);
+  }
+  
+  /* For Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #60a5fa rgba(22, 26, 29, 0.8);
   }
 }
 
@@ -33,13 +81,28 @@
   
   /* Smoother animation speeds for consistent feel */
   .transition-smooth {
-    transition-duration: 600ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 800ms;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: transform, opacity;
   }
   
   .transition-smooth-slow {
-    transition-duration: 800ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 1000ms;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: transform, opacity;
+  }
+  
+  /* Enhanced transition for elements that appear during scroll */
+  .scroll-transition {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+  
+  /* Special transitions for hover effects */
+  .hover-transition {
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: transform, opacity, color, background-color;
   }
   
   @keyframes marquee {
@@ -77,6 +140,19 @@
     }
   }
   
+  @keyframes highlight {
+    0%, 100% { 
+      opacity: 0; 
+    }
+    50% { 
+      opacity: 1; 
+    }
+  }
+  
+  .animate-highlight {
+    animation: highlight 1.5s ease-in-out;
+  }
+  
   /* Enhanced shine effect specifically for hero image */
   .hero-shine::after {
     width: 250%;
@@ -88,6 +164,31 @@
       rgba(255, 255, 255, 0) 100%
     );
     animation: shine 4s infinite;
+  }
+  
+  /* Adding the shine effect class */
+  .shine-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shine-effect::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    animation: shine 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
   }
 }
 
@@ -111,11 +212,13 @@ body {
 /* Rich black background for all sections using exact color palette */
 section {
   background-color: #161A1D !important;
+  transform-style: preserve-3d; /* Enhances 3D effects during scroll */
 }
 
 /* Global typography and spacing styles */
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.025em; /* tracking-tight */
+  transform: translateZ(0); /* Ensures crisp text during scrolling */
 }
 
 h1 {

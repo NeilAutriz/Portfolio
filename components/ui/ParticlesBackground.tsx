@@ -25,7 +25,7 @@ const ParticlesBackground = ({ type = 'network' }: ParticlesBackgroundProps) => 
     fpsLimit: 60,
     particles: {
       number: {
-        value: 80, // Fewer particles for a cleaner look, similar to the reference site
+        value: 60, // Fewer particles for a cleaner look, similar to the reference site
         density: {
           enable: true,
           value_area: 800

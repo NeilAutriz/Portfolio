@@ -187,9 +187,8 @@ const ProjectShowcase = () => {
           <h2 className="section-title">Project Showcase</h2>
           <p className="text-gray-300 max-w-3xl mx-auto text-lg">
             Discover my latest and upcoming projects, showcasing innovative front-end solutions,
-            seamless user interfaces, and <span className="relative inline-block">
+            seamless user interfaces, and <span className="relative">
               transformative digital experiences
-              <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-primary to-blue-400"></span>
             </span> built with modern technologies.
           </p>
         </motion.div>
@@ -218,7 +217,7 @@ const ProjectShowcase = () => {
         </motion.div>
         
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -226,18 +225,18 @@ const ProjectShowcase = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-dark-100/70 backdrop-blur-sm rounded-lg overflow-hidden project-card border border-white/5 shadow-lg hover:shadow-xl hover:border-primary/10 transition-all duration-300 scale-95 group relative"
+              className="bg-dark-100/70 backdrop-blur-sm rounded-lg overflow-hidden project-card border border-white/5 shadow-lg hover:shadow-xl hover:border-primary/10 transition-all duration-300 scale-100 group relative"
               whileHover={{ 
-                y: -8, 
-                scale: 0.96, 
+                y: -5, 
+                scale: 0.98, 
                 transition: { duration: 0.3 } 
               }}
             >
               <div className="relative">
-                <div className="absolute top-4 left-4 bg-gradient-to-r from-primary/80 to-blue-400/80 text-xs text-white px-3 py-1.5 rounded-md z-10 backdrop-blur-sm shadow-md font-medium">
+                <div className="absolute top-2 left-2 bg-gradient-to-r from-primary/80 to-blue-400/80 text-xs text-white px-2 py-1 rounded-md z-10 backdrop-blur-sm shadow-md font-medium">
                   {project.category}
                 </div>
-                <div className="h-[285px] relative overflow-hidden">
+                <div className="h-[200px] relative overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -251,49 +250,54 @@ const ProjectShowcase = () => {
                       onClick={() => handleOpenModal(project)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-5 py-2.5 bg-primary text-white rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 font-medium"
+                      className="px-3 py-1.5 bg-primary text-white rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 font-medium text-xs"
                     >
-                      View Full Details
+                      View Details
                     </motion.button>
                   </div>
                 </div>
               </div>
               
-              <div className="p-6">
+              <div className="p-4">
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent group-hover:from-blue-500 group-hover:to-blue-300 transition-all duration-300">
+                  <h3 className="text-base font-bold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent group-hover:from-blue-500 group-hover:to-blue-300 transition-all duration-300">
                     {project.title}
                   </h3>
-                  <span className="bg-gradient-to-r from-secondary to-rose-400 bg-clip-text text-transparent ml-2 text-sm font-medium">
+                  <span className="bg-gradient-to-r from-secondary to-rose-400 bg-clip-text text-transparent ml-1 text-xs font-medium">
                     {project.status}
                   </span>
                 </div>
-                <p className="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors duration-300">{project.description}</p>
+                <p className="text-gray-400 mb-3 group-hover:text-gray-300 transition-colors duration-300 text-sm line-clamp-2">{project.description}</p>
                 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech) => (
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {project.technologies.slice(0, 3).map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs bg-dark-200/70 text-gray-300 px-3 py-1.5 rounded-full border border-white/5 hover:border-primary/20 hover:text-primary transition-colors duration-300 hover:bg-dark-300/70"
+                      className="text-xs bg-dark-200/70 text-gray-300 px-2 py-0.5 rounded-full border border-white/5 hover:border-primary/20 hover:text-primary transition-colors duration-300 hover:bg-dark-300/70"
                     >
                       {tech}
                     </span>
                   ))}
+                  {project.technologies.length > 3 && (
+                    <span className="text-xs bg-dark-200/70 text-gray-300 px-2 py-0.5 rounded-full">
+                      +{project.technologies.length - 3}
+                    </span>
+                  )}
                 </div>
                 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 justify-end">
                   <Link href="#" className="text-gray-400 hover:text-primary transition-colors duration-300 transform hover:scale-110">
-                    <FiGithub className="w-5 h-5" />
+                    <FiGithub className="w-3.5 h-3.5" />
                   </Link>
                   <Link href="#" className="text-gray-400 hover:text-primary transition-colors duration-300 transform hover:scale-110">
-                    <FiExternalLink className="w-5 h-5" />
+                    <FiExternalLink className="w-3.5 h-3.5" />
                   </Link>
                   <button
                     onClick={() => handleOpenModal(project)}
-                    className="ml-auto bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent hover:from-blue-500 hover:to-blue-400 font-medium flex items-center"
+                    className="ml-auto bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent hover:from-blue-500 hover:to-blue-400 font-medium flex items-center text-xs"
                   >
-                    Project Details
-                    <svg className="ml-1 w-4 h-4" 
+                    Details
+                    <svg className="ml-1 w-3 h-3" 
                       fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
                         d="M9 5l7 7-7 7"></path>

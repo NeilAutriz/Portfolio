@@ -7,6 +7,7 @@ import AboutMe from '@/components/sections/AboutMe';
 import ProjectShowcase from '@/components/sections/ProjectShowcase';
 import SkillsMastery from '@/components/sections/SkillsMastery';
 import JourneyTimeline from '@/components/sections/JourneyTimeline';
+import ClientTestimonials from '@/components/sections/ClientTestimonials';
 import Contact from '@/components/sections/Contact';
 import ParticlesBackground from '@/components/ui/ParticlesBackground';
 
@@ -38,6 +39,9 @@ export default function Home() {
         </div>
         <div className="mt-20 md:mt-24 lg:mt-28 mb-[-2rem] md:mb-[-3rem] lg:mb-[-4rem]">
           <JourneyTimeline />
+        </div>
+        <div className="mt-20 md:mt-24 lg:mt-28 mb-[-2rem] md:mb-[-3rem] lg:mb-[-4rem]">
+          <ClientTestimonials />
         </div>
         <div className="mt-20 md:mt-24 lg:mt-28">
           <Contact />
