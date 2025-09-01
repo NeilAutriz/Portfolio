@@ -7,7 +7,7 @@ import { MdArrowOutward } from "react-icons/md";
 
 const AboutMe = () => {
   return (
-    <section className="relative py-20 md:py-28 lg:py-32 bg-background overflow-hidden">
+    <section id="about" className="relative py-24 md:py-32 lg:py-40 overflow-hidden bg-background/95">
       {/* Absolutely no light effect background in this section - removed */}
       
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-[1400px] relative z-10">

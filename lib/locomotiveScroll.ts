@@ -46,6 +46,13 @@ export function initLocomotiveScroll() {
     // Force a layout recalculation before updating scroll
     document.body.offsetHeight;
     locomotiveScroll.update();
+    
+    // Fix for navbar to ensure it's properly positioned with locomotive scroll
+    const navbar = document.querySelector('.sticky-navbar');
+    if (navbar) {
+      // Ensure the navbar stays at the top regardless of locomotive scroll
+      navbar.classList.add('sticky-navbar');
+    }
   }, 300); // Reduced for faster initialization
 
   // Add smooth scroll updates on image/asset load
@@ -81,7 +88,16 @@ export function initLocomotiveScroll() {
   window.addEventListener('resize', handleResize);
   
   // Update on images/content load to prevent layout shifts
-  window.addEventListener('load', () => locomotiveScroll.update());
+  window.addEventListener('load', () => {
+    locomotiveScroll.update();
+    
+    // Fix for navbar to ensure it's properly positioned with locomotive scroll
+    const navbar = document.querySelector('.sticky-navbar');
+    if (navbar) {
+      // Ensure the navbar stays at the top regardless of locomotive scroll
+      navbar.classList.add('sticky-navbar');
+    }
+  });
 
   return locomotiveScroll;
 }

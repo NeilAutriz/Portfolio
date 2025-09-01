@@ -48,7 +48,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="lets-connect" className="py-12 md:py-16 lg:py-20 relative">
+    <section id="contact" className="py-12 md:py-16 lg:py-20 relative">
       {/* Background gradients */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-r from-primary/20 to-blue-400/10 rounded-full filter blur-[150px]"></div>

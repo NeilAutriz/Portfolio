@@ -3,6 +3,7 @@
 import './globals.css';
 import { ReactNode, useEffect, useState } from 'react';
 import Footer from '../components/layout/Footer';
+import NavbarNew from '../components/layout/NavbarNew';
 import { initAllScrollAnimations } from '../lib/scrollAnimations';
 
 export default function RootLayout({
@@ -103,8 +104,9 @@ export default function RootLayout({
           MozOsxFontSmoothing: 'grayscale'
         }}
       >
+        <NavbarNew />
         <div className="min-h-screen flex flex-col">
-          <main className="flex-grow">
+          <main className="flex-grow pt-0"> {/* Removed padding-top as Navbar is fixed */}
             {children}
           </main>
           <Footer />

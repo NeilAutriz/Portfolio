@@ -9,7 +9,7 @@ import ParticlesBackground from '../ui/ParticlesBackground';
 
 const Hero = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-0 pb-0 md:pt-0 md:pb-0 lg:pt-0 lg:pb-0 bg-background">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-10 md:pt-32 md:pb-10 lg:pt-36 lg:pb-10 bg-background">
       {/* Starry background animation - lowest layer */}
       <div className="absolute inset-0 z-0">
         <ParticlesBackground type="stars" />
