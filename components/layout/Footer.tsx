@@ -23,12 +23,11 @@ const Footer = () => {
             <div className="flex items-center mb-6">
               <Image
                 src="/mainlogo(white).png" 
-                alt="Autriz Logo"
-                width={40}
-                height={40}
+                alt="Mark Neil Autriz Logo"
+                width={160}
+                height={160}
                 className="mr-3"
               />
-              <span className="font-bold text-xl text-white">Autriz</span>
             </div>
             <p className="text-gray-400 mb-6 text-sm">
               Code Meets Creativity.
@@ -126,8 +125,8 @@ const Footer = () => {
                 Metro Manila, Philippines
               </li>
               <li>
-                <Link href="mailto:autriz.markneil@gmail.com" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  autriz.markneil@gmail.com
+                <Link href="mailto:mngautriz@gmail.com" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  mngautriz@gmail.com
                 </Link>
               </li>
               <li>

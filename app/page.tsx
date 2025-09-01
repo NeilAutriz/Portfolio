@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Hero from '@/components/sections/Hero';
 import Motto from '@/components/sections/Motto';
@@ -13,6 +14,11 @@ import LaunchWebsite from '@/components/sections/LaunchWebsite';
 import ParticlesBackground from '@/components/ui/ParticlesBackground';
 
 export default function Home() {
+  // Set document title when the component mounts
+  useEffect(() => {
+    document.title = "Mark Neil Autriz | Software Engineer";
+  }, []);
+
   return (
     <main className="min-h-screen bg-background">
       <Header />

@@ -2,23 +2,20 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { FiMenu, FiX } from 'react-icons/fi';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -26,95 +23,59 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-dark-300/90 backdrop-blur-md py-3' : 'bg-transparent py-4'
+      className={`fixed top-0 left-0 w-full transition-all duration-300 ease-out ${
+        isScrolled 
+          ? 'bg-black/90 backdrop-blur-xl py-4 shadow-sm' 
+          : 'bg-transparent py-6'
       }`}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        zIndex: 9999,
+      }}
     >
-      <div className="container mx-auto px-6 xl:px-8 flex items-center justify-between max-w-7xl">
-        <Link href="/" className="flex items-center space-x-3" style={{ transition: 'opacity 0.3s ease' }}>
-          <div className="h-10 w-auto" style={{ transform: 'none' }}>
-            <img 
-              src="/mainlogo(white).png"
-              alt="Portfolio" 
-              className="h-full w-auto"
-              style={{ transition: 'opacity 0.3s ease', transform: 'none' }}
-            />
-          </div>
-          {/* Removed the Autriz name as requested */}
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
-          {['Projects', 'Skills', 'Experience', 'Let\'s Connect'].map((item) => (
-            <Link 
-              key={item} 
-              href={`/#${item.toLowerCase().replace(/\s+/g, '-')}`}
-              className="text-gray-300 hover:text-white hover:bg-white/10 px-4 py-2 rounded-full transition-all text-sm font-medium tracking-wide"
-            >
-              {item}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden text-white p-2 rounded-full bg-white/5 hover:bg-white/10 transition-all"
-          onClick={() => setIsMenuOpen(true)}
-          aria-label="Open menu"
-        >
-          <FiMenu className="w-5 h-5" />
-        </button>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-0 right-0 h-full w-full md:w-80 bg-gradient-to-br from-dark-300/95 to-background/90 backdrop-blur-md z-50 shadow-2xl"
-          >
-            <div className="flex justify-between items-center p-6 border-b border-white/10">
-              <div className="flex items-center space-x-3">
-                <div className="h-8 w-auto" style={{ transform: 'none' }}>
-                  <img 
-                    src="/mainlogo(white).png" 
-                    alt="Autriz Portfolio" 
-                    className="h-full w-auto"
-                    style={{ transition: 'opacity 0.3s ease', transform: 'none' }}
-                  />
-                </div>
-                <span className="text-white font-semibold">Autriz</span>
-              </div>
-              <button 
-                className="text-white p-2 rounded-full bg-white/5 hover:bg-white/10 transition-all"
-                onClick={() => setIsMenuOpen(false)}
-                aria-label="Close menu"
-              >
-                <FiX className="w-5 h-5" />
-              </button>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <div className="h-9 w-auto">
+              <img 
+                src="/mainlogo(white).png"
+                alt="Mark Neil Autriz" 
+                className="h-full w-auto"
+              />
             </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="flex items-center space-x-8">
+            {[
+              { name: "About", href: "#about" },
+              { name: "Projects", href: "#projects" },
+              { name: "Skills", href: "#skills" },
+              { name: "Experience", href: "#experience" },
+            ].map((item) => (
+              <Link 
+                key={item.name} 
+                href={item.href}
+                className="text-gray-300 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
+              >
+                {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-200 group-hover:w-full"></span>
+              </Link>
+            ))}
             
-            <nav className="flex flex-col p-6 space-y-2">
-              {['Projects', 'Skills', 'Experience', 'Let\'s Connect'].map((item, index) => (
-                <Link 
-                  key={item} 
-                  href={`/#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="text-gray-200 hover:text-white hover:bg-white/5 transition-all py-3 px-4 rounded-lg font-medium flex items-center justify-between"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <span>{item}</span>
-                  <motion.span 
-                    whileHover={{ x: 3 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
-                    →
-                  </motion.span>
-                </Link>
-              ))}
-            </nav>
-          </motion.div>
-        )}
+            {/* CTA Button */}
+            <Link 
+              href="#contact" 
+              className="px-5 py-2.5 bg-white text-black text-sm font-semibold rounded-md hover:bg-gray-100 transition-all duration-200 hover:scale-105"
+            >
+              Hire Me
+            </Link>
+          </nav>
+        </div>
       </div>
     </header>
   );

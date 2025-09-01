@@ -648,6 +648,52 @@ body::before {
   transform: translateZ(10px) scale(1.02);
 }
 
+/* Enhanced Navigation header styles - always fixed and visible */
+.header-blur {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  will-change: background-color, box-shadow;
+}
+
+/* Header transitions for scroll */
+.header-shrink {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+.header-shadow {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Navbar item hover effects */
+.nav-item {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #0EA5E9, #38BDF8);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+  left: 0;
+}
+
 /* Glowing shadows */
 .shadow-glow-xs {
   box-shadow: 0 0 8px rgba(14, 165, 233, 0.2);
@@ -808,4 +854,36 @@ body::before {
 
 .text-change-animation {
   animation: textFadeOut 0.5s ease-out, textFadeIn 0.5s ease-in 0.5s;
+}
+
+/* New profession typewriter styles */
+.profession-wrapper {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  min-width: 300px;
+  min-height: 42px;
+  display: inline-block;
+}
+
+.profession-text {
+  background: linear-gradient(to right, #0EA5E9, #38BDF8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline;
+}
+
+.profession-cursor {
+  color: #0EA5E9;
+  font-weight: bold;
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Autriz Portfolio',
+  title: 'Mark Neil Autriz | Software Engineer',
   description: 'Personal portfolio website showcasing software engineering and development skills',
   icons: {
     icon: [

@@ -39,33 +39,24 @@ const Hero = () => {
               with sleek interfaces, innovative solutions, and boundary-pushing creativity 
               that redefine what's possible.
             </p>
-            <div className="flex items-center text-xl md:text-2xl lg:text-3xl text-gray-300 mb-8 md:mb-10">
+            <div className="flex flex-wrap items-center text-xl md:text-2xl lg:text-3xl text-gray-300 mb-8 md:mb-10">
               <span className="mr-2">Hello! I'm a</span>
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-mono font-semibold" style={{ letterSpacing: '0.05em' }}>
+              <div className="profession-wrapper">
                 <Typewriter
-                  onInit={(typewriter) => {
-                    typewriter
-                      .typeString('Software Engineer')
-                      .pauseFor(1500)
-                      .deleteAll()
-                      .typeString('Fullstack Developer')
-                      .pauseFor(1500)
-                      .deleteAll()
-                      .typeString('AI Engineer')
-                      .pauseFor(1500)
-                      .deleteAll()
-                      .typeString('IT Manager')
-                      .pauseFor(1500)
-                      .deleteAll()
-                      .start();
-                  }}
                   options={{
+                    strings: [
+                      'Software Engineer',
+                      'Fullstack Developer',
+                      'AI Engineer',
+                      'IT Manager'
+                    ],
+                    autoStart: true,
                     loop: true,
-                    delay: 80,
-                    deleteSpeed: 50
+                    wrapperClassName: 'profession-text',
+                    cursorClassName: 'profession-cursor'
                   }}
                 />
-              </span>
+              </div>
             </div>
             
             <div className="flex flex-wrap gap-4">
@@ -78,7 +69,7 @@ const Hero = () => {
                   Explore Work
                 </motion.button>
               </Link>
-              <Link href="/Autriz_Resume.pdf" target="_blank" rel="noopener noreferrer" download>
+              <Link href="/RESUME.pdf" target="_blank" rel="noopener noreferrer" download>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

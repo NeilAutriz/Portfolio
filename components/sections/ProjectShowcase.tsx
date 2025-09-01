@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { FiGithub, FiExternalLink, FiX, FiChevronRight, FiLayers, FiCode, FiDatabase, FiServer, FiTarget, FiPackage } from 'react-icons/fi';
 import ProjectModal from './ProjectModal';
 
-const categories = ['All', 'AI/ML', 'FinTech', '3D/AR', 'SaaS', 'Mobile', 'Web', 'Agriculture'];
+const categories = ['All', 'AI/ML', 'FinTech', '3D/AR', 'SaaS', 'Mobile', 'Web'];
 
 export const projects = [
   {
@@ -84,26 +84,6 @@ export const projects = [
         'Optimized performance metrics'
       ],
       objective: 'Develop a comprehensive social media management platform that streamlines content creation, scheduling, and analytics while leveraging AI to generate engaging content and provide actionable insights.'
-    }
-  },
-  {
-    id: 5,
-    title: 'AgriConnect Platform',
-    description: 'A web-based platform connecting farmers to markets, resources, and agricultural experts with real-time data integration.',
-    image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=500&h=300&fit=crop',
-    category: 'Web',
-    status: 'Completed',
-    technologies: ['MongoDB', 'Express.js', 'React', 'Node.js', 'WebSockets'],
-    details: {
-      implementation: 'Developed using the MERN stack (MongoDB, Express.js, React, Node.js) with RESTful API architecture. Implemented real-time notifications and weather alerts using WebSockets. Integrated with agricultural APIs for crop pricing and weather forecasting.',
-      features: [
-        'Marketplace for farmers to sell produce directly',
-        'Real-time weather alerts and forecasting',
-        'Expert consultation scheduling system',
-        'Resource library with farming techniques',
-        'Mobile-responsive design for field use'
-      ],
-      objective: 'Create a comprehensive web platform that connects farmers with markets, resources, and agricultural experts, while providing real-time data and tools to enhance productivity and profitability in farming operations.'
     }
   },
   {
