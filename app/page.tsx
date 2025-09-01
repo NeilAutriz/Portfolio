@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect } from 'react';
-import Header from '@/components/layout/Header';
 import Hero from '@/components/sections/Hero';
 import Motto from '@/components/sections/Motto';
 import AboutMe from '@/components/sections/AboutMe';
@@ -21,7 +20,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-background">
-      <Header />
       <Hero />
       <div className="relative z-10 overflow-x-hidden space-y-0">
         {/* Dark subtle particles background for the rest of the site */}

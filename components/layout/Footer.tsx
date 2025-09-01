@@ -35,19 +35,19 @@ const Footer = () => {
               strategic design to build digital experiences that stand out. Every pixel has a purpose.
             </p>
             <div className="flex space-x-4 mb-8">
-              <Link href="https://www.linkedin.com/in/markneil-autriz/" target="_blank" className="text-[#0077B5] hover:text-[#0077B5]/80 transition-colors">
+              <Link href="https://www.linkedin.com/in/markneil-autriz/" target="_blank" className="text-gray-400 hover:text-primary transition-colors">
                 <FiLinkedin size={20} />
               </Link>
-              <Link href="https://github.com/NeilAutriz" target="_blank" className="text-white hover:text-white/80 transition-colors">
+              <Link href="https://github.com/NeilAutriz" target="_blank" className="text-gray-400 hover:text-primary transition-colors">
                 <FiGithub size={20} />
               </Link>
-              <Link href="https://www.instagram.com/" target="_blank" className="text-[#E1306C] hover:text-[#E1306C]/80 transition-colors">
+              <Link href="https://www.instagram.com/" target="_blank" className="text-gray-400 hover:text-primary transition-colors">
                 <FiInstagram size={20} />
               </Link>
-              <Link href="https://www.youtube.com/" target="_blank" className="text-[#FF0000] hover:text-[#FF0000]/80 transition-colors">
+              <Link href="https://www.youtube.com/" target="_blank" className="text-gray-400 hover:text-primary transition-colors">
                 <FiYoutube size={20} />
               </Link>
-              <Link href="https://twitter.com/" target="_blank" className="text-[#1DA1F2] hover:text-[#1DA1F2]/80 transition-colors">
+              <Link href="https://twitter.com/" target="_blank" className="text-gray-400 hover:text-primary transition-colors">
                 <FiTwitter size={20} />
               </Link>
             </div>

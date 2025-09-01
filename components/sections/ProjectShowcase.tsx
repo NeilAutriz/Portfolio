@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiGithub, FiExternalLink, FiX, FiChevronRight, FiLayers, FiCode, FiDatabase, FiServer, FiTarget, FiPackage } from 'react-icons/fi';
+import { FiGithub, FiExternalLink} from 'react-icons/fi';
 import ProjectModal from './ProjectModal';
 
 const categories = ['All', 'AI/ML', 'FinTech', '3D/AR', 'SaaS', 'Mobile', 'Web'];
