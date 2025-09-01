@@ -51,8 +51,8 @@ const Contact = () => {
     <section id="lets-connect" className="py-12 md:py-16 lg:py-20 relative">
       {/* Background gradients */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-r from-primary/20 to-accent/10 rounded-full filter blur-[150px]"></div>
-        <div className="absolute bottom-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-to-r from-secondary/15 to-rose-400/10 rounded-full filter blur-[120px]"></div>
+        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-r from-primary/20 to-blue-400/10 rounded-full filter blur-[150px]"></div>
+        <div className="absolute bottom-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-to-r from-primary/15 to-blue-400/10 rounded-full filter blur-[120px]"></div>
       </div>
       <div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-20 xl:px-24 relative z-10">
         <motion.div
@@ -75,9 +75,9 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-primary/5 to-secondary/5 backdrop-blur-md rounded-lg p-8 border border-white/10 shadow-xl"
+            className="bg-gradient-to-br from-primary/5 to-primary/5 backdrop-blur-md rounded-lg p-8 border border-white/10 shadow-xl"
           >
-            <h3 className="text-2xl font-semibold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent mb-8">Send a Message</h3>
+            <h3 className="text-2xl font-semibold text-white mb-8">Send a Message</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -166,12 +166,12 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="bg-gradient-to-br from-primary/5 to-secondary/5 backdrop-blur-md rounded-lg p-8 mb-8 border border-white/10 shadow-xl">
-              <h3 className="text-2xl font-semibold bg-gradient-to-r from-secondary to-rose-400 bg-clip-text text-transparent mb-6">Get in Touch</h3>
+            <div className="bg-gradient-to-br from-primary/5 to-primary/5 backdrop-blur-md rounded-lg p-8 mb-8 border border-white/10 shadow-xl">
+              <h3 className="text-2xl font-semibold text-white mb-6">Get in Touch</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="bg-gradient-to-br from-secondary/20 to-rose-400/20 p-3 rounded-full text-secondary border border-secondary/20 shadow-sm shadow-secondary/10">
+                  <div className="bg-gradient-to-br from-primary/20 to-blue-400/20 p-3 rounded-full text-primary border border-primary/20 shadow-sm shadow-primary/10">
                     <FiMail className="w-5 h-5" />
                   </div>
                   <div>
@@ -183,7 +183,7 @@ const Contact = () => {
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="bg-gradient-to-br from-primary/20 to-blue-400/20 p-3 rounded-full text-primary border border-primary/20 shadow-sm shadow-primary/10">
+                  <div className="bg-gradient-to-br from-red-500/20 to-red-400/20 p-3 rounded-full text-red-500 border border-red-500/20 shadow-sm shadow-red-500/10">
                     <FiMapPin className="w-5 h-5" />
                   </div>
                   <div>
@@ -193,7 +193,7 @@ const Contact = () => {
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="bg-gradient-to-br from-purple-500/20 to-violet-400/20 p-3 rounded-full text-purple-400 border border-purple-500/20 shadow-sm shadow-purple-500/10">
+                  <div className="bg-gradient-to-br from-green-500/20 to-green-400/20 p-3 rounded-full text-green-500 border border-green-500/20 shadow-sm shadow-green-500/10">
                     <FiCalendar className="w-5 h-5" />
                   </div>
                   <div>
@@ -204,8 +204,8 @@ const Contact = () => {
               </div>
             </div>
             
-            <div className="bg-gradient-to-br from-secondary/5 to-primary/5 backdrop-blur-md rounded-lg p-8 border border-white/10 shadow-xl">
-              <h3 className="text-2xl font-semibold bg-gradient-to-r from-secondary to-rose-400 bg-clip-text text-transparent mb-6">Connect on Social</h3>
+            <div className="bg-gradient-to-br from-primary/5 to-primary/5 backdrop-blur-md rounded-lg p-8 border border-white/10 shadow-xl">
+              <h3 className="text-2xl font-semibold text-white mb-6">Connect on Social</h3>
               
               <p className="text-gray-300 mb-6">Let's connect and discuss how we can work together on your next project.</p>
               
@@ -250,7 +250,7 @@ const Contact = () => {
                   href="mailto:autriz.markneil@gmail.com"
                   className="flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 p-4 rounded-lg text-white transition-all duration-300 hover:translate-y-[-2px] group"
                 >
-                  <div className="bg-gradient-to-br from-red-600 to-red-500 p-2 rounded-full group-hover:from-red-500 group-hover:to-red-400 transition-all duration-300">
+                  <div className="bg-gradient-to-br from-purple-500 to-pink-400 p-2 rounded-full group-hover:from-purple-400 group-hover:to-pink-300 transition-all duration-300">
                     <FiMail className="w-5 h-5" />
                   </div>
                   <span className="font-medium">Email</span>

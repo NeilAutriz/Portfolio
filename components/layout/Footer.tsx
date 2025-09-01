@@ -26,7 +26,7 @@ const Footer = () => {
                 alt="Mark Neil Autriz Logo"
                 width={160}
                 height={160}
-                className="mr-3"
+                className="mr-3 w-[120px] h-auto"
               />
             </div>
             <p className="text-gray-400 mb-6 text-sm">
@@ -35,19 +35,19 @@ const Footer = () => {
               strategic design to build digital experiences that stand out. Every pixel has a purpose.
             </p>
             <div className="flex space-x-4 mb-8">
-              <Link href="https://www.linkedin.com/in/markneil-autriz/" target="_blank" className="text-gray-400 hover:text-primary transition-colors">
+              <Link href="https://www.linkedin.com/in/markneil-autriz/" target="_blank" className="text-[#0077B5] hover:text-[#0077B5]/80 transition-colors">
                 <FiLinkedin size={20} />
               </Link>
-              <Link href="https://github.com/NeilAutriz" target="_blank" className="text-gray-400 hover:text-primary transition-colors">
+              <Link href="https://github.com/NeilAutriz" target="_blank" className="text-white hover:text-white/80 transition-colors">
                 <FiGithub size={20} />
               </Link>
-              <Link href="https://www.instagram.com/" target="_blank" className="text-gray-400 hover:text-primary transition-colors">
+              <Link href="https://www.instagram.com/" target="_blank" className="text-[#E1306C] hover:text-[#E1306C]/80 transition-colors">
                 <FiInstagram size={20} />
               </Link>
-              <Link href="https://www.youtube.com/" target="_blank" className="text-gray-400 hover:text-primary transition-colors">
+              <Link href="https://www.youtube.com/" target="_blank" className="text-[#FF0000] hover:text-[#FF0000]/80 transition-colors">
                 <FiYoutube size={20} />
               </Link>
-              <Link href="https://twitter.com/" target="_blank" className="text-gray-400 hover:text-primary transition-colors">
+              <Link href="https://twitter.com/" target="_blank" className="text-[#1DA1F2] hover:text-[#1DA1F2]/80 transition-colors">
                 <FiTwitter size={20} />
               </Link>
             </div>
@@ -148,17 +148,17 @@ const Footer = () => {
         
         {/* Bottom footer */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm mb-4 md:mb-0">
+          <p className="text-white text-sm mb-4 md:mb-0">
             © {currentYear} Mark Neil Autriz. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            <Link href="/privacy" className="text-gray-500 hover:text-white text-sm transition-colors">
+            <Link href="/privacy" className="text-white hover:text-primary text-sm transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-gray-500 hover:text-white text-sm transition-colors">
+            <Link href="/terms" className="text-white hover:text-primary text-sm transition-colors">
               Terms of Service
             </Link>
-            <Link href="/sitemap" className="text-gray-500 hover:text-white text-sm transition-colors">
+            <Link href="/sitemap" className="text-white hover:text-primary text-sm transition-colors">
               Sitemap
             </Link>
           </div>

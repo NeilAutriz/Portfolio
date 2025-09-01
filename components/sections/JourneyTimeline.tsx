@@ -187,12 +187,17 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
             boxShadow: '0 8px 20px rgba(15, 23, 42, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
             borderColor: 'rgba(56, 189, 248, 0.3)'
           }}
-          initial={{ opacity: 0, x: isEven ? -20 : 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4, delay: index * 0.1 }}
-          className={`relative cursor-pointer p-6 rounded-xl transition-all duration-200
+          initial={{ opacity: 0, x: isEven ? -20 : 20, y: 10 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ 
+            duration: 0.6, 
+            ease: [0.25, 0.1, 0.25, 1.0],
+            opacity: { duration: 0.8 },
+            y: { duration: 0.5 }
+          }}
+          className={`relative cursor-pointer p-6 rounded-xl transition-all duration-300
             backdrop-blur-sm border hover:border-primary/50
-            hover:shadow-lg hover:shadow-primary/10
+            hover:shadow-lg hover:shadow-primary/10 card-fade-in
             ${isEven ? 'mr-auto text-left' : 'ml-auto text-right'}`}
           style={{
             background: 'linear-gradient(to bottom right, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.8))',
@@ -442,22 +447,35 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
         </motion.div>
       </div>
       
-      {/* Center timeline dot */}
+      {/* Center timeline dot with improved animation */}
       <div className="w-2/12 flex justify-center relative">
         {/* Node with white glowing border and floating particle */}
         <motion.div
           whileHover={{ 
             scale: 1.1,
+            boxShadow: '0 0 15px rgba(255, 255, 255, 0.8)',
             transition: { 
               type: "spring", 
               stiffness: 400, 
               damping: 15,
-              duration: 0.2
+              duration: 0.3
             }
           }}
-          className="w-12 h-12 rounded-full bg-dark-200 border-2 border-white/90 shadow-md z-20 flex items-center justify-center relative overflow-hidden"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ 
+            opacity: 1, 
+            scale: 1,
+            transition: {
+              type: "spring",
+              stiffness: 300,
+              damping: 20,
+              duration: 0.5
+            }
+          }}
+          className="w-12 h-12 rounded-full bg-dark-200 border-2 border-white/90 shadow-md z-20 flex items-center justify-center relative overflow-hidden timeline-node"
           style={{ 
-            boxShadow: '0 0 10px rgba(255, 255, 255, 0.6)'
+            boxShadow: '0 0 10px rgba(255, 255, 255, 0.6)',
+            background: 'radial-gradient(circle at center, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 1))'
           }}
         >
           {/* Floating particle inside the node */}
@@ -537,7 +555,7 @@ const TimelineModal = ({ item, isOpen, onClose }: TimelineModalProps) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="relative w-full max-w-3xl max-h-[80vh] overflow-y-auto m-4 p-8 rounded-xl bg-gradient-to-br from-dark-100/95 to-dark-200/95 backdrop-blur-xl border border-white/10 shadow-2xl"
+            className="relative w-full max-w-3xl max-h-[80vh] overflow-y-auto m-4 p-8 rounded-xl bg-gradient-to-br from-dark-100/95 to-dark-200/95 backdrop-blur-xl border border-white/10 shadow-2xl fade-in"
           >
             {/* Close button */}
             <motion.button 
@@ -590,16 +608,21 @@ const TimelineModal = ({ item, isOpen, onClose }: TimelineModalProps) => {
             <p className="text-gray-300 mb-8 leading-relaxed">{item.description}</p>
             
             <div className="mb-8">
-              <h4 className="text-xl font-semibold mb-4 bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+              <motion.h4 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.4 }}
+                className="text-xl font-semibold mb-4 bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent"
+              >
                 Key Achievements:
-              </h4>
+              </motion.h4>
               <ul className="space-y-3">
                 {item.achievements.map((achievement: string, i: number) => (
                   <motion.li
                     key={i}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.1 }}
+                    transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
                     className="flex items-start group"
                   >
                     <div className="p-1 mt-1 mr-3 rounded-full bg-primary/20 text-primary group-hover:bg-primary/40 transition-all duration-300">
@@ -612,7 +635,11 @@ const TimelineModal = ({ item, isOpen, onClose }: TimelineModalProps) => {
             </div>
             
             {item.technologies.length > 0 && (
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
                 <h4 className="text-xl font-semibold mb-4 bg-gradient-to-r from-secondary to-rose-400 bg-clip-text text-transparent">
                   Technologies Used:
                 </h4>
@@ -623,14 +650,18 @@ const TimelineModal = ({ item, isOpen, onClose }: TimelineModalProps) => {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3, delay: i * 0.05 }}
+                      transition={{ 
+                        duration: 0.3, 
+                        delay: 0.6 + i * 0.05,
+                        scale: { type: "spring", stiffness: 300, damping: 20 }
+                      }}
                       className="px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 text-sm hover:bg-primary/20 hover:shadow-md transition-all duration-300"
                     >
                       {tech}
                     </motion.span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             )}
           </motion.div>
         </div>
@@ -657,29 +688,66 @@ const JourneyTimeline = () => {
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          transition={{ 
+            duration: 0.7, 
+            ease: [0.25, 0.1, 0.25, 1.0],
+            staggerChildren: 0.2
+          }}
+          viewport={{ once: true, margin: "-50px" }}
           className="text-center mb-14"
         >
-          <div className="section-subtitle">Experience</div>
-          <h2 className="section-title">Professional Journey</h2>
-          <p className="text-gray-300 max-w-3xl mx-auto text-lg">
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="section-subtitle"
+          >
+            Experience
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="section-title"
+          >
+            Professional Journey
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-gray-300 max-w-3xl mx-auto text-lg"
+          >
             My work experience journey through various roles and companies.
             Click on any milestone to explore detailed information.
-          </p>
+          </motion.p>
         </motion.div>
         
         {/* Vertical timeline with alternating items */}
         <div className="relative max-w-5xl mx-auto">
-          {/* Timeline line with subtle glow extending to the very bottom */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] transform -translate-x-1/2 z-10" 
-               style={{ 
-                 background: 'rgba(255, 255, 255, 0.7)',
-                 boxShadow: '0 0 8px rgba(255, 255, 255, 0.4)', 
-                 height: '100%' 
-               }}></div>
+          {/* Timeline line with subtle glow extending to the very bottom - with animation */}
+          <motion.div 
+            className="absolute left-1/2 top-0 bottom-0 w-[2px] transform -translate-x-1/2 z-10"
+            initial={{ height: 0, opacity: 0 }}
+            whileInView={{ 
+              height: "100%", 
+              opacity: 1,
+              transition: { 
+                height: { duration: 1.5, ease: "easeOut" },
+                opacity: { duration: 0.8, ease: "easeOut" }
+              }
+            }}
+            viewport={{ once: true }}
+            style={{ 
+              background: 'rgba(255, 255, 255, 0.7)',
+              boxShadow: '0 0 8px rgba(255, 255, 255, 0.4)'
+            }}
+          ></motion.div>
                
           {/* Start point at top of timeline - separate from the line */}
           <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-20 flex items-center justify-center">
@@ -693,15 +761,27 @@ const JourneyTimeline = () => {
                  style={{ boxShadow: '0 0 20px rgba(255, 255, 255, 0.7)' }}></div>
           </div>
           
-          {/* Timeline items */}
-          <div className="relative space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-28">
+          {/* Timeline items with staggered fade-in animations */}
+          <div className="relative space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-28 stagger-timeline mt-8 mb-8">
             {timelineData.map((item, index) => (
-              <TimelineCard
+              <motion.div
                 key={item.id}
-                item={item}
-                index={index}
-                onClick={() => handleOpenModal(item)}
-              />
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ 
+                  duration: 0.7, 
+                  delay: index * 0.2,
+                  ease: [0.25, 0.1, 0.25, 1.0]
+                }}
+                className="timeline-item-container"
+              >
+                <TimelineCard
+                  item={item}
+                  index={index}
+                  onClick={() => handleOpenModal(item)}
+                />
+              </motion.div>
             ))}
             
             {/* No final dot at the bottom */}
