@@ -170,7 +170,7 @@ const ClientTestimonials = () => {
                   <motion.div
                     key={testimonial.id}
                     whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                    className="bg-[#151922] rounded-lg overflow-hidden shadow-lg hover:shadow-blue-900/20 hover:shadow-xl transition-all duration-300 border border-white/5 hover:border-blue-500/40 h-full flex flex-col relative before:absolute before:inset-0 before:border-t-2 before:border-blue-500/0 before:hover:border-blue-500/40 before:transition-all before:duration-300"
+                    className="bg-[#151922] rounded-2xl overflow-hidden shadow-lg hover:shadow-blue-900/20 hover:shadow-xl transition-all duration-300 border border-white/5 hover:border-blue-500/40 h-full flex flex-col relative before:absolute before:inset-0 before:border-t-2 before:border-blue-500/0 before:hover:border-blue-500/40 before:transition-all before:duration-300"
                   >
                     <div className="p-6 flex flex-col h-full">
                       {/* Star Rating */}

@@ -11,6 +11,20 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-y: auto !important; /* Force scrolling to work */
+    font-size: 16px; /* Base font size */
+  }
+  
+  /* Responsive font sizing */
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    html {
+      font-size: 13px;
+    }
   }
   
   body {
@@ -19,23 +33,70 @@
     min-height: 100vh;
     transform: translateZ(0);
     overflow-y: auto !important; /* Force scrolling to work */
+    text-rendering: optimizeSpeed;
   }
-  
-  /* Optimize rendering performance */
-  section, div, header, footer, main {
-    backface-visibility: hidden;
+}
+
+/* Improved responsive classes */
+.container {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
   }
-  
-  /* Ultra-smooth animation defaults */
-  * {
-    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-right: 2rem;
+    padding-left: 2rem;
   }
+}
+
+/* Responsive typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* Responsive section padding */
+section {
+  padding: clamp(3rem, 8vw, 6rem) 0;
+}
   
-  /* Sticky navbar styles - Enhanced for compatibility with Locomotive Scroll */
-  .sticky-navbar {
-    position: sticky !important;
-    position: -webkit-sticky !important;
-    top: 0 !important;
+/* Optimize rendering performance */
+section, div, header, footer, main {
+  backface-visibility: hidden;
+}
+
+/* Ultra-smooth animation defaults */
+* {
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Sticky navbar styles - Enhanced for compatibility with Locomotive Scroll */
+.sticky-navbar {
+  position: sticky !important;
+  position: -webkit-sticky !important;
+  top: 0 !important;
     z-index: 9999 !important;
     width: 100% !important;
     transform: translateZ(0) !important;
@@ -77,7 +138,6 @@
     scrollbar-width: thin;
     scrollbar-color: #60a5fa rgba(22, 26, 29, 0.8);
   }
-}
 
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {

@@ -7,11 +7,11 @@ import { MdArrowOutward } from "react-icons/md";
 
 const AboutMe = () => {
   return (
-    <section id="about" className="relative py-24 md:py-32 lg:py-40 overflow-hidden bg-background/95">
+    <section id="about" className="relative py-16 sm:py-20 md:py-28 lg:py-32 overflow-hidden bg-background/95">
       {/* Absolutely no light effect background in this section - removed */}
       
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-[1400px] relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="container mx-auto px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-[1400px] relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Image Column - Simplified as requested */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -20,7 +20,7 @@ const AboutMe = () => {
             viewport={{ once: true }}
             className="relative order-2 lg:order-1"
           >
-            <div className="relative aspect-[4/5] w-full max-w-[480px] mx-auto lg:mx-0">
+            <div className="relative aspect-[4/5] w-full max-w-[360px] sm:max-w-[420px] md:max-w-[480px] mx-auto lg:mx-0">
               {/* Enhanced image container with professional border styling like reference site */}
               <div className="relative w-full h-full p-[3px] rounded-xl bg-gradient-to-br from-primary/30 via-accent/20 to-primary/30 shadow-lg shadow-primary/20">
                 <div className="relative w-full h-full rounded-xl overflow-hidden border-2 border-white/10 shine-effect">
@@ -50,15 +50,15 @@ const AboutMe = () => {
             className="order-1 lg:order-2"
           >
             {/* Added About Me subtitle above the heading */}
-            <div className="section-subtitle mb-4">ABOUT ME</div>
+            <div className="section-subtitle mb-3 sm:mb-4 text-center lg:text-left">ABOUT ME</div>
             
             {/* Updated heading with "Crafting Digital Experiences" on a single line */}
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 leading-[1.2]">
-              <div className="text-white whitespace-nowrap">Crafting Digital Experiences</div>
-              <div className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-2xl sm:text-3xl md:text-4xl mt-2">Since 2020</div>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 leading-[1.2] text-center lg:text-left">
+              <div className="text-white">Crafting Digital Experiences</div>
+              <div className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-2">Since 2020</div>
             </h3>
             
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <p className="text-base md:text-lg text-gray-300 leading-relaxed">
                 I'm a passionate Software Engineer who's deeply committed to bringing ideas to life through thoughtful, user-centered design. Every project I take on is built with care, creativity, and a clear understanding of what the client truly needs. My goal is always to create applications that not only look great but also work smoothly and deliver results.
               </p>
@@ -69,12 +69,12 @@ const AboutMe = () => {
             </div>
             
             {/* Learn More button - white button with white text as requested */}
-            <div className="mt-10">
+            <div className="mt-8 sm:mt-10 flex justify-center lg:justify-start">
               <Link href="#project-showcase">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-7 py-3.5 bg-white text-primary font-medium rounded shadow-lg shadow-white/10 hover:bg-white/90 transition-all duration-300 text-[15px] flex items-center"
+                  className="px-5 sm:px-7 py-3 sm:py-3.5 bg-white text-primary font-medium rounded shadow-lg shadow-white/10 hover:bg-white/90 transition-all duration-300 text-sm sm:text-[15px] flex items-center"
                 >
                   <span>Learn More</span>
                   <MdArrowOutward className="ml-2" />

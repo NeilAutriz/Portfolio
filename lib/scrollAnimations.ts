@@ -85,19 +85,38 @@ export function initParallaxEffect() {
  */
 export function scrollToElement(elementId: string) {
   const element = document.getElementById(elementId);
-  if (!element) return;
+  if (!element) {
+    console.warn(`Element with ID "${elementId}" not found`);
+    return;
+  }
   
-  // Check if locomotiveScroll instance exists in window
+  // Navbar height offset for proper positioning (70px is our navbar height)
+  const navbarOffset = -70;
+  
+  // Get element position
+  const elementPosition = element.getBoundingClientRect().top + window.pageYOffset + navbarOffset;
+  
+  // IMMEDIATE SCROLL - Native scrolling first for instant response
+  window.scrollTo({ top: elementPosition, behavior: 'auto' });
+  
+  // Then try locomotive scroll for any smooth effects
   if (typeof window !== 'undefined' && (window as any).locomotiveScroll) {
-    // Use Locomotive Scroll for scrolling
-    (window as any).locomotiveScroll.scrollTo(element, {
-      offset: 0,
-      duration: 1000,
-      easing: [0.25, 0.0, 0.35, 1.0]
-    });
-  } else {
-    // Fallback to native scrolling
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try {
+      (window as any).locomotiveScroll.scrollTo(element, {
+        offset: navbarOffset,
+        duration: 50, // Much faster animation
+        disableLerp: true, // Disable smoothing
+        callback: () => {
+          // Force a final position check
+          const finalPosition = element.getBoundingClientRect().top + window.pageYOffset + navbarOffset;
+          if (Math.abs(window.pageYOffset - finalPosition) > 50) {
+            window.scrollTo({ top: finalPosition, behavior: 'auto' });
+          }
+        }
+      });
+    } catch (error) {
+      console.error('Error using Locomotive Scroll:', error);
+    }
   }
 }
 

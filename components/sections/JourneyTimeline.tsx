@@ -177,278 +177,278 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
   const isEven = index % 2 === 0;
   
   return (
-    <div className={`flex w-full items-center justify-center ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
-      {/* Content */}
-      <div className={`w-5/12`}>
-        <motion.div
-          whileHover={{ 
-            y: -3, 
-            scale: 1.01, 
-            boxShadow: '0 8px 20px rgba(15, 23, 42, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
-            borderColor: 'rgba(56, 189, 248, 0.3)'
-          }}
-          initial={{ opacity: 0, x: isEven ? -20 : 20, y: 10 }}
-          animate={{ opacity: 1, x: 0, y: 0 }}
-          transition={{ 
-            duration: 0.6, 
-            ease: [0.25, 0.1, 0.25, 1.0],
-            opacity: { duration: 0.8 },
-            y: { duration: 0.5 }
-          }}
-          className={`relative cursor-pointer p-6 rounded-xl transition-all duration-300
-            backdrop-blur-sm border hover:border-primary/50
-            hover:shadow-lg hover:shadow-primary/10 card-fade-in
-            ${isEven ? 'mr-auto text-left' : 'ml-auto text-right'}`}
-          style={{
-            background: 'linear-gradient(to bottom right, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.8))',
-            borderImage: 'linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) 1',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.07)'
-          }}
-          onClick={onClick}
-        >
-          {/* Top badge for type */}
-          <div className={`absolute -top-3 ${isEven ? 'left-5' : 'right-5'} rounded-full px-3 py-1 text-xs font-bold`} 
-            style={{
-              background: item.type === 'work' ? 'rgba(59, 130, 246, 0.2)' : 
-                       item.type === 'education' ? 'rgba(16, 185, 129, 0.2)' : 
-                       'rgba(139, 92, 246, 0.2)',
-              color: item.type === 'work' ? '#3b82f6' : 
-                   item.type === 'education' ? '#10b981' : 
-                   '#8b5cf6'
+    <div className="flex w-full items-center relative">
+      {/* Left side content */}
+      <div className={`w-full md:w-5/6 lg:w-5/12 mx-auto lg:mx-0 ${!isEven && 'hidden lg:block'} relative z-10`}>
+        {isEven && (
+          <motion.div
+            whileHover={{ 
+              y: -3, 
+              scale: 1.01, 
+              boxShadow: '0 8px 20px rgba(15, 23, 42, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
+              borderColor: 'rgba(56, 189, 248, 0.3)'
             }}
+            initial={{ opacity: 0, x: -20, y: 10 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ 
+              duration: 0.6, 
+              ease: [0.25, 0.1, 0.25, 1.0],
+              opacity: { duration: 0.8 },
+              y: { duration: 0.5 }
+            }}
+            className="relative cursor-pointer p-4 sm:p-6 rounded-2xl transition-all duration-300
+              backdrop-blur-sm border hover:border-primary/50
+              hover:shadow-lg hover:shadow-primary/10 card-fade-in ml-auto mr-0 text-right bg-dark-100/80 z-20"
+            style={{
+              background: 'linear-gradient(to bottom right, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9))',
+              borderImage: 'linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) 1',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.07)'
+            }}
+            onClick={onClick}
           >
-            {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
-          </div>
-          
-          {/* Year badge */}
-          <div className={`absolute -top-3 ${isEven ? 'right-5' : 'left-5'} bg-primary/90 text-white text-xs font-bold py-1 px-3 rounded-full shadow-md`}>
-            {(() => {
-              // Hardcoded values for specific positions to ensure consistency
-              if (item.id === 'pngIntern') {
-                return 'May 2025 - Present';
-              }
-              if (item.id === 'ethosbytes') {
-                return 'Jun 2024 - Dec 2024';
-              }
-              if (item.id === 'befiedFullstack') {
-                return 'Oct 2023 - Jan 2024';
-              }
-              if (item.id === 'befiedFrontend') {
-                return 'Jul 2023 - Oct 2023';
-              }
-              
-              // Fallback to formatted date if needed
-              if (!item.year.includes('-')) return item.year;
-              
-              // Format YYYY-MM to readable format
-              if (item.year.includes('-')) {
-                const parts = item.year.split(' - ');
-                const startPart = parts[0].trim();
-                const endPart = parts[1].trim();
-                
-                // Convert YYYY-MM to Month YYYY format
-                const formatDate = (datePart: string) => {
-                  if (datePart === 'Present') return 'Present';
-                  
-                  try {
-                    const [year, monthStr] = datePart.split('-');
-                    const month = parseInt(monthStr);
-                    
-                    const monthNames = [
-                      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-                    ];
-                    
-                    return `${monthNames[month-1]} ${year}`;
-                  } catch (e) {
-                    return datePart; // Return as is if parsing fails
-                  }
-                };
-                
-                return `${formatDate(startPart)} - ${formatDate(endPart)}`;
-              }
-              
-              return item.year;
-            })()}
-          </div>
-          
-          {/* Duration badge */}
-          <div className={`absolute -bottom-3 ${isEven ? 'right-5' : 'left-5'} bg-dark-100/90 border border-primary/20 text-primary/90 text-xs font-medium py-1 px-3 rounded-full shadow-sm`}>
-            {(() => {
-              // Parse the year string to calculate duration
-              const calculateDuration = (yearString: string) => {
-                if (!yearString || !yearString.includes(' - ')) {
-                  return '1 mo';
-                }
-                
-                const [startStr, endStr] = yearString.split(' - ');
-                
-                // Handle specific positions
-                if (yearString.includes('2025-05 - Present')) {
-                  // For P&G position
-                  const currentDate = new Date();
-                  const startDate = new Date(2025, 4); // May 2025 (months are 0-indexed)
-                  
-                  const months = (currentDate.getFullYear() - startDate.getFullYear()) * 12 + 
-                                 (currentDate.getMonth() - startDate.getMonth());
-                  
-                  return `${months} mos+`;
-                } else if (yearString.includes('2024-06 - 2024-12')) {
-                  // For Ethos Bytes position - 7 months
-                  return '7 mos';
-                } else if (yearString.includes('2023-10 - 2024-01')) {
-                  // For BeFied Full-stack - 4 months
-                  return '4 mos';
-                } else if (yearString.includes('2023-07 - 2023-10')) {
-                  // For BeFied Frontend - 4 months
-                  return '4 mos';
-                }
-                
-                // Generic calculation as fallback
-                try {
-                  const [startYear, startMonthStr] = startStr.split('-');
-                  const startMonth = parseInt(startMonthStr);
-                  
-                  let endYear, endMonth;
-                  
-                  if (endStr === 'Present') {
-                    const now = new Date();
-                    endYear = now.getFullYear();
-                    endMonth = now.getMonth() + 1; // 1-indexed month
-                  } else {
-                    [endYear, endMonth] = endStr.split('-').map(num => parseInt(num));
-                  }
-                  
-                  const monthDiff = (endYear - parseInt(startYear)) * 12 + 
-                                   (endMonth - startMonth) + 1; // inclusive of start and end month
-                  
-                  if (monthDiff >= 12) {
-                    const years = Math.floor(monthDiff / 12);
-                    const months = monthDiff % 12;
-                    return months > 0 
-                      ? `${years} yr${years > 1 ? 's' : ''} ${months} mo${months > 1 ? 's' : ''}${endStr === 'Present' ? '+' : ''}` 
-                      : `${years} yr${years > 1 ? 's' : ''}${endStr === 'Present' ? '+' : ''}`;
-                  } else {
-                    return `${monthDiff} mo${monthDiff > 1 ? 's' : ''}${endStr === 'Present' ? '+' : ''}`;
-                  }
-                } catch (e) {
-                  // If parsing fails for any reason, return specific durations based on position
-                  if (item.id === 'pngIntern') return '4 mos+';
-                  if (item.id === 'ethosbytes') return '7 mos';
-                  if (item.id === 'befiedFullstack') return '4 mos';
-                  if (item.id === 'befiedFrontend') return '4 mos';
-                  return '3 mos'; // Default fallback
-                }
-              };
-              
-              return calculateDuration(item.year);
-            })()}
-          </div>
-          
-          <div className="mt-6">
-            {/* Title with icon and logo */}
-            <div className={`flex items-center mb-2 ${!isEven && 'flex-row-reverse'}`}>
-              <div className={`flex items-center ${!isEven && 'flex-row-reverse'}`}>
-                <div className={`${isEven ? 'mr-2' : 'ml-2'}`}>
-                  <TypeIcon type={item.id} />
-                </div>
-                {item.logo && (
-                  <div className={`w-6 h-6 bg-white/5 rounded-md p-0.5 flex items-center justify-center ${isEven ? 'ml-1' : 'mr-1'} border border-white/10`}>
-                    <img 
-                      src={item.logo} 
-                      alt={`${item.subtitle} logo`}
-                      className="max-w-full max-h-full object-contain"
-                    />
-                  </div>
-                )}
-              </div>
-              <div className={`${isEven ? 'ml-2' : 'mr-2'}`}>
-                <h3 className="font-bold text-base text-white">
-                  {item.title || item.subtitle}
-                </h3>
-                {item.title && <p className="text-gray-400 text-xs font-normal mt-0.5">{item.subtitle}</p>}
-              </div>
+            {/* Top badge for type */}
+            <div className="absolute -top-3 left-5 rounded-full px-3 py-1 text-xs font-bold" 
+              style={{
+                background: item.type === 'work' ? 'rgba(59, 130, 246, 0.2)' : 
+                         item.type === 'education' ? 'rgba(16, 185, 129, 0.2)' : 
+                         'rgba(139, 92, 246, 0.2)',
+                color: item.type === 'work' ? '#3b82f6' : 
+                     item.type === 'education' ? '#10b981' : 
+                     '#8b5cf6'
+              }}
+            >
+              {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
             </div>
             
-            {/* Location and Time on a single horizontal line - Ensuring right alignment for odd cards */}
-            <div className={`flex items-center mt-3 text-sm text-gray-400 ${!isEven ? 'justify-end' : ''}`}>
-              <div className={`flex items-center`}>
-                <FiMapPin className="mr-1" />
-                <span>{item.location}</span>
-              </div>
-              <span className="mx-2">•</span>
-              <div className={`flex items-center`}>
-                <FiClock className="mr-1" />
-                <span>
-                  {(() => {
-                    // Use hardcoded durations that match the badge duration
+            {/* Year badge */}
+            <div className="absolute -top-3 right-5 bg-primary/90 text-white text-xs font-bold py-1 px-3 rounded-full shadow-md">
+              {(() => {
+                // Hardcoded values for specific positions to ensure consistency
+                if (item.id === 'pngIntern') {
+                  return 'May 2025 - Present';
+                }
+                if (item.id === 'ethosbytes') {
+                  return 'Jun 2024 - Dec 2024';
+                }
+                if (item.id === 'befiedFullstack') {
+                  return 'Oct 2023 - Jan 2024';
+                }
+                if (item.id === 'befiedFrontend') {
+                  return 'Jul 2023 - Oct 2023';
+                }
+                
+                // Fallback to formatted date if needed
+                if (!item.year.includes('-')) return item.year;
+                
+                // Format YYYY-MM to readable format
+                if (item.year.includes('-')) {
+                  const parts = item.year.split(' - ');
+                  const startPart = parts[0].trim();
+                  const endPart = parts[1].trim();
+                  
+                  // Convert YYYY-MM to Month YYYY format
+                  const formatDate = (datePart: string) => {
+                    if (datePart === 'Present') return 'Present';
+                    
+                    try {
+                      const [year, monthStr] = datePart.split('-');
+                      const month = parseInt(monthStr);
+                      
+                      const monthNames = [
+                        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                      ];
+                      
+                      return `${monthNames[month-1]} ${year}`;
+                    } catch (e) {
+                      return datePart; // Return as is if parsing fails
+                    }
+                  };
+                  
+                  return `${formatDate(startPart)} - ${formatDate(endPart)}`;
+                }
+                
+                return item.year;
+              })()}
+            </div>
+            
+            {/* Duration badge */}
+            <div className="absolute -bottom-3 right-5 bg-dark-100/90 border border-primary/20 text-primary/90 text-xs font-medium py-1 px-3 rounded-full shadow-sm">
+              {(() => {
+                // Parse the year string to calculate duration
+                const calculateDuration = (yearString: string) => {
+                  if (!yearString || !yearString.includes(' - ')) {
+                    return '1 mo';
+                  }
+                  
+                  const [startStr, endStr] = yearString.split(' - ');
+                  
+                  // Handle specific positions
+                  if (yearString.includes('2025-05 - Present')) {
+                    // For P&G position
+                    const currentDate = new Date();
+                    const startDate = new Date(2025, 4); // May 2025 (months are 0-indexed)
+                    
+                    const months = (currentDate.getFullYear() - startDate.getFullYear()) * 12 + 
+                                  (currentDate.getMonth() - startDate.getMonth());
+                    
+                    return `${months} mos+`;
+                  } else if (yearString.includes('2024-06 - 2024-12')) {
+                    // For Ethos Bytes position - 7 months
+                    return '7 mos';
+                  } else if (yearString.includes('2023-10 - 2024-01')) {
+                    // For BeFied Full-stack - 4 months
+                    return '4 mos';
+                  } else if (yearString.includes('2023-07 - 2023-10')) {
+                    // For BeFied Frontend - 4 months
+                    return '4 mos';
+                  }
+                  
+                  // Generic calculation as fallback
+                  try {
+                    const [startYear, startMonthStr] = startStr.split('-');
+                    const startMonth = parseInt(startMonthStr);
+                    
+                    let endYear, endMonth;
+                    
+                    if (endStr === 'Present') {
+                      const now = new Date();
+                      endYear = now.getFullYear();
+                      endMonth = now.getMonth() + 1; // 1-indexed month
+                    } else {
+                      [endYear, endMonth] = endStr.split('-').map(num => parseInt(num));
+                    }
+                    
+                    const monthDiff = (endYear - parseInt(startYear)) * 12 + 
+                                    (endMonth - startMonth) + 1; // inclusive of start and end month
+                    
+                    if (monthDiff >= 12) {
+                      const years = Math.floor(monthDiff / 12);
+                      const months = monthDiff % 12;
+                      return months > 0 
+                        ? `${years} yr${years > 1 ? 's' : ''} ${months} mo${months > 1 ? 's' : ''}${endStr === 'Present' ? '+' : ''}` 
+                        : `${years} yr${years > 1 ? 's' : ''}${endStr === 'Present' ? '+' : ''}`;
+                    } else {
+                      return `${monthDiff} mo${monthDiff > 1 ? 's' : ''}${endStr === 'Present' ? '+' : ''}`;
+                    }
+                  } catch (e) {
+                    // If parsing fails for any reason, return specific durations based on position
                     if (item.id === 'pngIntern') return '4 mos+';
                     if (item.id === 'ethosbytes') return '7 mos';
                     if (item.id === 'befiedFullstack') return '4 mos';
                     if (item.id === 'befiedFrontend') return '4 mos';
-                    
-                    if (!item.year.includes('-')) return '1 mo';
-                    
-                    const parts = item.year.split(' - ');
-                    const startPart = parts[0].trim();
-                    const endPart = parts[1].trim();
-                    
-                    // Calculate duration based on specific dates
-                    if (startPart === 'May 2025' && endPart === 'Present') return '4 mos+';
-                    if (startPart === 'Jun 2024' && endPart === 'Dec 2024') return '7 mos';
-                    if (startPart === 'Oct 2023' && endPart === 'Jan 2024') return '4 mos';
-                    if (startPart === 'Jul 2023' && endPart === 'Oct 2023') return '4 mos';
-                    
                     return '3 mos'; // Default fallback
-                  })()}
-                </span>
-              </div>
+                  }
+                };
+                
+                return calculateDuration(item.year);
+              })()}
             </div>
             
-            {/* Description preview */}
-            <p className="text-gray-400 text-sm mt-3 line-clamp-2">
-              {item.description.substring(0, 80)}...
-            </p>
-            
-            <div className="mt-4 flex items-center justify-between">
-              {/* Experience fields tags in a single line with overflow hidden */}
-              <div className={`flex gap-2 overflow-x-hidden ${!isEven && 'flex-row-reverse'}`}>
-                <div className={`flex gap-2 ${!isEven ? 'flex-row-reverse' : ''}`}>
-                  {item.technologies.slice(0, 2).map((tech, i) => (
-                    <span 
-                      key={i} 
-                      className="px-2 py-0.5 text-xs bg-dark-300/60 text-primary/80 rounded-md border border-primary/10 whitespace-nowrap hover:bg-primary/20 hover:text-primary transition-all"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {item.technologies.length > 2 && (
-                    <span className="px-2 py-0.5 text-xs bg-dark-300/60 text-gray-400 rounded-md border border-white/5 whitespace-nowrap">
-                      +{item.technologies.length - 2}
-                    </span>
+            <div className="mt-6">
+              {/* Title with icon and logo */}
+              <div className="flex items-center mb-2 flex-row-reverse">
+                <div className="flex items-center flex-row-reverse">
+                  <div className="ml-2">
+                    <TypeIcon type={item.id} />
+                  </div>
+                  {item.logo && (
+                    <div className="mr-1 w-6 h-6 bg-white/5 rounded-md p-0.5 flex items-center justify-center border border-white/10">
+                      <img 
+                        src={item.logo} 
+                        alt={`${item.subtitle} logo`}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
                   )}
+                </div>
+                <div className="mr-2">
+                  <h3 className="font-bold text-base text-white">
+                    {item.title || item.subtitle}
+                  </h3>
+                  {item.title && <p className="text-gray-400 text-xs font-normal mt-0.5">{item.subtitle}</p>}
                 </div>
               </div>
               
-              {/* View More button */}
-              <div className={`flex ${!isEven && 'justify-end'}`}>
-                <motion.button
-                  whileHover={{ x: isEven ? 3 : -3 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="text-sm md:text-xs flex items-center font-medium text-gray-400 hover:text-white hover:bg-primary/20 py-1 px-2 md:py-0.5 md:px-1.5 rounded-md transition-all duration-200"
-                >
-                  {!isEven && <FiArrowUpRight className="mr-1 rotate-180" />}
-                  View More
-                  {isEven && <FiArrowUpRight className="ml-1" />}
-                </motion.button>
+              {/* Location and Time on a single horizontal line */}
+              <div className="flex items-center mt-3 text-sm text-gray-400 justify-end">
+                <div className="flex items-center">
+                  <FiMapPin className="mr-1" />
+                  <span>{item.location}</span>
+                </div>
+                <span className="mx-2">•</span>
+                <div className="flex items-center">
+                  <FiClock className="mr-1" />
+                  <span>
+                    {(() => {
+                      // Use hardcoded durations that match the badge duration
+                      if (item.id === 'pngIntern') return '4 mos+';
+                      if (item.id === 'ethosbytes') return '7 mos';
+                      if (item.id === 'befiedFullstack') return '4 mos';
+                      if (item.id === 'befiedFrontend') return '4 mos';
+                      
+                      if (!item.year.includes('-')) return '1 mo';
+                      
+                      const parts = item.year.split(' - ');
+                      const startPart = parts[0].trim();
+                      const endPart = parts[1].trim();
+                      
+                      // Calculate duration based on specific dates
+                      if (startPart === 'May 2025' && endPart === 'Present') return '4 mos+';
+                      if (startPart === 'Jun 2024' && endPart === 'Dec 2024') return '7 mos';
+                      if (startPart === 'Oct 2023' && endPart === 'Jan 2024') return '4 mos';
+                      if (startPart === 'Jul 2023' && endPart === 'Oct 2023') return '4 mos';
+                      
+                      return '3 mos'; // Default fallback
+                    })()}
+                  </span>
+                </div>
+              </div>
+              
+              {/* Description preview */}
+              <p className="text-gray-400 text-sm mt-3 line-clamp-2">
+                {item.description.substring(0, 80)}...
+              </p>
+              
+              <div className="mt-4 flex items-center justify-between">
+                {/* Experience fields tags in a single line with overflow hidden */}
+                <div className="flex gap-2 overflow-x-hidden flex-row-reverse">
+                  <div className="flex gap-2 flex-row-reverse">
+                    {item.technologies.slice(0, 2).map((tech, i) => (
+                      <span 
+                        key={i} 
+                        className="px-2 py-0.5 text-xs bg-dark-300/60 text-primary/80 rounded-md border border-primary/10 whitespace-nowrap hover:bg-primary/20 hover:text-primary transition-all"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {item.technologies.length > 2 && (
+                      <span className="px-2 py-0.5 text-xs bg-dark-300/60 text-gray-400 rounded-md border border-white/5 whitespace-nowrap">
+                        +{item.technologies.length - 2}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                
+                {/* View More button */}
+                <div className="flex justify-end">
+                  <motion.button
+                    whileHover={{ x: -3 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="text-sm md:text-xs flex items-center font-medium text-gray-400 hover:text-white hover:bg-primary/20 py-1 px-2 md:py-0.5 md:px-1.5 rounded-md transition-all duration-200"
+                  >
+                    <FiArrowUpRight className="mr-1 rotate-180" />
+                    View More
+                  </motion.button>
+                </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        )}
       </div>
       
       {/* Center timeline dot with improved animation */}
-      <div className="w-2/12 flex justify-center relative">
+      <div className="w-0 lg:w-2/12 hidden lg:flex justify-center relative z-0">
         {/* Node with white glowing border and floating particle */}
         <motion.div
           whileHover={{ 
@@ -472,7 +472,7 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
               duration: 0.5
             }
           }}
-          className="w-12 h-12 rounded-full bg-dark-200 border-2 border-white/90 shadow-md z-20 flex items-center justify-center relative overflow-hidden timeline-node"
+          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-dark-200 border-2 border-white/90 shadow-md z-20 flex items-center justify-center relative overflow-hidden timeline-node"
           style={{ 
             boxShadow: '0 0 10px rgba(255, 255, 255, 0.6)',
             background: 'radial-gradient(circle at center, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 1))'
@@ -517,8 +517,297 @@ const TimelineCard = ({ item, index, onClick }: TimelineCardProps) => {
         </motion.div>
       </div>
       
-      {/* Empty space opposite to content */}
-      <div className="w-5/12"></div>
+      {/* Mobile timeline node - visible only on mobile/tablet */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 -top-2 lg:hidden z-20">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="w-8 h-8 rounded-full bg-dark-200 border-2 border-white/90 shadow-md flex items-center justify-center"
+          style={{ 
+            boxShadow: '0 0 8px rgba(255, 255, 255, 0.6)',
+            background: 'radial-gradient(circle at center, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 1))'
+          }}
+        >
+          {(() => {
+            const IconComponent = item.icon;
+            return <IconComponent className="w-4 h-4" style={{
+              color: item.id === 'pngIntern' ? '#60a5fa' : 
+                    item.id === 'befiedFullstack' ? '#c084fc' :
+                    item.id === 'befiedFrontend' ? '#fbbf24' :
+                    '#34d399'
+            }} />;
+          })()}
+        </motion.div>
+      </div>
+      
+      {/* Right side content */}
+      <div className={`w-full md:w-5/6 lg:w-5/12 mx-auto lg:mx-0 ${isEven && 'hidden lg:block'} relative z-10`}>
+        {!isEven && (
+          <motion.div
+            whileHover={{ 
+              y: -3, 
+              scale: 1.01, 
+              boxShadow: '0 8px 20px rgba(15, 23, 42, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
+              borderColor: 'rgba(56, 189, 248, 0.3)'
+            }}
+            initial={{ opacity: 0, x: 20, y: 10 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ 
+              duration: 0.6, 
+              ease: [0.25, 0.1, 0.25, 1.0],
+              opacity: { duration: 0.8 },
+              y: { duration: 0.5 }
+            }}
+            className="relative cursor-pointer p-4 sm:p-6 rounded-2xl transition-all duration-300
+              backdrop-blur-sm border hover:border-primary/50
+              hover:shadow-lg hover:shadow-primary/10 card-fade-in mr-auto ml-0 text-left bg-dark-100/80 z-20"
+            style={{
+              background: 'linear-gradient(to bottom right, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9))',
+              borderImage: 'linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) 1',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.07)'
+            }}
+            onClick={onClick}
+          >
+            {/* Top badge for type */}
+            <div className="absolute -top-3 right-5 rounded-full px-3 py-1 text-xs font-bold" 
+              style={{
+                background: item.type === 'work' ? 'rgba(59, 130, 246, 0.2)' : 
+                         item.type === 'education' ? 'rgba(16, 185, 129, 0.2)' : 
+                         'rgba(139, 92, 246, 0.2)',
+                color: item.type === 'work' ? '#3b82f6' : 
+                     item.type === 'education' ? '#10b981' : 
+                     '#8b5cf6'
+              }}
+            >
+              {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
+            </div>
+            
+            {/* Year badge */}
+            <div className="absolute -top-3 left-5 bg-primary/90 text-white text-xs font-bold py-1 px-3 rounded-full shadow-md">
+              {(() => {
+                // Hardcoded values for specific positions to ensure consistency
+                if (item.id === 'pngIntern') {
+                  return 'May 2025 - Present';
+                }
+                if (item.id === 'ethosbytes') {
+                  return 'Jun 2024 - Dec 2024';
+                }
+                if (item.id === 'befiedFullstack') {
+                  return 'Oct 2023 - Jan 2024';
+                }
+                if (item.id === 'befiedFrontend') {
+                  return 'Jul 2023 - Oct 2023';
+                }
+                
+                // Fallback to formatted date if needed
+                if (!item.year.includes('-')) return item.year;
+                
+                // Format YYYY-MM to readable format
+                if (item.year.includes('-')) {
+                  const parts = item.year.split(' - ');
+                  const startPart = parts[0].trim();
+                  const endPart = parts[1].trim();
+                  
+                  // Convert YYYY-MM to Month YYYY format
+                  const formatDate = (datePart: string) => {
+                    if (datePart === 'Present') return 'Present';
+                    
+                    try {
+                      const [year, monthStr] = datePart.split('-');
+                      const month = parseInt(monthStr);
+                      
+                      const monthNames = [
+                        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                      ];
+                      
+                      return `${monthNames[month-1]} ${year}`;
+                    } catch (e) {
+                      return datePart; // Return as is if parsing fails
+                    }
+                  };
+                  
+                  return `${formatDate(startPart)} - ${formatDate(endPart)}`;
+                }
+                
+                return item.year;
+              })()}
+            </div>
+            
+            {/* Duration badge */}
+            <div className="absolute -bottom-3 left-5 bg-dark-100/90 border border-primary/20 text-primary/90 text-xs font-medium py-1 px-3 rounded-full shadow-sm">
+              {(() => {
+                // Parse the year string to calculate duration
+                const calculateDuration = (yearString: string) => {
+                  if (!yearString || !yearString.includes(' - ')) {
+                    return '1 mo';
+                  }
+                  
+                  const [startStr, endStr] = yearString.split(' - ');
+                  
+                  // Handle specific positions
+                  if (yearString.includes('2025-05 - Present')) {
+                    // For P&G position
+                    const currentDate = new Date();
+                    const startDate = new Date(2025, 4); // May 2025 (months are 0-indexed)
+                    
+                    const months = (currentDate.getFullYear() - startDate.getFullYear()) * 12 + 
+                                  (currentDate.getMonth() - startDate.getMonth());
+                    
+                    return `${months} mos+`;
+                  } else if (yearString.includes('2024-06 - 2024-12')) {
+                    // For Ethos Bytes position - 7 months
+                    return '7 mos';
+                  } else if (yearString.includes('2023-10 - 2024-01')) {
+                    // For BeFied Full-stack - 4 months
+                    return '4 mos';
+                  } else if (yearString.includes('2023-07 - 2023-10')) {
+                    // For BeFied Frontend - 4 months
+                    return '4 mos';
+                  }
+                  
+                  // Generic calculation as fallback
+                  try {
+                    const [startYear, startMonthStr] = startStr.split('-');
+                    const startMonth = parseInt(startMonthStr);
+                    
+                    let endYear, endMonth;
+                    
+                    if (endStr === 'Present') {
+                      const now = new Date();
+                      endYear = now.getFullYear();
+                      endMonth = now.getMonth() + 1; // 1-indexed month
+                    } else {
+                      [endYear, endMonth] = endStr.split('-').map(num => parseInt(num));
+                    }
+                    
+                    const monthDiff = (endYear - parseInt(startYear)) * 12 + 
+                                    (endMonth - startMonth) + 1; // inclusive of start and end month
+                    
+                    if (monthDiff >= 12) {
+                      const years = Math.floor(monthDiff / 12);
+                      const months = monthDiff % 12;
+                      return months > 0 
+                        ? `${years} yr${years > 1 ? 's' : ''} ${months} mo${months > 1 ? 's' : ''}${endStr === 'Present' ? '+' : ''}` 
+                        : `${years} yr${years > 1 ? 's' : ''}${endStr === 'Present' ? '+' : ''}`;
+                    } else {
+                      return `${monthDiff} mo${monthDiff > 1 ? 's' : ''}${endStr === 'Present' ? '+' : ''}`;
+                    }
+                  } catch (e) {
+                    // If parsing fails for any reason, return specific durations based on position
+                    if (item.id === 'pngIntern') return '4 mos+';
+                    if (item.id === 'ethosbytes') return '7 mos';
+                    if (item.id === 'befiedFullstack') return '4 mos';
+                    if (item.id === 'befiedFrontend') return '4 mos';
+                    return '3 mos'; // Default fallback
+                  }
+                };
+                
+                return calculateDuration(item.year);
+              })()}
+            </div>
+            
+            <div className="mt-6">
+              {/* Title with icon and logo */}
+              <div className="flex items-center mb-2">
+                <div className="flex items-center">
+                  <div className="mr-2">
+                    <TypeIcon type={item.id} />
+                  </div>
+                  {item.logo && (
+                    <div className="ml-1 w-6 h-6 bg-white/5 rounded-md p-0.5 flex items-center justify-center border border-white/10">
+                      <img 
+                        src={item.logo} 
+                        alt={`${item.subtitle} logo`}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                  )}
+                </div>
+                <div className="ml-2">
+                  <h3 className="font-bold text-base text-white">
+                    {item.title || item.subtitle}
+                  </h3>
+                  {item.title && <p className="text-gray-400 text-xs font-normal mt-0.5">{item.subtitle}</p>}
+                </div>
+              </div>
+              
+              {/* Location and Time on a single horizontal line */}
+              <div className="flex items-center mt-3 text-sm text-gray-400">
+                <div className="flex items-center">
+                  <FiMapPin className="mr-1" />
+                  <span>{item.location}</span>
+                </div>
+                <span className="mx-2">•</span>
+                <div className="flex items-center">
+                  <FiClock className="mr-1" />
+                  <span>
+                    {(() => {
+                      // Use hardcoded durations that match the badge duration
+                      if (item.id === 'pngIntern') return '4 mos+';
+                      if (item.id === 'ethosbytes') return '7 mos';
+                      if (item.id === 'befiedFullstack') return '4 mos';
+                      if (item.id === 'befiedFrontend') return '4 mos';
+                      
+                      if (!item.year.includes('-')) return '1 mo';
+                      
+                      const parts = item.year.split(' - ');
+                      const startPart = parts[0].trim();
+                      const endPart = parts[1].trim();
+                      
+                      // Calculate duration based on specific dates
+                      if (startPart === 'May 2025' && endPart === 'Present') return '4 mos+';
+                      if (startPart === 'Jun 2024' && endPart === 'Dec 2024') return '7 mos';
+                      if (startPart === 'Oct 2023' && endPart === 'Jan 2024') return '4 mos';
+                      if (startPart === 'Jul 2023' && endPart === 'Oct 2023') return '4 mos';
+                      
+                      return '3 mos'; // Default fallback
+                    })()}
+                  </span>
+                </div>
+              </div>
+              
+              {/* Description preview */}
+              <p className="text-gray-400 text-sm mt-3 line-clamp-2">
+                {item.description.substring(0, 80)}...
+              </p>
+              
+              <div className="mt-4 flex items-center justify-between">
+                {/* Experience fields tags in a single line with overflow hidden */}
+                <div className="flex gap-2 overflow-x-hidden">
+                  <div className="flex gap-2">
+                    {item.technologies.slice(0, 2).map((tech, i) => (
+                      <span 
+                        key={i} 
+                        className="px-2 py-0.5 text-xs bg-dark-300/60 text-primary/80 rounded-md border border-primary/10 whitespace-nowrap hover:bg-primary/20 hover:text-primary transition-all"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {item.technologies.length > 2 && (
+                      <span className="px-2 py-0.5 text-xs bg-dark-300/60 text-gray-400 rounded-md border border-white/5 whitespace-nowrap">
+                        +{item.technologies.length - 2}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                
+                {/* View More button */}
+                <div className="flex">
+                  <motion.button
+                    whileHover={{ x: 3 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="text-sm md:text-xs flex items-center font-medium text-gray-400 hover:text-white hover:bg-primary/20 py-1 px-2 md:py-0.5 md:px-1.5 rounded-md transition-all duration-200"
+                  >
+                    View More
+                    <FiArrowUpRight className="ml-1" />
+                  </motion.button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 };
@@ -555,7 +844,7 @@ const TimelineModal = ({ item, isOpen, onClose }: TimelineModalProps) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="relative w-full max-w-3xl max-h-[80vh] overflow-y-auto m-4 p-8 rounded-xl bg-gradient-to-br from-dark-100/95 to-dark-200/95 backdrop-blur-xl border border-white/10 shadow-2xl fade-in"
+            className="relative w-full max-w-3xl max-h-[80vh] overflow-y-auto m-4 p-8 rounded-2xl bg-gradient-to-br from-dark-100/95 to-dark-200/95 backdrop-blur-xl border border-white/10 shadow-2xl fade-in"
           >
             {/* Close button */}
             <motion.button 
@@ -732,7 +1021,7 @@ const JourneyTimeline = () => {
         <div className="relative max-w-5xl mx-auto">
           {/* Timeline line with subtle glow extending to the very bottom - with animation */}
           <motion.div 
-            className="absolute left-1/2 top-0 bottom-0 w-[2px] transform -translate-x-1/2 z-10"
+            className="absolute left-1/2 top-0 bottom-0 w-[2px] transform -translate-x-1/2 z-0 hidden lg:block"
             initial={{ height: 0, opacity: 0 }}
             whileInView={{ 
               height: "100%", 
@@ -748,6 +1037,13 @@ const JourneyTimeline = () => {
               boxShadow: '0 0 8px rgba(255, 255, 255, 0.4)'
             }}
           ></motion.div>
+          
+          {/* Mobile/tablet vertical line - full height */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] transform -translate-x-1/2 z-0 lg:hidden"
+               style={{ 
+                 background: 'rgba(255, 255, 255, 0.7)',
+                 boxShadow: '0 0 8px rgba(255, 255, 255, 0.4)'
+               }}></div>
                
           {/* Start point at top of timeline - separate from the line */}
           <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-20 flex items-center justify-center">
@@ -762,7 +1058,7 @@ const JourneyTimeline = () => {
           </div>
           
           {/* Timeline items with staggered fade-in animations */}
-          <div className="relative space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-28 stagger-timeline mt-8 mb-8">
+          <div className="relative space-y-20 md:space-y-24 lg:space-y-28 stagger-timeline mt-8 mb-12">
             {timelineData.map((item, index) => (
               <motion.div
                 key={item.id}
@@ -774,7 +1070,7 @@ const JourneyTimeline = () => {
                   delay: index * 0.2,
                   ease: [0.25, 0.1, 0.25, 1.0]
                 }}
-                className="timeline-item-container"
+                className="timeline-item-container relative pt-10 lg:pt-0 z-10"
               >
                 <TimelineCard
                   item={item}

@@ -23,10 +23,10 @@ export function initLocomotiveScroll() {
     // Create a new LocomotiveScroll instance with optimized settings for stability
     const locomotiveScroll = new LocomotiveScroll({
       el: scrollContainer as HTMLElement,
-      smooth: true,
+      smooth: false,          // DISABLED SMOOTH SCROLLING to make navigation immediate
       smoothMobile: false,    // Disable on mobile for better performance
       multiplier: 1,          // Default multiplier for more natural scrolling
-      lerp: 0.05,             // Lower lerp value for more stability and less lag
+      lerp: 0,                // DISABLED LERP for immediate response
       getDirection: true,     // Enable direction detection for animations
       getSpeed: false,        // Disable speed detection to reduce calculation overhead
       inertia: 0,             // Disable inertia completely to prevent bounce-back effect

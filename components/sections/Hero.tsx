@@ -9,7 +9,18 @@ import ParticlesBackground from '../ui/ParticlesBackground';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-10 md:pt-32 md:pb-10 lg:pt-36 lg:pb-10 bg-background">
+    <section 
+      id="home" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
+      style={{ 
+        minHeight: 'calc(100vh)', 
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: '3rem',
+        paddingBottom: '5rem'
+      }}
+    >
       {/* Starry background animation - lowest layer */}
       <div className="absolute inset-0 z-0">
         <ParticlesBackground type="stars" />
@@ -17,29 +28,32 @@ const Hero = () => {
       
       {/* Background overlay to darken and add depth */}
       <div className="absolute top-0 left-0 w-full h-full z-10">
-        {/* Removed gradient accents as requested */}
-        
         {/* Dark overlay to ensure text readability with the particles */}
         <div className="absolute inset-0 bg-background/70"></div>
       </div>
       
-      <div className="container mx-auto px-6 sm:px-8 md:px-10 lg:px-16 xl:px-24 max-w-[1600px] z-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-6 xl:gap-10 items-center">
+      <div 
+        className="container mx-auto px-5 sm:px-8 md:px-10 lg:px-16 xl:px-24 max-w-[1600px] z-20"
+        style={{ 
+          marginTop: '-40px', // Offset for navbar height
+        }}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6 xl:gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-[700px] lg:pr-6"
+            className="max-w-[700px] lg:pr-6 text-center lg:text-left"
           >
-            <h1 className="text-[2.8rem] sm:text-5xl md:text-6xl lg:text-6xl xl:text-[4.75rem] font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-6 lg:mb-7 leading-[1.05]">
-              Mark Neil Autrizzzzz
+            <h1 className="text-[2.2rem] sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4 lg:mb-6 leading-[1.1]">
+              Mark Neil Autriz
             </h1>
-            <p className="text-base md:text-lg text-gray-200 mb-5 max-w-xl leading-relaxed">
+            <p className="text-base md:text-lg text-gray-200 mb-4 max-w-xl leading-relaxed mx-auto lg:mx-0">
               Designing transformative digital experiences 
               with sleek interfaces, innovative solutions, and boundary-pushing creativity 
               that redefine what's possible.
             </p>
-            <div className="flex flex-wrap items-center text-xl md:text-2xl lg:text-3xl text-gray-300 mb-8 md:mb-10">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start text-xl md:text-2xl lg:text-2xl xl:text-3xl text-gray-300 mb-6 md:mb-8">
               <span className="mr-2">Hello! I'm a</span>
               <div className="profession-wrapper">
                 <Typewriter
@@ -59,12 +73,12 @@ const Hero = () => {
               </div>
             </div>
             
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               <Link href="#project-showcase">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-7 py-3.5 bg-gradient-to-r from-primary to-blue-400 text-white font-medium rounded shadow-lg shadow-primary/20 hover:from-blue-500 hover:to-blue-400 transition-all duration-300 text-[15px]"
+                  className="px-5 sm:px-7 py-3 sm:py-3.5 bg-gradient-to-r from-primary to-blue-400 text-white font-medium rounded shadow-lg shadow-primary/20 hover:from-blue-500 hover:to-blue-400 transition-all duration-300 text-sm sm:text-[15px]"
                 >
                   Explore Work
                 </motion.button>
@@ -73,7 +87,7 @@ const Hero = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-7 py-3.5 bg-transparent border border-white/30 text-white font-medium rounded hover:bg-white/5 transition-all duration-300 text-[15px]"
+                  className="px-5 sm:px-7 py-3 sm:py-3.5 bg-transparent border border-white/30 text-white font-medium rounded hover:bg-white/5 transition-all duration-300 text-sm sm:text-[15px]"
                 >
                   Download CV
                 </motion.button>
@@ -82,31 +96,57 @@ const Hero = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-7 py-3.5 bg-gradient-to-r from-secondary to-rose-400 text-white font-medium rounded shadow-lg shadow-secondary/20 hover:from-rose-500 hover:to-rose-400 transition-all duration-300 text-[15px]"
+                  className="px-5 sm:px-7 py-3 sm:py-3.5 bg-gradient-to-r from-secondary to-rose-400 text-white font-medium rounded shadow-lg shadow-secondary/20 hover:from-rose-500 hover:to-rose-400 transition-all duration-300 text-sm sm:text-[15px]"
                 >
                   Hire Me
                 </motion.button>
               </Link>
             </div>
             
-            <div className="mt-14 lg:mt-16 flex items-center gap-10 text-sm text-gray-400">
+            <div className="mt-8 lg:mt-10 flex items-center justify-center lg:justify-start gap-6 md:gap-10 text-xs sm:text-sm text-gray-400">
               <div className="flex items-center">
-                <span className="font-bold text-white text-xl lg:text-2xl mr-2">50+</span> Projects
+                <span className="font-bold text-white text-lg sm:text-xl lg:text-2xl mr-2">50+</span> Projects
               </div>
               <div className="flex items-center">
-                <span className="font-bold text-white text-xl lg:text-2xl mr-2">99%</span> Success Rate
+                <span className="font-bold text-white text-lg sm:text-xl lg:text-2xl mr-2">99%</span> Success Rate
               </div>
             </div>
           </motion.div>
           
+          {/* Mobile hero image */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="lg:hidden flex justify-center items-center z-30 mt-4 mb-8"
+          >
+            <div className="relative w-[280px] h-[300px] sm:w-[320px] sm:h-[340px] p-[3px] rounded-lg bg-gradient-to-br from-primary/30 via-accent/20 to-primary/30 shadow-lg shadow-primary/20 z-40 mx-auto">
+              <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-white/10 shadow-2xl shine-effect hero-shine">
+                <Image
+                  src="/hero-avatar.jpg"
+                  alt="Avatar"
+                  width={400}
+                  height={430}
+                  className="object-cover w-full h-full relative z-50"
+                  priority
+                  quality={90}
+                />
+                
+                {/* Subtle inner shadow */}
+                <div className="absolute inset-0 shadow-inner ring-1 ring-inset ring-white/5"></div>
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* Desktop hero image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="relative hidden lg:flex lg:justify-center lg:items-center z-30"
+            className="relative hidden lg:flex lg:justify-center lg:items-center z-30 h-full"
           >
             {/* Enhanced image container with professional gradient border and enhanced shine effect */}
-            <div className="relative w-[480px] h-[500px] xl:w-[520px] xl:h-[540px] p-[3px] rounded-lg bg-gradient-to-br from-primary/30 via-accent/20 to-primary/30 shadow-lg shadow-primary/20 z-40">
+            <div className="relative w-[480px] h-[500px] xl:w-[520px] xl:h-[540px] p-[3px] rounded-lg bg-gradient-to-br from-primary/30 via-accent/20 to-primary/30 shadow-lg shadow-primary/20 z-40 mx-auto">
               <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-white/10 shadow-2xl shine-effect hero-shine">
                 <Image
                   src="/hero-avatar.jpg"
@@ -122,8 +162,6 @@ const Hero = () => {
                 <div className="absolute inset-0 shadow-inner ring-1 ring-inset ring-white/5"></div>
               </div>
             </div>
-            
-            {/* Removed light effect behind avatar and corner accents as requested */}
           </motion.div>
         </div>
       </div>
@@ -132,7 +170,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.5 }}
-        className="absolute bottom-8 md:bottom-10 left-0 right-0 mx-auto flex justify-center items-center z-20"
+        className="absolute bottom-8 md:bottom-10 left-0 right-0 mx-auto flex justify-center items-center z-20 pb-4"
       >
         <div className="flex flex-col items-center">
           <span className="text-gray-400 mb-2 text-sm font-medium tracking-wider">Scroll to explore</span>

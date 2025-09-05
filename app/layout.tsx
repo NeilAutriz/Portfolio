@@ -25,6 +25,9 @@ export default function RootLayout({
     document.body.style.overflow = 'auto';
     document.documentElement.style.overflow = 'auto';
     
+    // Save initial hash for later processing
+    const initialHash = window.location.hash;
+    
     // Preload key elements to prevent layout shifts
     if (typeof window !== 'undefined') {
       const preloadLinks = [
@@ -78,6 +81,33 @@ export default function RootLayout({
             document.documentElement.classList.remove('is-scrolling');
           }, 150);
         });
+        
+        // Handle initial hash navigation
+        if (initialHash) {
+          const targetId = initialHash.substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            // First, scroll immediately with native scrolling
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 70;
+            window.scrollTo({ top: elementPosition, behavior: 'auto' });
+            
+            // Then try locomotive scroll for any additional positioning
+            try {
+              // Immediate positioning with locomotive scroll
+              scrollInstance.scrollTo(targetElement, {
+                offset: -70, // navbar height offset
+                duration: 50, // Very fast duration
+                disableLerp: true // Disable smoothing
+              });
+            } catch (error) {
+              console.error('Error with locomotive scroll for initial hash navigation:', error);
+            }
+          }
+        }
+        
+        // Make the scroll instance available globally
+        (window as any).locomotiveScroll = scrollInstance;
         
         // Reveal content with slight delay for smoother transition
         setTimeout(() => {

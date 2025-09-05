@@ -14,27 +14,27 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="relative bg-background pt-20 pb-10 overflow-hidden border-t border-white/5">
+    <footer className="relative bg-background pt-16 sm:pt-20 pb-8 sm:pb-10 overflow-hidden border-t border-white/5">
       {/* Footer with columns layout */}
-      <div className="container mx-auto px-6 sm:px-8 md:px-10 lg:px-16 xl:px-24 max-w-[1600px]">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+      <div className="container mx-auto px-5 sm:px-8 md:px-10 lg:px-16 xl:px-24 max-w-[1600px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-12 lg:mb-16">
           {/* Column 1: About */}
           <div>
-            <div className="flex items-center mb-6">
+            <div className="flex items-center mb-5 justify-center sm:justify-start">
               <Image
                 src="/mainlogo(white).png" 
                 alt="Mark Neil Autriz Logo"
                 width={160}
                 height={160}
-                className="mr-3 w-[120px] h-auto"
+                className="mr-3 w-[110px] sm:w-[120px] h-auto"
               />
             </div>
-            <p className="text-gray-400 mb-6 text-sm">
+            <p className="text-gray-400 mb-5 text-sm text-center sm:text-left">
               Code Meets Creativity.
               Crafted with passion by Mark Neil Autriz blending clean code, bold visuals, and
               strategic design to build digital experiences that stand out. Every pixel has a purpose.
             </p>
-            <div className="flex space-x-4 mb-8">
+            <div className="flex space-x-4 mb-6 sm:mb-8 justify-center sm:justify-start">
               <Link href="https://www.linkedin.com/in/markneil-autriz/" target="_blank" className="text-gray-400 hover:text-primary transition-colors">
                 <FiLinkedin size={20} />
               </Link>
@@ -54,9 +54,9 @@ const Footer = () => {
           </div>
           
           {/* Column 2: Quick Links */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-6">Quick Links</h3>
-            <ul className="space-y-3">
+          <div className="text-center sm:text-left">
+            <h3 className="text-white font-semibold text-lg mb-4 sm:mb-6">Quick Links</h3>
+            <ul className="space-y-2 sm:space-y-3">
               <li>
                 <Link href="#project-showcase" className="text-gray-400 hover:text-white transition-colors text-sm">
                   My Works
@@ -86,9 +86,9 @@ const Footer = () => {
           </div>
           
           {/* Column 3: Services */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-6">Services</h3>
-            <ul className="space-y-3">
+          <div className="text-center sm:text-left">
+            <h3 className="text-white font-semibold text-lg mb-4 sm:mb-6">Services</h3>
+            <ul className="space-y-2 sm:space-y-3">
               <li>
                 <Link href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Web Development
@@ -118,9 +118,9 @@ const Footer = () => {
           </div>
           
           {/* Column 4: Contact */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-6">Contact</h3>
-            <ul className="space-y-3">
+          <div className="text-center sm:text-left">
+            <h3 className="text-white font-semibold text-lg mb-4 sm:mb-6">Contact</h3>
+            <ul className="space-y-2 sm:space-y-3">
               <li className="text-gray-400 text-sm">
                 Metro Manila, Philippines
               </li>
@@ -134,7 +134,7 @@ const Footer = () => {
                   +63 912 345 6789
                 </Link>
               </li>
-              <li className="pt-4">
+              <li className="pt-3 sm:pt-4 flex justify-center sm:justify-start">
                 <Link 
                   href="#lets-connect"
                   className="px-5 py-2.5 bg-primary text-white font-medium rounded-md text-sm hover:bg-primary/90 transition-colors"
@@ -147,11 +147,11 @@ const Footer = () => {
         </div>
         
         {/* Bottom footer */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-white text-sm mb-4 md:mb-0">
+        <div className="pt-6 sm:pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-white text-sm mb-4 md:mb-0 text-center md:text-left">
             © {currentYear} Mark Neil Autriz. All rights reserved.
           </p>
-          <div className="flex space-x-6">
+          <div className="flex space-x-4 sm:space-x-6 flex-wrap justify-center">
             <Link href="/privacy" className="text-white hover:text-primary text-sm transition-colors">
               Privacy Policy
             </Link>

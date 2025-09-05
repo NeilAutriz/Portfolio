@@ -205,7 +205,7 @@ const ProjectShowcase = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-dark-100/70 backdrop-blur-sm rounded-lg overflow-hidden project-card border border-white/5 shadow-lg hover:shadow-xl hover:border-primary/10 transition-all duration-300 scale-100 group relative"
+              className="bg-dark-100/70 backdrop-blur-sm rounded-2xl overflow-hidden project-card border border-white/5 shadow-lg hover:shadow-xl hover:border-primary/10 transition-all duration-300 scale-100 group relative"
               whileHover={{ 
                 y: -5, 
                 scale: 0.98, 

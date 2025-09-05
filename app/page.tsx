@@ -19,7 +19,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background">
+    <main id="top" className="min-h-screen bg-background">
       <Hero />
       <div className="relative z-10 overflow-x-hidden space-y-0">
         {/* Dark subtle particles background for the rest of the site */}

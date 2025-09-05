@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { FiCode, FiServer, FiDatabase, FiLayout, FiCloud, FiTool } from 'react-icons/fi';
 import CircularProgress from '../ui/CircularProgress';
+import { useWindowSize } from '../../hooks/useWindowSize';
 
 const skills = [
   {
@@ -118,6 +119,7 @@ const techLogos = [
 const SkillsMastery = () => {
   const [activeSkill, setActiveSkill] = useState(skills[0].id);
   const [isHovered, setIsHovered] = useState(false);
+  const { width } = useWindowSize();
   
   // Double the tech logos for seamless infinite scrolling
   const duplicatedLogos = [...techLogos, ...techLogos];
@@ -129,18 +131,18 @@ const SkillsMastery = () => {
         <div className="absolute top-1/3 left-1/3 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/15 to-primary/10 rounded-full filter blur-[150px]"></div>
         <div className="absolute bottom-1/4 right-1/3 w-[500px] h-[500px] bg-gradient-to-r from-secondary/15 to-purple-500/10 rounded-full filter blur-[120px]"></div>
       </div>
-      <div className="container mx-auto px-6 sm:px-8 md:px-10 lg:px-16 xl:px-20 relative z-10">
+      <div className="container mx-auto px-5 sm:px-8 md:px-10 lg:px-16 xl:px-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-14"
+          className="text-center mb-10 md:mb-14"
         >
           <div className="text-center">
             <div className="section-subtitle">What I Know</div>
-            <h2 className="section-title">Skills Mastery</h2>
-            <p className="text-gray-300 max-w-3xl mx-auto text-lg">
+            <h2 className="section-title text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4">Skills Mastery</h2>
+            <p className="text-gray-300 max-w-3xl mx-auto text-base sm:text-lg">
               Crafting digital experiences with a versatile tech stack and a focus on innovation.
             </p>
           </div>
@@ -242,11 +244,11 @@ const SkillsMastery = () => {
             className="col-span-1"
           >
             {/* Skill Select Cards */}
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {skills.map((skill) => (
                 <motion.div
                   key={skill.id}
-                  className={`bg-dark-100/50 backdrop-blur-lg rounded-xl border p-4 flex items-center gap-4 cursor-pointer transition-all hover:bg-dark-100/80 ${
+                  className={`bg-dark-100/50 backdrop-blur-lg rounded-2xl border p-3 sm:p-4 flex items-center gap-3 sm:gap-4 cursor-pointer transition-all hover:bg-dark-100/80 ${
                     activeSkill === skill.id 
                       ? 'border-primary shadow-glow' 
                       : 'border-white/5 shadow-xl'
@@ -259,7 +261,7 @@ const SkillsMastery = () => {
                   }
                 >
                   <div 
-                    className={`p-3.5 rounded-full backdrop-blur-sm border shadow-lg ${skill.textColor}`}
+                    className={`p-2.5 sm:p-3.5 rounded-full backdrop-blur-sm border shadow-lg ${skill.textColor}`}
                     style={{ 
                       background: activeSkill === skill.id 
                         ? `linear-gradient(135deg, ${skill.color}20, ${skill.color}05)` 
@@ -267,11 +269,11 @@ const SkillsMastery = () => {
                       borderColor: activeSkill === skill.id ? `${skill.color}40` : 'rgba(255, 255, 255, 0.05)'
                     }}
                   >
-                    <skill.icon className="w-6 h-6" />
+                    <skill.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
-                    <h3 className={`text-lg font-semibold ${activeSkill === skill.id ? 'text-white' : 'text-gray-200'}`}>{skill.title}</h3>
-                    <p className="text-sm text-gray-400">{skill.description}</p>
+                    <h3 className={`text-base sm:text-lg font-semibold ${activeSkill === skill.id ? 'text-white' : 'text-gray-200'}`}>{skill.title}</h3>
+                    <p className="text-xs sm:text-sm text-gray-400">{skill.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -294,16 +296,16 @@ const SkillsMastery = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
-                  className="relative bg-dark-100/50 backdrop-blur-md p-8 rounded-lg border border-white/5 shadow-xl overflow-hidden h-full flex flex-col"
+                  className="relative bg-dark-100/50 backdrop-blur-md p-5 sm:p-6 md:p-8 rounded-2xl border border-white/5 shadow-xl overflow-hidden h-full flex flex-col"
                 >
                   {/* Decorative background elements */}
                   <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-primary/5 blur-3xl"></div>
                   <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-secondary/5 blur-3xl"></div>
                   
                   {/* Skill header with fancy CircularProgress */}
-                  <div className="flex items-center justify-between mb-6 relative z-10">
+                  <div className="flex items-center justify-between mb-4 sm:mb-6 relative z-10">
                     <motion.h3 
-                      className="text-2xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
+                      className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
                       initial={{ x: -20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ duration: 0.7, delay: 0.2 }}
@@ -312,7 +314,7 @@ const SkillsMastery = () => {
                     </motion.h3>
                     
                     <motion.div 
-                      className="h-20 w-20 relative"
+                      className="h-16 w-16 sm:h-20 sm:w-20 relative"
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.5, delay: 0.3 }}
@@ -324,7 +326,7 @@ const SkillsMastery = () => {
                       
                       <CircularProgress
                         progress={skill.percentage}
-                        size={80}
+                        size={width < 640 ? 64 : 80}
                         strokeWidth={6}
                         showPercentage={true}
                       />
@@ -385,7 +387,7 @@ const SkillsMastery = () => {
                       </h4>
                       <div className="h-px flex-1 bg-gradient-to-r from-primary/20 to-transparent"></div>
                     </div>
-                    <div className="bg-gradient-to-br from-dark-100/50 to-dark-100/30 border border-white/5 rounded-lg p-4">
+                    <div className="bg-gradient-to-br from-dark-100/50 to-dark-100/30 border border-white/5 rounded-2xl p-4">
                       <ul className="space-y-2 text-sm text-gray-300 list-disc pl-4">
                         {skill.id === 'frontend' && (
                           <>

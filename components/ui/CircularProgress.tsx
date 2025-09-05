@@ -68,7 +68,8 @@ const CircularProgress = ({
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg font-bold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent"
+            className="text-base sm:text-lg font-bold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent"
+            style={{ fontSize: size <= 64 ? '0.875rem' : '1.125rem' }}
           >
             {progress}%
           </motion.span>

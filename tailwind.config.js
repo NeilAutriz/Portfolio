@@ -34,8 +34,20 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "scroll": "scroll 30s linear infinite",
         "timeline-pulse": "timeline-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "shine": "shine 2s ease-in-out infinite alternate",
+        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
       keyframes: {
+        shine: {
+          '0%': { 
+            opacity: '0.5',
+            backgroundPosition: '200% 50%'
+          },
+          '100%': { 
+            opacity: '1',
+            backgroundPosition: '0% 50%'
+          }
+        },
         scroll: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(calc(-100% / 2))' },
@@ -61,6 +73,21 @@ module.exports = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      // Add responsive spacing adjustments
+      screens: {
+        'xs': '480px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
+      // Custom spacing for sections
+      spacing: {
+        'section-sm': '3rem',
+        'section-md': '5rem',
+        'section-lg': '7rem',
       },
     },
   },
