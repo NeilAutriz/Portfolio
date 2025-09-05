@@ -150,13 +150,13 @@ const ClientTestimonials = () => {
           {/* Side Navigation Arrows */}
           <button 
             onClick={prevItem}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-[#1e293b] hover:bg-[#3b82f6] text-white transition-all duration-300 hover:shadow-md hover:shadow-blue-500/20 transform hover:-translate-x-0.5 -ml-5 lg:-ml-10"
+            className="absolute left-3 md:left-5 lg:left-10 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-[#1e293b] hover:bg-[#3b82f6] text-white transition-all duration-300 hover:shadow-md hover:shadow-blue-500/20 transform hover:-translate-x-0.5"
             aria-label="Previous testimonial"
           >
             <FiArrowLeft className="w-5 h-5" />
           </button>
           
-          <div className="overflow-hidden px-6">
+          <div className="overflow-hidden px-8 md:px-12 lg:px-16">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -164,7 +164,7 @@ const ClientTestimonials = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.5 }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 px-2 md:px-4"
               >
                 {getCurrentTestimonials().map((testimonial) => (
                   <motion.div
@@ -220,7 +220,7 @@ const ClientTestimonials = () => {
           
           <button 
             onClick={nextItem}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-[#1e293b] hover:bg-[#3b82f6] text-white transition-all duration-300 hover:shadow-md hover:shadow-blue-500/20 transform hover:translate-x-0.5 -mr-5 lg:-mr-10"
+            className="absolute right-3 md:right-5 lg:right-10 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-[#1e293b] hover:bg-[#3b82f6] text-white transition-all duration-300 hover:shadow-md hover:shadow-blue-500/20 transform hover:translate-x-0.5"
             aria-label="Next testimonial"
           >
             <FiArrowRight className="w-5 h-5" />

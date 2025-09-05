@@ -32,7 +32,7 @@ const Hero = () => {
             className="max-w-[700px] lg:pr-6"
           >
             <h1 className="text-[2.8rem] sm:text-5xl md:text-6xl lg:text-6xl xl:text-[4.75rem] font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-6 lg:mb-7 leading-[1.05]">
-              Mark Neil Autriz
+              Mark Neil Autrizzzzz
             </h1>
             <p className="text-base md:text-lg text-gray-200 mb-5 max-w-xl leading-relaxed">
               Designing transformative digital experiences 

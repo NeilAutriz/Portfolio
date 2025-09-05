@@ -21,6 +21,10 @@ export default function RootLayout({
     
     if (typeof window === 'undefined') return;
     
+    // Enable native scrolling as a fallback
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
+    
     // Preload key elements to prevent layout shifts
     if (typeof window !== 'undefined') {
       const preloadLinks = [
@@ -55,26 +59,35 @@ export default function RootLayout({
         const scrollInstance = initLocomotiveScroll();
         setLocomotiveScrollInstance(scrollInstance);
         
-        // Add scroll event listener for custom effects
-        if (scrollInstance) {
-          scrollInstance.on('scroll', (args: any) => {
-            // Add custom scroll-based effects here if needed
-            document.documentElement.classList.add('is-scrolling');
-            
-            // Remove scrolling class after slight delay
-            clearTimeout(window.scrollTimeout);
-            window.scrollTimeout = setTimeout(() => {
-              document.documentElement.classList.remove('is-scrolling');
-            }, 150);
-          });
+        // If locomotive scroll initialization fails, ensure native scrolling works
+        if (!scrollInstance) {
+          document.body.style.overflow = 'auto';
+          document.documentElement.style.overflow = 'auto';
+          setLoading(false);
+          return;
         }
+        
+        // Add scroll event listener for custom effects
+        scrollInstance.on('scroll', (args: any) => {
+          // Add custom scroll-based effects here if needed
+          document.documentElement.classList.add('is-scrolling');
+          
+          // Remove scrolling class after slight delay
+          clearTimeout(window.scrollTimeout);
+          window.scrollTimeout = setTimeout(() => {
+            document.documentElement.classList.remove('is-scrolling');
+          }, 150);
+        });
         
         // Reveal content with slight delay for smoother transition
         setTimeout(() => {
           setLoading(false);
         }, 100);
       } catch (error) {
-        console.error('Error initializing locomotive scroll:', error);
+        console.error('Error initializing locomotive scroll, falling back to native scroll:', error);
+        // Ensure native scrolling works if locomotive scroll fails
+        document.body.style.overflow = 'auto';
+        document.documentElement.style.overflow = 'auto';
         setLoading(false);
       }
     });
@@ -100,12 +113,13 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
       <body 
-        className={`antialiased ${loading ? 'overflow-hidden' : ''}`} 
+        className="antialiased" 
         data-scroll-container
         style={{ 
           transform: 'translateZ(0)',
           WebkitFontSmoothing: 'antialiased',
-          MozOsxFontSmoothing: 'grayscale'
+          MozOsxFontSmoothing: 'grayscale',
+          overflow: loading ? 'hidden' : 'auto'
         }}
       >
         <NavbarNew />

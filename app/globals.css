@@ -10,6 +10,7 @@
     height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-y: auto !important; /* Force scrolling to work */
   }
   
   body {
@@ -17,6 +18,7 @@
     height: 100%;
     min-height: 100vh;
     transform: translateZ(0);
+    overflow-y: auto !important; /* Force scrolling to work */
   }
   
   /* Optimize rendering performance */
