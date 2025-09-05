@@ -15,89 +15,88 @@ export function initLocomotiveScroll() {
   // Get the scroll container
   const scrollContainer = document.querySelector('[data-scroll-container]') || document.documentElement;
   
-  // Create a new LocomotiveScroll instance with ultra-smooth settings inspired by asharkamran.netlify.app
+  // Create a new LocomotiveScroll instance with optimized settings for stability
   const locomotiveScroll = new LocomotiveScroll({
     el: scrollContainer as HTMLElement,
     smooth: true,
-    smoothMobile: true,     // Enable on mobile for consistent experience
-    multiplier: 0.45,       // Lower multiplier for extremely smooth scrolling
-    lerp: 0.095,            // Higher lerp for butter-smooth transitions with minimal lag
+    smoothMobile: false,    // Disable on mobile for better performance
+    multiplier: 1,          // Default multiplier for more natural scrolling
+    lerp: 0.05,             // Lower lerp value for more stability and less lag
     getDirection: true,     // Enable direction detection for animations
-    getSpeed: true,         // Enable speed detection for dynamic effects
-    inertia: 0.3,           // Add inertia for natural deceleration
-    touchMultiplier: 2,     // Enhanced touch sensitivity
+    getSpeed: false,        // Disable speed detection to reduce calculation overhead
+    inertia: 0,             // Disable inertia completely to prevent bounce-back effect
+    touchMultiplier: 1.5,   // More controlled touch sensitivity
     smartphone: {
-      smooth: true,         // Enable smooth scrolling on smartphones
-      multiplier: 0.5,      // Optimized for touch devices
+      smooth: false,        // Disable smooth scrolling on smartphones for stability
       breakpoint: 768
     },
     tablet: {
-      smooth: true,
-      multiplier: 0.5,      // Consistent experience across devices
+      smooth: false,        // Disable on tablets as well for consistency
       breakpoint: 1024
     },
     class: 'is-revealed',
-    reloadOnContextChange: false,
-    resetNativeScroll: false
+    reloadOnContextChange: true,
+    resetNativeScroll: true
   });
 
-  // Update scroll position on page refresh with optimized timing
-  setTimeout(() => {
-    // Force a layout recalculation before updating scroll
-    document.body.offsetHeight;
-    locomotiveScroll.update();
-    
-    // Fix for navbar to ensure it's properly positioned with locomotive scroll
-    const navbar = document.querySelector('.sticky-navbar');
-    if (navbar) {
-      // Ensure the navbar stays at the top regardless of locomotive scroll
-      navbar.classList.add('sticky-navbar');
-    }
-  }, 300); // Reduced for faster initialization
-
-  // Add smooth scroll updates on image/asset load
+  // Set up proper event listeners for smooth scrolling
+  
+  // Update scroll only when needed, not on every event
+  let hasPageLoaded = false;
+  
+  // Force update when the page has fully loaded all assets
   window.addEventListener('load', () => {
-    requestAnimationFrame(() => {
+    hasPageLoaded = true;
+    // Delay the update to ensure everything is rendered
+    setTimeout(() => {
       locomotiveScroll.update();
-    });
-  });
-
-  // Optimize scroll updates during interaction
-  document.addEventListener('mousemove', () => {
-    if (!document.documentElement.classList.contains('is-scrolling')) {
-      requestAnimationFrame(() => {
+    }, 300);
+  }, { once: true });
+  
+  // Update on image load to prevent layout shifts
+  document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('img');
+    let loadedImagesCount = 0;
+    
+    const imageLoadHandler = () => {
+      loadedImagesCount++;
+      if (loadedImagesCount === images.length) {
         locomotiveScroll.update();
-      });
-    }
-  }, { passive: true });
-
-  // Update scroll on window resize with highly optimized debouncing
+      }
+    };
+    
+    images.forEach(img => {
+      if (img.complete) {
+        imageLoadHandler();
+      } else {
+        img.addEventListener('load', imageLoadHandler);
+      }
+    });
+  }, { once: true });
+  
+  // Handle resize events with proper debouncing
   let resizeTimer: NodeJS.Timeout;
   const handleResize = () => {
     clearTimeout(resizeTimer);
-    document.documentElement.classList.add('is-resizing');
     
     resizeTimer = setTimeout(() => {
-      // Force layout recalculation before updating
-      document.body.offsetHeight;
-      locomotiveScroll.update();
-      document.documentElement.classList.remove('is-resizing');
-    }, 150); // Ultra-responsive resize handling
+      if (hasPageLoaded) {
+        locomotiveScroll.update();
+      }
+    }, 250);
   };
   
-  window.addEventListener('resize', handleResize);
+  window.addEventListener('resize', handleResize, { passive: true });
   
-  // Update on images/content load to prevent layout shifts
-  window.addEventListener('load', () => {
-    locomotiveScroll.update();
-    
-    // Fix for navbar to ensure it's properly positioned with locomotive scroll
-    const navbar = document.querySelector('.sticky-navbar');
-    if (navbar) {
-      // Ensure the navbar stays at the top regardless of locomotive scroll
-      navbar.classList.add('sticky-navbar');
-    }
-  });
+  // Stop scroll restoration on page reload
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  
+  // Make the instance globally available for other functions
+  if (typeof window !== 'undefined') {
+    (window as any).locomotiveScroll = locomotiveScroll;
+  }
 
   return locomotiveScroll;
 }

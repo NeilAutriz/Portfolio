@@ -37,42 +37,46 @@ export default function RootLayout({
       });
     }
     
-    // Ultra-smooth initialization with triple requestAnimationFrame for consistent timing
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(async () => {
-          try {
-            // Dynamically import locomotive scroll to avoid SSR issues
-            const { initLocomotiveScroll } = await import('../lib/locomotiveScroll');
-            // Initialize locomotive scroll
-            const scrollInstance = initLocomotiveScroll();
-            setLocomotiveScrollInstance(scrollInstance);
-            setLocomotiveScrollInstance(scrollInstance);
+    // Prevent scroll restoration causing jumps
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    
+    // Single requestAnimationFrame for cleaner initialization
+    requestAnimationFrame(async () => {
+      try {
+        // Dynamically import locomotive scroll to avoid SSR issues
+        const { initLocomotiveScroll } = await import('../lib/locomotiveScroll');
+        
+        // Disable native smooth scrolling to avoid conflicts
+        document.documentElement.style.scrollBehavior = 'auto';
+        
+        // Initialize locomotive scroll
+        const scrollInstance = initLocomotiveScroll();
+        setLocomotiveScrollInstance(scrollInstance);
+        
+        // Add scroll event listener for custom effects
+        if (scrollInstance) {
+          scrollInstance.on('scroll', (args: any) => {
+            // Add custom scroll-based effects here if needed
+            document.documentElement.classList.add('is-scrolling');
             
-            // Add scroll event listener for custom effects
-            if (scrollInstance) {
-              scrollInstance.on('scroll', (args: any) => {
-                // Add custom scroll-based effects here if needed
-                document.documentElement.classList.add('is-scrolling');
-                
-                // Remove scrolling class after slight delay
-                clearTimeout(window.scrollTimeout);
-                window.scrollTimeout = setTimeout(() => {
-                  document.documentElement.classList.remove('is-scrolling');
-                }, 150);
-              });
-            }
-            
-            // Reveal content with slight delay for smoother transition
-            setTimeout(() => {
-              setLoading(false);
-            }, 100);
-          } catch (error) {
-            console.error('Error initializing locomotive scroll:', error);
-            setLoading(false);
-          }
-        });
-      });
+            // Remove scrolling class after slight delay
+            clearTimeout(window.scrollTimeout);
+            window.scrollTimeout = setTimeout(() => {
+              document.documentElement.classList.remove('is-scrolling');
+            }, 150);
+          });
+        }
+        
+        // Reveal content with slight delay for smoother transition
+        setTimeout(() => {
+          setLoading(false);
+        }, 100);
+      } catch (error) {
+        console.error('Error initializing locomotive scroll:', error);
+        setLoading(false);
+      }
     });
     
     return () => {
@@ -85,10 +89,10 @@ export default function RootLayout({
         clearTimeout(window.scrollTimeout);
       }
     };
-  }, [locomotiveScrollInstance]);
+  }, []);
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

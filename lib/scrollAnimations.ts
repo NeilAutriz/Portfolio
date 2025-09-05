@@ -87,13 +87,18 @@ export function scrollToElement(elementId: string) {
   const element = document.getElementById(elementId);
   if (!element) return;
   
-  // Use requestAnimationFrame for smoother scrolling
-  requestAnimationFrame(() => {
-    window.scrollTo({
-      top: element.offsetTop,
-      behavior: 'smooth'
+  // Check if locomotiveScroll instance exists in window
+  if (typeof window !== 'undefined' && (window as any).locomotiveScroll) {
+    // Use Locomotive Scroll for scrolling
+    (window as any).locomotiveScroll.scrollTo(element, {
+      offset: 0,
+      duration: 1000,
+      easing: [0.25, 0.0, 0.35, 1.0]
     });
-  });
+  } else {
+    // Fallback to native scrolling
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 /**
@@ -103,6 +108,7 @@ export function initAllScrollAnimations() {
   // Wrap in requestAnimationFrame for better performance
   requestAnimationFrame(() => {
     initScrollReveal();
-    initParallaxEffect();
+    // Don't initialize parallax if using Locomotive Scroll
+    // as it will handle the parallax effects
   });
 }

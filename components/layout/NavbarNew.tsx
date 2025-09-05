@@ -69,7 +69,7 @@ export default function Navbar() {
       <nav
         className={`w-full transition-all duration-500 ease-out ${
           scrolled 
-            ? 'bg-black/80 backdrop-blur-xl shadow-xl border-b border-gray-700/30 py-3' 
+            ? 'bg-black/80 backdrop-blur-xl shadow-xl py-3' 
             : 'bg-black/60 backdrop-blur-sm py-4'
         }`}
       >
@@ -117,11 +117,7 @@ export default function Navbar() {
             
             <button 
               onClick={() => smoothScrollTo('#contact')}
-              className={`ml-8 px-6 py-2.5 rounded-full font-medium text-base transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2 ${
-                scrolled
-                  ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-500/25'
-                  : 'bg-white/10 backdrop-blur text-white border border-white/20 hover:bg-white/20'
-              }`}
+              className="ml-8 px-6 py-2.5 rounded-full font-medium text-base transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2 bg-white/15 backdrop-blur text-white border border-white/20 hover:bg-white/25"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -149,7 +145,7 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         <div 
           id="mobile-nav" 
-          className="md:hidden hidden opacity-0 translate-y-2 transition-all duration-300 ease-out bg-black/90 backdrop-blur-xl border-t border-gray-700/30"
+          className="md:hidden hidden opacity-0 translate-y-2 transition-all duration-300 ease-out bg-black/90 backdrop-blur-xl"
         >
           <div className="px-6 py-4 space-y-2">
             {NAV_LINKS.map((link, index) => (
@@ -197,11 +193,7 @@ export default function Navbar() {
                 mobileNav?.classList.add('opacity-0');
                 mobileNav?.classList.add('translate-y-2');
               }}
-              className={`w-full text-center px-4 py-3 mt-4 rounded-lg font-medium text-base transition-all duration-300 flex items-center justify-center gap-2 ${
-                scrolled
-                  ? 'bg-blue-600 text-white hover:bg-blue-700'
-                  : 'bg-white/10 backdrop-blur text-white border border-white/20 hover:bg-white/20'
-              }`}
+              className="w-full text-center px-4 py-3 mt-4 rounded-lg font-medium text-base transition-all duration-300 flex items-center justify-center gap-2 bg-white/15 backdrop-blur text-white border border-white/20 hover:bg-white/25"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
